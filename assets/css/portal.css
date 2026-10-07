@@ -1,0 +1,271 @@
+/**
+ * Obydullah Restaurant Loyalty - member portal styles
+ */
+
+.orl-portal {
+	max-width: 720px;
+	margin: 0 auto;
+	background: #fff;
+	border: 1px solid #e2e4e7;
+	border-radius: 10px;
+	padding: 24px;
+	font-size: 15px;
+	line-height: 1.55;
+}
+
+.orl-portal h2 {
+	margin-top: 0;
+	font-size: 22px;
+}
+
+.orl-portal h3 {
+	margin: 28px 0 10px;
+	font-size: 16px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #eceef0;
+}
+
+.orl-portal__code {
+	font-family: Menlo, Consolas, monospace;
+	font-size: 14px;
+	color: #5f6368;
+	letter-spacing: 0.04em;
+	margin: 2px 0 0;
+}
+
+.orl-portal__member {
+	font-size: 13px;
+	color: #80868b;
+	margin: 4px 0 0;
+}
+
+.orl-portal__head {
+	display: flex;
+	gap: 18px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.orl-portal__qr {
+	width: 168px;
+	height: 168px;
+	flex: 0 0 auto;
+}
+
+.orl-portal__qr--small {
+	width: 120px;
+	height: 120px;
+}
+
+.orl-portal__qr svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.orl-portal__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	list-style: none;
+	margin: 22px 0 0;
+	padding: 0;
+}
+
+.orl-portal__stats li {
+	flex: 1 1 90px;
+	background: #f6f8fa;
+	border: 1px solid #e6eaee;
+	border-radius: 8px;
+	padding: 12px 10px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.orl-portal__stats span {
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 1.15;
+	color: #1a1a1a;
+}
+
+.orl-portal__stats small {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #6b7280;
+}
+
+.orl-portal__stats--wide li {
+	flex: 1 1 120px;
+}
+
+.orl-portal__hint {
+	font-size: 13px;
+	color: #6b7280;
+	background: #f6f8fa;
+	border-left: 3px solid #2271b1;
+	padding: 8px 12px;
+	border-radius: 0 6px 6px 0;
+}
+
+.orl-portal__referral {
+	font-size: 14px;
+	background: #f0f6fc;
+	border: 1px solid #c3ddf2;
+	border-radius: 6px;
+	padding: 10px 14px;
+}
+
+.orl-portal__rewards {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.orl-portal__reward {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 14px;
+	flex-wrap: wrap;
+	padding: 12px 0;
+	border-bottom: 1px solid #f0f2f4;
+}
+
+.orl-portal__reward strong {
+	display: block;
+}
+
+.orl-portal__reward small {
+	color: #6b7280;
+}
+
+.orl-portal__reward--locked {
+	opacity: 0.62;
+}
+
+.orl-portal__reward-meta {
+	text-align: right;
+}
+
+.orl-portal__cost {
+	display: block;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.orl-portal__ok {
+	color: #1a7f37;
+	font-weight: 600;
+}
+
+.orl-portal__why {
+	color: #b3261e;
+}
+
+.orl-portal__history {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.orl-portal__history th,
+.orl-portal__history td {
+	text-align: left;
+	padding: 8px 6px;
+	border-bottom: 1px solid #f0f2f4;
+}
+
+.orl-portal__history th {
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #6b7280;
+}
+
+.orl-empty {
+	color: #6b7280;
+	font-style: italic;
+}
+
+.orl-btn {
+	display: inline-block;
+	padding: 10px 18px;
+	border-radius: 6px;
+	text-decoration: none;
+	font-weight: 600;
+	background: #f0f2f4;
+	color: #1a1a1a;
+}
+
+.orl-btn--primary {
+	background: #2271b1;
+	color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+	.orl-portal {
+		padding: 18px;
+	}
+
+	.orl-portal__head {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.orl-portal__reward {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.orl-portal__reward-meta {
+		text-align: left;
+	}
+}
+
+/* Self-service redemption and profile edit. */
+.orl-portal__flash {
+	margin: 0 0 18px;
+	padding: 12px 14px;
+	border-radius: 6px;
+	border-left: 4px solid #2e7d32;
+	background: #edf7ed;
+}
+
+.orl-portal__flash--error {
+	border-left-color: #c62828;
+	background: #fdeaea;
+}
+
+.orl-portal__claim {
+	margin: 6px 0 0;
+}
+
+.orl-btn--small {
+	padding: 6px 12px;
+	font-size: 13px;
+}
+
+.orl-portal__profile p {
+	margin: 0 0 12px;
+}
+
+.orl-portal__profile label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.orl-portal__profile input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 8px 10px;
+}
+
+.orl-portal__locked {
+	color: #666;
+	font-style: italic;
+}
