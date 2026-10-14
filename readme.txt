@@ -1,6 +1,7 @@
 === Obydullah Restaurant Loyalty ===
 Contributors: obydullah
 Tags: loyalty, rewards, points, stamps, restaurant
+Text Domain: obydullah-restaurant-loyalty
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0

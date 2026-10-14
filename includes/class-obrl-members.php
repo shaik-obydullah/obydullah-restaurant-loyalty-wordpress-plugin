@@ -344,6 +344,14 @@ final class OBRL_Members
             : 'created_at';
         $order = 'ASC' === strtoupper($args['order']) ? 'ASC' : 'DESC';
 
+        // A sort direction is a keyword, not a value, so it cannot be bound as a
+        // placeholder: %s would arrive as the quoted literal 'DESC', which MySQL
+        // rejects as a column expression. Both halves are already checked -- the
+        // column against the allowlist above and the direction to ASC or DESC --
+        // so the clause is assembled from validated pieces and the column still
+        // goes through prepare().
+        $order_clause = $wpdb->prepare('%i', $orderby) . ' ' . $order;
+
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Balances, plus the loop that mints member codes. Both have to be current: a cached code check would hand out a duplicate, and a cached balance would disagree with the ledger that produced it.
         $total = (int) $wpdb->get_var(
             $wpdb->prepare(
@@ -369,15 +377,16 @@ final class OBRL_Members
         $offset = ($page - 1) * $per_page;
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Balances, plus the loop that mints member codes. Both have to be current: a cached code check would hand out a duplicate, and a cached balance would disagree with the ledger that produced it.
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $order_clause is a prepare()d allowlisted column plus an ASC/DESC literal, both validated above.
         $rows = $wpdb->get_results(
             $wpdb->prepare(
-                'SELECT *
+                "SELECT *
                    FROM %i
                   WHERE deleted_at IS NULL
-                    AND (%s = \'\' OR status = %s)
+                    AND (%s = '' OR status = %s)
                     AND (first_name LIKE %s OR last_name LIKE %s OR email LIKE %s OR phone LIKE %s OR member_code LIKE %s)
-                  ORDER BY %i %s
-                  LIMIT %d OFFSET %d',
+                  ORDER BY {$order_clause}
+                  LIMIT %d OFFSET %d",
                 $table,
                 $status,
                 $status,
@@ -386,8 +395,6 @@ final class OBRL_Members
                 $like,
                 $like,
                 $like,
-                $orderby,
-                $order,
                 $per_page,
                 $offset
             )
@@ -426,8 +433,8 @@ final class OBRL_Members
                     SUM(CASE WHEN created_at >= %s THEN 1 ELSE 0 END) AS new_this_month,
                     COALESCE(SUM(points_balance), 0) AS points_outstanding
                  FROM %i WHERE deleted_at IS NULL",
-                $table,
-                $month_start
+                $month_start,
+                $table
             ),
             ARRAY_A
         );

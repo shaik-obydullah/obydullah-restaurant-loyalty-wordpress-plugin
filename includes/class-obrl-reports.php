@@ -101,7 +101,7 @@ final class OBRL_Reports
                     "SELECT rw.title, COUNT(*) AS count, COALESCE(SUM(rd.reward_value), 0) AS value
                      FROM %i rd
                      INNER JOIN %i rw ON rw.id = rd.reward_id
-                     WHERE rd.issued_at >= %s AND rd.status IN (\'issued\',\'used\')
+                     WHERE rd.issued_at >= %s AND rd.status IN ('issued','used')
                      GROUP BY rd.reward_id, rw.title
                      ORDER BY count DESC",
                     $redeem,

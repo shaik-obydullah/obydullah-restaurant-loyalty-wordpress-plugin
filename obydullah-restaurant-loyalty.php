@@ -6,7 +6,8 @@
  * Requires at least: 6.5
  * Requires PHP: 8.0
  * Tested up to: 7.1
- * Author: Obydullah
+ * Author: Shaik Obydullah
+ * Author URI: https://obydullah.com
  * Text Domain: obydullah-restaurant-loyalty
  * Domain Path: /languages
  * License: GPL-2.0-or-later

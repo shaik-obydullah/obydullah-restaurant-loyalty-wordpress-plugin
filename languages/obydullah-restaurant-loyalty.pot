@@ -1,15 +1,15 @@
-# Copyright (C) 2026 Obydullah
+# Copyright (C) 2026 Shaik Obydullah
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Obydullah Restaurant Loyalty 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/p\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/obydullah-restaurant-loyalty\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-26T01:09:04+00:00\n"
+"POT-Creation-Date: 2026-10-13T14:24:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: obydullah-restaurant-loyalty\n"
@@ -26,596 +26,601 @@ msgstr ""
 
 #. Author of the plugin
 #: obydullah-restaurant-loyalty.php
-msgid "Obydullah"
+msgid "Shaik Obydullah"
 msgstr ""
 
-#: includes/class-orl-activator.php:11
+#. Author URI of the plugin
+#: obydullah-restaurant-loyalty.php
+msgid "https://obydullah.com"
+msgstr ""
+
+#: includes/class-obrl-activator.php:11
 msgid "Obydullah Restaurant Loyalty could not create its database tables. Check the database logs and try again."
 msgstr ""
 
-#: includes/class-orl-admin.php:35
-#: includes/class-orl-privacy.php:21
-#: includes/class-orl-privacy.php:30
+#: includes/class-obrl-admin.php:35
+#: includes/class-obrl-privacy.php:21
+#: includes/class-obrl-privacy.php:30
 msgid "Restaurant Loyalty"
 msgstr ""
 
-#: includes/class-orl-admin.php:36
+#: includes/class-obrl-admin.php:36
 msgid "Loyalty"
 msgstr ""
 
-#: includes/class-orl-admin.php:45
+#: includes/class-obrl-admin.php:45
 #: views/members.php:27
 msgid "Members"
 msgstr ""
 
-#: includes/class-orl-admin.php:46
+#: includes/class-obrl-admin.php:46
 #: views/record.php:21
 msgid "Record Transaction"
 msgstr ""
 
-#: includes/class-orl-admin.php:47
+#: includes/class-obrl-admin.php:47
 #: views/redeem.php:16
 msgid "Redeem Reward"
 msgstr ""
 
-#: includes/class-orl-admin.php:48
+#: includes/class-obrl-admin.php:48
 #: views/rewards.php:16
 #: views/settings.php:11
 msgid "Rewards"
 msgstr ""
 
-#: includes/class-orl-admin.php:49
+#: includes/class-obrl-admin.php:49
 #: views/reports.php:19
 msgid "Reports"
 msgstr ""
 
-#: includes/class-orl-admin.php:50
+#: includes/class-obrl-admin.php:50
 #: views/referrals.php:10
 #: views/settings.php:13
 msgid "Referrals"
 msgstr ""
 
-#: includes/class-orl-admin.php:51
-#: views/activity.php:28
+#: includes/class-obrl-admin.php:51
+#: views/activity.php:31
 msgid "Activity Log"
 msgstr ""
 
-#: includes/class-orl-admin.php:52
+#: includes/class-obrl-admin.php:52
 msgid "Settings"
 msgstr ""
 
-#: includes/class-orl-admin.php:118
+#: includes/class-obrl-admin.php:118
 #: views/members.php:139
 msgid "No members found."
 msgstr ""
 
-#: includes/class-orl-admin.php:119
+#: includes/class-obrl-admin.php:119
 msgid "Select a member"
 msgstr ""
 
-#: includes/class-orl-admin.php:120
+#: includes/class-obrl-admin.php:120
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/class-orl-admin.php:129
-#: includes/class-orl-admin.php:496
+#: includes/class-obrl-admin.php:129
+#: includes/class-obrl-admin.php:553
 msgid "You do not have permission to do that."
 msgstr ""
 
 #. translators: %d: number of settings saved.
-#: includes/class-orl-admin.php:253
+#: includes/class-obrl-admin.php:305
 #, php-format
 msgid "%d setting saved."
 msgid_plural "%d settings saved."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-orl-admin.php:305
+#: includes/class-obrl-admin.php:359
 msgid "Member updated."
 msgstr ""
 
-#: includes/class-orl-admin.php:306
+#: includes/class-obrl-admin.php:360
 msgid "Member enrolled."
 msgstr ""
 
-#: includes/class-orl-admin.php:321
+#: includes/class-obrl-admin.php:375
 msgid "Member removed."
 msgstr ""
 
-#: includes/class-orl-admin.php:323
+#: includes/class-obrl-admin.php:377
 msgid "The member could not be removed."
 msgstr ""
 
-#: includes/class-orl-admin.php:364
+#: includes/class-obrl-admin.php:420
 msgid "Reward updated."
 msgstr ""
 
-#: includes/class-orl-admin.php:364
+#: includes/class-obrl-admin.php:420
 msgid "Reward created."
 msgstr ""
 
-#: includes/class-orl-admin.php:379
+#: includes/class-obrl-admin.php:435
 msgid "Reward removed."
 msgstr ""
 
-#: includes/class-orl-admin.php:381
+#: includes/class-obrl-admin.php:437
 msgid "The reward could not be removed."
 msgstr ""
 
-#: includes/class-orl-admin.php:407
+#: includes/class-obrl-admin.php:463
 msgid "Enter a purchase amount greater than zero."
 msgstr ""
 
-#: includes/class-orl-admin.php:416
+#: includes/class-obrl-admin.php:473
 msgid "You cannot apply manual adjustments."
 msgstr ""
 
-#: includes/class-orl-admin.php:429
+#: includes/class-obrl-admin.php:486
 msgid "Transaction recorded."
 msgstr ""
 
-#: includes/class-orl-admin.php:458
+#: includes/class-obrl-admin.php:515
 msgid "Reward redeemed."
 msgstr ""
 
-#: includes/class-orl-admin.php:476
-#: includes/class-orl-redemptions.php:300
+#: includes/class-obrl-admin.php:533
+#: includes/class-obrl-redemptions.php:307
 msgid "Redemption cancelled and balance returned."
 msgstr ""
 
-#: includes/class-orl-admin.php:491
+#: includes/class-obrl-admin.php:548
 msgid "Your session expired. Please reload the page and try again."
 msgstr ""
 
-#: includes/class-orl-admin.php:543
+#: includes/class-obrl-admin.php:600
 msgid "Member not found."
 msgstr ""
 
-#: includes/class-orl-admin.php:582
+#: includes/class-obrl-admin.php:639
 msgid "Could not rebuild the balance."
 msgstr ""
 
-#: includes/class-orl-admin.php:598
+#: includes/class-obrl-admin.php:655
 msgid "Reward not found."
 msgstr ""
 
-#: includes/class-orl-birthday.php:60
-#: includes/class-orl-ledger.php:26
+#: includes/class-obrl-birthday.php:62
+#: includes/class-obrl-ledger.php:26
 msgid "Birthday reward"
 msgstr ""
 
-#: includes/class-orl-csv.php:29
-#: includes/class-orl-portal.php:561
-#: includes/class-orl-privacy.php:100
-#: includes/class-orl-privacy.php:119
+#: includes/class-obrl-csv.php:29
+#: includes/class-obrl-portal.php:569
+#: includes/class-obrl-privacy.php:102
+#: includes/class-obrl-privacy.php:121
 msgid "Date"
 msgstr ""
 
-#: includes/class-orl-csv.php:30
-#: includes/class-orl-privacy.php:55
+#: includes/class-obrl-csv.php:30
+#: includes/class-obrl-privacy.php:55
 msgid "Member code"
 msgstr ""
 
-#: includes/class-orl-csv.php:31
+#: includes/class-obrl-csv.php:31
 msgid "Member name"
 msgstr ""
 
-#: includes/class-orl-csv.php:32
-#: includes/class-orl-privacy.php:58
+#: includes/class-obrl-csv.php:32
+#: includes/class-obrl-privacy.php:58
 #: views/members.php:74
 msgid "Email"
 msgstr ""
 
-#: includes/class-orl-csv.php:33
-#: includes/class-orl-privacy.php:101
+#: includes/class-obrl-csv.php:33
+#: includes/class-obrl-privacy.php:103
 #: views/dashboard.php:52
-#: views/record.php:127
+#: views/record.php:128
 #: views/rewards.php:41
 #: views/rewards.php:156
 msgid "Type"
 msgstr ""
 
-#: includes/class-orl-csv.php:34
-#: includes/class-orl-portal.php:413
-#: includes/class-orl-privacy.php:102
-#: includes/class-orl-settings.php:20
+#: includes/class-obrl-csv.php:34
+#: includes/class-obrl-portal.php:421
+#: includes/class-obrl-privacy.php:104
+#: includes/class-obrl-settings.php:29
 #: views/member-card.php:35
-#: views/record.php:84
-#: views/record.php:128
+#: views/record.php:85
+#: views/record.php:129
 #: views/rewards.php:54
 msgid "Points"
 msgstr ""
 
-#: includes/class-orl-csv.php:35
-#: includes/class-orl-portal.php:414
-#: includes/class-orl-portal.php:454
-#: includes/class-orl-privacy.php:71
-#: includes/class-orl-privacy.php:103
-#: includes/class-orl-settings.php:21
+#: includes/class-obrl-csv.php:35
+#: includes/class-obrl-portal.php:422
+#: includes/class-obrl-portal.php:462
+#: includes/class-obrl-privacy.php:71
+#: includes/class-obrl-privacy.php:105
+#: includes/class-obrl-settings.php:30
 #: views/member-card.php:39
-#: views/record.php:89
+#: views/record.php:90
 #: views/rewards.php:59
 msgid "Stamps"
 msgstr ""
 
-#: includes/class-orl-csv.php:36
-#: includes/class-orl-portal.php:415
-#: includes/class-orl-portal.php:455
-#: includes/class-orl-privacy.php:72
-#: includes/class-orl-privacy.php:104
-#: includes/class-orl-settings.php:22
+#: includes/class-obrl-csv.php:36
+#: includes/class-obrl-portal.php:423
+#: includes/class-obrl-portal.php:463
+#: includes/class-obrl-privacy.php:72
+#: includes/class-obrl-privacy.php:106
+#: includes/class-obrl-settings.php:31
 #: views/member-card.php:43
-#: views/record.php:93
+#: views/record.php:94
 #: views/reports.php:88
 #: views/rewards.php:64
 msgid "Visits"
 msgstr ""
 
-#: includes/class-orl-csv.php:37
-#: includes/class-orl-privacy.php:105
+#: includes/class-obrl-csv.php:37
+#: includes/class-obrl-privacy.php:107
 msgid "Amount"
 msgstr ""
 
-#: includes/class-orl-csv.php:38
+#: includes/class-obrl-csv.php:38
 msgid "Balance after"
 msgstr ""
 
-#: includes/class-orl-csv.php:39
-#: views/record.php:130
+#: includes/class-obrl-csv.php:39
+#: views/record.php:131
 msgid "Staff"
 msgstr ""
 
-#: includes/class-orl-csv.php:40
-#: includes/class-orl-privacy.php:106
-#: views/record.php:106
+#: includes/class-obrl-csv.php:40
+#: includes/class-obrl-privacy.php:108
+#: views/record.php:107
 msgid "Note"
 msgstr ""
 
-#: includes/class-orl-csv.php:79
+#: includes/class-obrl-csv.php:82
 msgid "Summary"
 msgstr ""
 
-#: includes/class-orl-csv.php:80
+#: includes/class-obrl-csv.php:83
 #: views/reports.php:51
 msgid "Recorded spend"
 msgstr ""
 
-#: includes/class-orl-csv.php:81
+#: includes/class-obrl-csv.php:84
 #: views/reports.php:55
 msgid "Transactions"
 msgstr ""
 
-#: includes/class-orl-csv.php:82
+#: includes/class-obrl-csv.php:85
 #: views/reports.php:59
 msgid "New members"
 msgstr ""
 
-#: includes/class-orl-csv.php:83
+#: includes/class-obrl-csv.php:86
 #: views/reports.php:63
 msgid "Points earned"
 msgstr ""
 
-#: includes/class-orl-csv.php:84
+#: includes/class-obrl-csv.php:87
 #: views/reports.php:67
 msgid "Points redeemed"
 msgstr ""
 
-#: includes/class-orl-csv.php:85
+#: includes/class-obrl-csv.php:88
 #: views/reports.php:71
 #: views/reports.php:116
 msgid "Redemptions"
 msgstr ""
 
-#: includes/class-orl-ledger.php:21
+#: includes/class-obrl-ledger.php:21
 msgid "Purchase"
 msgstr ""
 
-#: includes/class-orl-ledger.php:22
+#: includes/class-obrl-ledger.php:22
 msgid "Visit"
 msgstr ""
 
-#: includes/class-orl-ledger.php:23
+#: includes/class-obrl-ledger.php:23
 msgid "Points / stamps awarded"
 msgstr ""
 
-#: includes/class-orl-ledger.php:24
+#: includes/class-obrl-ledger.php:24
 msgid "Reward redeemed"
 msgstr ""
 
-#: includes/class-orl-ledger.php:25
+#: includes/class-obrl-ledger.php:25
 msgid "Manual adjustment"
 msgstr ""
 
-#: includes/class-orl-ledger.php:27
-#: includes/class-orl-welcome.php:57
+#: includes/class-obrl-ledger.php:27
+#: includes/class-obrl-welcome.php:58
 msgid "Welcome reward"
 msgstr ""
 
-#: includes/class-orl-ledger.php:28
-#: includes/class-orl-referrals.php:174
+#: includes/class-obrl-ledger.php:28
+#: includes/class-obrl-referrals.php:182
 msgid "Referral reward"
 msgstr ""
 
-#: includes/class-orl-ledger.php:29
-#: includes/class-orl-redemptions.php:420
+#: includes/class-obrl-ledger.php:29
+#: includes/class-obrl-redemptions.php:438
 msgid "Expired"
 msgstr ""
 
-#: includes/class-orl-ledger.php:30
+#: includes/class-obrl-ledger.php:30
 msgid "Void"
 msgstr ""
 
-#: includes/class-orl-ledger.php:65
-#: includes/class-orl-members.php:154
-#: includes/class-orl-redemptions.php:41
-#: includes/class-orl-rewards.php:136
+#: includes/class-obrl-ledger.php:65
+#: includes/class-obrl-members.php:171
+#: includes/class-obrl-redemptions.php:42
+#: includes/class-obrl-rewards.php:146
 msgid "The loyalty database is not installed."
 msgstr ""
 
-#: includes/class-orl-ledger.php:91
-#: includes/class-orl-members.php:214
+#: includes/class-obrl-ledger.php:91
+#: includes/class-obrl-members.php:232
 msgid "That member no longer exists."
 msgstr ""
 
-#: includes/class-orl-ledger.php:94
+#: includes/class-obrl-ledger.php:94
 msgid "Unknown transaction type."
 msgstr ""
 
-#: includes/class-orl-ledger.php:113
+#: includes/class-obrl-ledger.php:113
 msgid "Enter a points, stamp, visit, or amount value."
 msgstr ""
 
 #. translators: %s: formatted points shortfall.
-#: includes/class-orl-ledger.php:125
+#: includes/class-obrl-ledger.php:125
 #, php-format
 msgid "Not enough points. Still needed: %s."
 msgstr ""
 
-#: includes/class-orl-ledger.php:142
-#: includes/class-orl-ledger.php:177
+#: includes/class-obrl-ledger.php:143
+#: includes/class-obrl-ledger.php:179
 msgid "This transaction was already recorded."
 msgstr ""
 
-#: includes/class-orl-ledger.php:179
+#: includes/class-obrl-ledger.php:181
 msgid "The transaction could not be saved."
 msgstr ""
 
-#: includes/class-orl-members.php:14
+#: includes/class-obrl-members.php:14
 #: views/rewards.php:128
 #: views/rewards.php:159
 msgid "Active"
 msgstr ""
 
-#: includes/class-orl-members.php:15
+#: includes/class-obrl-members.php:15
 msgid "Inactive"
 msgstr ""
 
-#: includes/class-orl-members.php:16
+#: includes/class-obrl-members.php:16
 msgid "Suspended"
 msgstr ""
 
-#: includes/class-orl-members.php:75
+#: includes/class-obrl-members.php:83
 msgid "(no name)"
 msgstr ""
 
-#: includes/class-orl-members.php:111
+#: includes/class-obrl-members.php:128
 msgid "A first or last name is required."
 msgstr ""
 
-#: includes/class-orl-members.php:120
+#: includes/class-obrl-members.php:137
 msgid "That email address is not valid."
 msgstr ""
 
-#: includes/class-orl-members.php:123
+#: includes/class-obrl-members.php:140
 msgid "An email address is required."
 msgstr ""
 
-#: includes/class-orl-members.php:128
+#: includes/class-obrl-members.php:145
 msgid "A phone number is required."
 msgstr ""
 
-#: includes/class-orl-members.php:133
+#: includes/class-obrl-members.php:150
 msgid "Enter a birthday in YYYY-MM-DD format."
 msgstr ""
 
-#: includes/class-orl-members.php:137
+#: includes/class-obrl-members.php:154
 msgid "Unknown member status."
 msgstr ""
 
-#: includes/class-orl-members.php:143
-#: includes/class-orl-rewards.php:125
+#: includes/class-obrl-members.php:160
+#: includes/class-obrl-rewards.php:135
 msgid "Please correct the highlighted fields."
 msgstr ""
 
-#: includes/class-orl-members.php:188
+#: includes/class-obrl-members.php:206
 msgid "The member could not be saved."
 msgstr ""
 
-#: includes/class-orl-members.php:240
+#: includes/class-obrl-members.php:259
 msgid "The member could not be updated."
 msgstr ""
 
-#: includes/class-orl-portal.php:82
+#: includes/class-obrl-portal.php:82
 msgid "That member card could not be found."
 msgstr ""
 
 #. translators: %s: member name.
-#: includes/class-orl-portal.php:106
+#: includes/class-obrl-portal.php:106
 #, php-format
 msgid "Card scanned: %s"
 msgstr ""
 
-#: includes/class-orl-portal.php:243
-#: includes/class-orl-portal.php:329
+#: includes/class-obrl-portal.php:245
+#: includes/class-obrl-portal.php:337
 msgid "We could not find a loyalty account for this login."
 msgstr ""
 
-#: includes/class-orl-portal.php:250
+#: includes/class-obrl-portal.php:252
 msgid "Self-service redemption is currently turned off. Please ask a staff member to redeem your reward."
 msgstr ""
 
-#: includes/class-orl-portal.php:257
-#: includes/class-orl-rewards.php:189
+#: includes/class-obrl-portal.php:259
+#: includes/class-obrl-rewards.php:200
 msgid "That reward no longer exists."
 msgstr ""
 
-#: includes/class-orl-portal.php:270
+#: includes/class-obrl-portal.php:272
 msgid "Claimed by the member in the portal."
 msgstr ""
 
 #. translators: %s: redemption code.
-#: includes/class-orl-portal.php:283
+#: includes/class-obrl-portal.php:285
 #, php-format
 msgid "Reward claimed. Show code %s at the counter to collect it."
 msgstr ""
 
-#: includes/class-orl-portal.php:336
+#: includes/class-obrl-portal.php:344
 msgid "Profile editing is currently turned off. Please ask a staff member to update your details."
 msgstr ""
 
-#: includes/class-orl-portal.php:350
+#: includes/class-obrl-portal.php:358
 msgid "Your details have been updated."
 msgstr ""
 
-#: includes/class-orl-portal.php:378
+#: includes/class-obrl-portal.php:386
 msgid "Your loyalty account"
 msgstr ""
 
-#: includes/class-orl-portal.php:379
+#: includes/class-obrl-portal.php:387
 msgid "Sign in to see your balance, history, and rewards."
 msgstr ""
 
-#: includes/class-orl-portal.php:381
+#: includes/class-obrl-portal.php:389
 msgid "Sign in"
 msgstr ""
 
-#: includes/class-orl-portal.php:393
+#: includes/class-obrl-portal.php:401
 msgid "No loyalty account found"
 msgstr ""
 
-#: includes/class-orl-portal.php:395
+#: includes/class-obrl-portal.php:403
 msgid "This login is not linked to a member record yet. Ask a staff member to enrol you or to link this email address."
 msgstr ""
 
-#: includes/class-orl-portal.php:417
+#: includes/class-obrl-portal.php:425
 msgid "Show this code at the counter to collect your reward."
 msgstr ""
 
-#: includes/class-orl-portal.php:448
+#: includes/class-obrl-portal.php:456
 msgid "Member since"
 msgstr ""
 
-#: includes/class-orl-portal.php:453
-#: includes/class-orl-privacy.php:70
+#: includes/class-obrl-portal.php:461
+#: includes/class-obrl-privacy.php:70
 msgid "Points balance"
 msgstr ""
 
-#: includes/class-orl-portal.php:456
+#: includes/class-obrl-portal.php:464
 msgid "Friends invited"
 msgstr ""
 
 #. translators: 1: referral code, 2: invited friend count.
-#: includes/class-orl-portal.php:465
+#: includes/class-obrl-portal.php:473
 #, php-format
 msgid "Share your referral code %1$s — %2$d friend(s) joined so far."
 msgstr ""
 
-#: includes/class-orl-portal.php:474
+#: includes/class-obrl-portal.php:482
 msgid "Available rewards"
 msgstr ""
 
-#: includes/class-orl-portal.php:476
+#: includes/class-obrl-portal.php:484
 msgid "No rewards are available right now."
 msgstr ""
 
-#: includes/class-orl-portal.php:503
+#: includes/class-obrl-portal.php:511
 msgid "Available"
 msgstr ""
 
-#: includes/class-orl-portal.php:509
+#: includes/class-obrl-portal.php:517
 msgid "Claim"
 msgstr ""
 
-#: includes/class-orl-portal.php:513
+#: includes/class-obrl-portal.php:521
 msgid "Ask at the counter"
 msgstr ""
 
-#: includes/class-orl-portal.php:520
+#: includes/class-obrl-portal.php:528
 msgid "Claiming reserves the reward and debits your balance straight away. Show the code at the counter to collect it."
 msgstr ""
 
-#: includes/class-orl-portal.php:522
+#: includes/class-obrl-portal.php:530
 msgid "Ask a staff member at the counter to redeem a reward."
 msgstr ""
 
-#: includes/class-orl-portal.php:527
+#: includes/class-obrl-portal.php:535
 msgid "Your details"
 msgstr ""
 
-#: includes/class-orl-portal.php:532
-#: includes/class-orl-privacy.php:56
+#: includes/class-obrl-portal.php:540
+#: includes/class-obrl-privacy.php:56
 #: views/members.php:64
 msgid "First name"
 msgstr ""
 
-#: includes/class-orl-portal.php:536
-#: includes/class-orl-privacy.php:57
+#: includes/class-obrl-portal.php:544
+#: includes/class-obrl-privacy.php:57
 #: views/members.php:69
 msgid "Last name"
 msgstr ""
 
-#: includes/class-orl-portal.php:540
-#: includes/class-orl-privacy.php:59
+#: includes/class-obrl-portal.php:548
+#: includes/class-obrl-privacy.php:59
 #: views/members.php:79
 msgid "Phone"
 msgstr ""
 
-#: includes/class-orl-portal.php:544
-#: includes/class-orl-privacy.php:60
+#: includes/class-obrl-portal.php:552
+#: includes/class-obrl-privacy.php:60
 #: views/members.php:84
 msgid "Birthday"
 msgstr ""
 
-#: includes/class-orl-portal.php:548
+#: includes/class-obrl-portal.php:556
 msgid "Email and account status are managed by the restaurant."
 msgstr ""
 
-#: includes/class-orl-portal.php:550
+#: includes/class-obrl-portal.php:558
 msgid "Save details"
 msgstr ""
 
-#: includes/class-orl-portal.php:554
+#: includes/class-obrl-portal.php:562
 #: views/dashboard.php:44
 msgid "Recent activity"
 msgstr ""
 
-#: includes/class-orl-portal.php:556
+#: includes/class-obrl-portal.php:564
 msgid "No activity yet."
 msgstr ""
 
-#: includes/class-orl-portal.php:562
+#: includes/class-obrl-portal.php:570
 msgid "Activity"
 msgstr ""
 
-#: includes/class-orl-portal.php:563
+#: includes/class-obrl-portal.php:571
 #: views/dashboard.php:53
 msgid "Change"
 msgstr ""
 
-#: includes/class-orl-portal.php:613
+#: includes/class-obrl-portal.php:621
 msgid "My Loyalty Account"
 msgstr ""
 
-#: includes/class-orl-privacy.php:51
+#: includes/class-obrl-privacy.php:51
 msgid "Loyalty membership"
 msgstr ""
 
-#: includes/class-orl-privacy.php:54
+#: includes/class-obrl-privacy.php:54
 msgid "Member ID"
 msgstr ""
 
-#: includes/class-orl-privacy.php:61
-#: includes/class-orl-privacy.php:121
+#: includes/class-obrl-privacy.php:61
+#: includes/class-obrl-privacy.php:123
 #: views/members.php:90
 #: views/members.php:147
 #: views/redeem.php:97
@@ -623,296 +628,296 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: includes/class-orl-privacy.php:62
+#: includes/class-obrl-privacy.php:62
 msgid "Joined"
 msgstr ""
 
-#: includes/class-orl-privacy.php:67
+#: includes/class-obrl-privacy.php:67
 msgid "Loyalty balance"
 msgstr ""
 
-#: includes/class-orl-privacy.php:73
+#: includes/class-obrl-privacy.php:73
 msgid "Lifetime points"
 msgstr ""
 
-#: includes/class-orl-privacy.php:74
+#: includes/class-obrl-privacy.php:74
 msgid "Total spend"
 msgstr ""
 
-#: includes/class-orl-privacy.php:97
+#: includes/class-obrl-privacy.php:99
 msgid "Loyalty transactions"
 msgstr ""
 
-#: includes/class-orl-privacy.php:116
+#: includes/class-obrl-privacy.php:118
 msgid "Loyalty redemptions"
 msgstr ""
 
-#: includes/class-orl-privacy.php:120
+#: includes/class-obrl-privacy.php:122
 #: views/members.php:145
 #: views/redeem.php:95
 #: views/reports.php:86
 msgid "Code"
 msgstr ""
 
-#: includes/class-orl-privacy.php:122
+#: includes/class-obrl-privacy.php:124
 msgid "Points spent"
 msgstr ""
 
-#: includes/class-orl-privacy.php:151
+#: includes/class-obrl-privacy.php:153
 msgid "Loyalty member has an uncollected reward and was not erased."
 msgstr ""
 
-#: includes/class-orl-privacy.php:185
+#: includes/class-obrl-privacy.php:189
 msgid "Member data erased"
 msgstr ""
 
-#: includes/class-orl-privacy.php:207
+#: includes/class-obrl-privacy.php:212
 msgid "Loyalty member personal data was anonymised. Transaction and audit records were retained for accounting purposes."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:60
-#: includes/class-orl-rewards.php:296
+#: includes/class-obrl-redemptions.php:61
+#: includes/class-obrl-rewards.php:320
 msgid "Member or reward not found."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:76
-#: includes/class-orl-redemptions.php:133
+#: includes/class-obrl-redemptions.php:78
+#: includes/class-obrl-redemptions.php:136
 msgid "This redemption was already recorded."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:96
+#: includes/class-obrl-redemptions.php:98
 msgid "This reward just went out of stock."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:135
+#: includes/class-obrl-redemptions.php:138
 msgid "The redemption could not be saved."
 msgstr ""
 
 #. translators: %s: reward title.
-#: includes/class-orl-redemptions.php:155
+#: includes/class-obrl-redemptions.php:158
 #, php-format
 msgid "Redeemed: %s"
 msgstr ""
 
-#: includes/class-orl-redemptions.php:198
-#: includes/class-orl-redemptions.php:248
+#: includes/class-obrl-redemptions.php:202
+#: includes/class-obrl-redemptions.php:253
 msgid "That redemption no longer exists."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:201
+#: includes/class-obrl-redemptions.php:205
 msgid "Only an issued redemption can be used."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:225
+#: includes/class-obrl-redemptions.php:230
 msgid "The redemption could not be updated."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:228
+#: includes/class-obrl-redemptions.php:233
 msgid "That redemption was already used or cancelled."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:251
+#: includes/class-obrl-redemptions.php:256
 msgid "That redemption is already closed."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:274
+#: includes/class-obrl-redemptions.php:281
 msgid "The redemption could not be cancelled."
 msgstr ""
 
 #. translators: %s: cancellation reason.
-#: includes/class-orl-redemptions.php:297
+#: includes/class-obrl-redemptions.php:304
 #, php-format
 msgid "Redemption cancelled: %s"
 msgstr ""
 
-#: includes/class-orl-redemptions.php:372
+#: includes/class-obrl-redemptions.php:382
 msgid "Reward expired unused, balance returned."
 msgstr ""
 
-#: includes/class-orl-redemptions.php:417
+#: includes/class-obrl-redemptions.php:435
 msgid "Issued"
 msgstr ""
 
-#: includes/class-orl-redemptions.php:418
+#: includes/class-obrl-redemptions.php:436
 msgid "Used"
 msgstr ""
 
-#: includes/class-orl-redemptions.php:419
+#: includes/class-obrl-redemptions.php:437
 msgid "Cancelled"
 msgstr ""
 
-#: includes/class-orl-referrals.php:18
+#: includes/class-obrl-referrals.php:18
 msgid "Pending"
 msgstr ""
 
-#: includes/class-orl-referrals.php:19
+#: includes/class-obrl-referrals.php:19
 msgid "Qualified"
 msgstr ""
 
-#: includes/class-orl-referrals.php:20
+#: includes/class-obrl-referrals.php:20
 msgid "Rewarded"
 msgstr ""
 
-#: includes/class-orl-referrals.php:21
+#: includes/class-obrl-referrals.php:21
 msgid "Rejected"
 msgstr ""
 
-#: includes/class-orl-referrals.php:188
+#: includes/class-obrl-referrals.php:196
 msgid "Referral bonus"
 msgstr ""
 
-#: includes/class-orl-rewards.php:13
+#: includes/class-obrl-rewards.php:13
 #: views/rewards.php:73
 msgid "Fixed value"
 msgstr ""
 
-#: includes/class-orl-rewards.php:14
+#: includes/class-obrl-rewards.php:14
 msgid "Percentage discount"
 msgstr ""
 
-#: includes/class-orl-rewards.php:15
+#: includes/class-obrl-rewards.php:15
 msgid "Free item"
 msgstr ""
 
-#: includes/class-orl-rewards.php:84
+#: includes/class-obrl-rewards.php:94
 msgid "A reward title is required."
 msgstr ""
 
-#: includes/class-orl-rewards.php:87
+#: includes/class-obrl-rewards.php:97
 msgid "Choose a reward type."
 msgstr ""
 
-#: includes/class-orl-rewards.php:109
+#: includes/class-obrl-rewards.php:119
 msgid "Enter a discount percentage greater than zero."
 msgstr ""
 
-#: includes/class-orl-rewards.php:112
+#: includes/class-obrl-rewards.php:122
 msgid "Enter the reward value."
 msgstr ""
 
-#: includes/class-orl-rewards.php:115
+#: includes/class-obrl-rewards.php:125
 msgid "Name the free item."
 msgstr ""
 
-#: includes/class-orl-rewards.php:121
+#: includes/class-obrl-rewards.php:131
 msgid "Set a cost in points, stamps, or visits."
 msgstr ""
 
-#: includes/class-orl-rewards.php:172
+#: includes/class-obrl-rewards.php:183
 msgid "The reward could not be saved."
 msgstr ""
 
-#: includes/class-orl-rewards.php:224
+#: includes/class-obrl-rewards.php:236
 msgid "The reward could not be updated."
 msgstr ""
 
-#: includes/class-orl-rewards.php:299
+#: includes/class-obrl-rewards.php:323
 msgid "This member is not active."
 msgstr ""
 
-#: includes/class-orl-rewards.php:302
+#: includes/class-obrl-rewards.php:326
 msgid "This reward is not currently available."
 msgstr ""
 
-#: includes/class-orl-rewards.php:307
+#: includes/class-obrl-rewards.php:331
 msgid "This reward is out of stock."
 msgstr ""
 
 #. translators: %d: number of redemptions already used.
-#: includes/class-orl-rewards.php:317
+#: includes/class-obrl-rewards.php:341
 #, php-format
 msgid "This member has already used this reward %d time(s)."
 msgstr ""
 
 #. translators: %s: formatted minimum purchase amount.
-#: includes/class-orl-rewards.php:330
+#: includes/class-obrl-rewards.php:354
 #, php-format
 msgid "This reward requires a minimum purchase of %s."
 msgstr ""
 
 #. translators: %s: formatted points.
-#: includes/class-orl-rewards.php:340
+#: includes/class-obrl-rewards.php:364
 #, php-format
 msgid "%s points"
 msgstr ""
 
 #. translators: %d: stamp count.
-#: includes/class-orl-rewards.php:347
+#: includes/class-obrl-rewards.php:371
 #, php-format
 msgid "%d stamps"
 msgstr ""
 
 #. translators: %d: visit count.
-#: includes/class-orl-rewards.php:354
+#: includes/class-obrl-rewards.php:378
 #, php-format
 msgid "%d visits"
 msgstr ""
 
 #. translators: %s: list of shortfalls.
-#: includes/class-orl-rewards.php:364
+#: includes/class-obrl-rewards.php:388
 #, php-format
 msgid "Not enough balance. Still needed: %s."
 msgstr ""
 
 #. translators: %d: minimum points.
-#: includes/class-orl-rewards.php:376
+#: includes/class-obrl-rewards.php:400
 #, php-format
 msgid "A redemption needs at least %d points."
 msgstr ""
 
-#: includes/class-orl-roles.php:57
+#: includes/class-obrl-roles.php:57
 msgid "Loyalty Manager"
 msgstr ""
 
-#: includes/class-orl-roles.php:63
+#: includes/class-obrl-roles.php:63
 msgid "Loyalty Staff"
 msgstr ""
 
-#: includes/class-orl-roles.php:69
+#: includes/class-obrl-roles.php:69
 msgid "Loyalty Member"
 msgstr ""
 
-#: includes/class-orl-settings.php:145
+#: includes/class-obrl-settings.php:154
 msgid "On signup"
 msgstr ""
 
-#: includes/class-orl-settings.php:146
+#: includes/class-obrl-settings.php:155
 msgid "On first purchase"
 msgstr ""
 
 #. translators: %s: number of log entries.
-#: views/activity.php:36
+#: views/activity.php:39
 #, php-format
 msgid "%s entry recorded."
 msgid_plural "%s entries recorded."
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/activity.php:43
+#: views/activity.php:46
 msgid "Nothing logged yet."
 msgstr ""
 
-#: views/activity.php:48
+#: views/activity.php:51
 #: views/dashboard.php:54
-#: views/record.php:131
+#: views/record.php:132
 #: views/redeem.php:99
 #: views/referrals.php:32
 msgid "When"
 msgstr ""
 
-#: views/activity.php:49
+#: views/activity.php:52
 msgid "Action"
 msgstr ""
 
-#: views/activity.php:50
+#: views/activity.php:53
 msgid "Actor"
 msgstr ""
 
-#: views/activity.php:51
+#: views/activity.php:54
 msgid "Object"
 msgstr ""
 
-#: views/activity.php:52
+#: views/activity.php:55
 msgid "Message"
 msgstr ""
 
@@ -947,53 +952,53 @@ msgstr ""
 #: views/dashboard.php:51
 #: views/members.php:144
 #: views/record.php:35
-#: views/record.php:126
+#: views/record.php:127
 #: views/redeem.php:30
 #: views/reports.php:85
 msgid "Member"
 msgstr ""
 
-#: views/dashboard.php:69
-#: views/record.php:148
+#: views/dashboard.php:71
+#: views/record.php:151
 #: views/referrals.php:43
 #: views/referrals.php:53
 msgid "(deleted)"
 msgstr ""
 
-#: views/dashboard.php:99
+#: views/dashboard.php:101
 msgid "Amount only"
 msgstr ""
 
-#: views/dashboard.php:113
+#: views/dashboard.php:115
 msgid "Upcoming birthdays"
 msgstr ""
 
-#: views/dashboard.php:115
+#: views/dashboard.php:117
 msgid "No birthdays in the next 30 days."
 msgstr ""
 
-#: views/dashboard.php:125
+#: views/dashboard.php:127
 msgid "Today"
 msgstr ""
 
-#: views/dashboard.php:134
+#: views/dashboard.php:136
 msgid "Quick actions"
 msgstr ""
 
-#: views/dashboard.php:136
+#: views/dashboard.php:138
 msgid "Record transaction"
 msgstr ""
 
-#: views/dashboard.php:137
+#: views/dashboard.php:139
 msgid "Redeem reward"
 msgstr ""
 
-#: views/dashboard.php:138
+#: views/dashboard.php:140
 #: views/members.php:37
 msgid "Enrol member"
 msgstr ""
 
-#: views/dashboard.php:141
+#: views/dashboard.php:143
 msgid "Set the program mode in Settings before recording purchases."
 msgstr ""
 
@@ -1073,39 +1078,39 @@ msgid "Purchase amount"
 msgstr ""
 
 #. translators: %s: currency code.
-#: views/record.php:75
+#: views/record.php:76
 msgid "Points are calculated from the earn rate."
 msgstr ""
 
-#: views/record.php:86
+#: views/record.php:87
 msgid "Use a negative number to deduct."
 msgstr ""
 
-#: views/record.php:99
+#: views/record.php:100
 msgid "Receipt / reference"
 msgstr ""
 
-#: views/record.php:101
+#: views/record.php:102
 msgid "Bill or POS reference"
 msgstr ""
 
-#: views/record.php:102
+#: views/record.php:103
 msgid "Re-using a reference for the same member and type is rejected, which prevents double posting."
 msgstr ""
 
-#: views/record.php:111
+#: views/record.php:112
 msgid "Record entry"
 msgstr ""
 
-#: views/record.php:119
+#: views/record.php:120
 msgid "Latest entries"
 msgstr ""
 
-#: views/record.php:121
+#: views/record.php:122
 msgid "Nothing recorded yet."
 msgstr ""
 
-#: views/record.php:129
+#: views/record.php:130
 msgid "Stamps / Visits"
 msgstr ""
 
