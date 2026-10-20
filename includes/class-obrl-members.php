@@ -346,11 +346,11 @@ final class OBRL_Members
 
         // A sort direction is a keyword, not a value, so it cannot be bound as a
         // placeholder: %s would arrive as the quoted literal 'DESC', which MySQL
-        // rejects as a column expression. Both halves are already checked -- the
-        // column against the allowlist above and the direction to ASC or DESC --
-        // so the clause is assembled from validated pieces and the column still
-        // goes through prepare().
-        $order_clause = $wpdb->prepare('%i', $orderby) . ' ' . $order;
+        // rejects as a column expression. Both halves are already constrained --
+        // the column against the allowlist above and the direction to ASC or DESC
+        // -- and sanitize_sql_orderby() revalidates the combined clause before it
+        // is interpolated into the query below.
+        $order_clause = sanitize_sql_orderby( $orderby . ' ' . $order );
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Balances, plus the loop that mints member codes. Both have to be current: a cached code check would hand out a duplicate, and a cached balance would disagree with the ledger that produced it.
         $total = (int) $wpdb->get_var(
@@ -376,8 +376,8 @@ final class OBRL_Members
         $page = max(1, min($pages ? $pages : 1, (int) $args['page']));
         $offset = ($page - 1) * $per_page;
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Balances, plus the loop that mints member codes. Both have to be current: a cached code check would hand out a duplicate, and a cached balance would disagree with the ledger that produced it.
-        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $order_clause is a prepare()d allowlisted column plus an ASC/DESC literal, both validated above.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery -- Balances, plus the loop that mints member codes. Both have to be current: a cached code check would hand out a duplicate, and a cached balance would disagree with the ledger that produced it.
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $order_clause is an allowlisted column plus an ASC/DESC literal, revalidated by sanitize_sql_orderby() above.
         $rows = $wpdb->get_results(
             $wpdb->prepare(
                 "SELECT *
@@ -399,6 +399,7 @@ final class OBRL_Members
                 $offset
             )
         );
+        // phpcs:enable
 
         return array(
             'items' => array_map(array(__CLASS__, 'hydrate'), (array) $rows),
