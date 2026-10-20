@@ -3,16 +3,15 @@
  * Plugin Name: Obydullah Restaurant Loyalty
  * Description: Restaurant loyalty program with points, stamps, or visit tracking, staff-recorded transactions, rewards, and a member portal.
  * Version: 1.0.0
- * Requires at least: 6.5
- * Requires PHP: 8.0
- * Tested up to: 7.1
  * Author: Shaik Obydullah
  * Author URI: https://obydullah.com
  * Text Domain: obydullah-restaurant-loyalty
- * Domain Path: /languages
- * License: GPL-2.0-or-later
+ * Requires at least: 6.2
+ * Requires PHP: 8.0
+ * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
+
 if (!defined('ABSPATH')) {
     exit;
 }
