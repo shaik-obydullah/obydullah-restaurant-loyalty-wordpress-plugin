@@ -21,7 +21,7 @@ final class OBYDRELO_Settings
      * so a change is one delete instead of a scatter of them, and there is no
      * window in which half the settings are the new values and half the old.
      */
-    const CACHE_GROUP = 'bobydrelo_settings';
+    const CACHE_GROUP = 'obydrelo_settings';
 
     public static function modes()
     {

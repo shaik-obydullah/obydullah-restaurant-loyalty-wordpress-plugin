@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
  * installer did not create. Nothing else in the plugin may hardcode the string.
  */
 if (!defined('OBYDRELO_TABLE_PREFIX')) {
-    define('OBYDRELO_TABLE_PREFIX', 'bobydrelo_');
+    define('OBYDRELO_TABLE_PREFIX', 'obydrelo_');
 }
 
 final class OBYDRELO_Schema

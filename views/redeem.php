@@ -3,13 +3,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$bobydrelo_rewards    = OBYDRELO_Rewards::list_rewards();
-$bobydrelo_redemptions = OBYDRELO_Redemptions::list_redemptions(array('limit' => 25));
-$bobydrelo_statuses   = OBYDRELO_Redemptions::statuses();
+$obydrelo_rewards    = OBYDRELO_Rewards::list_rewards();
+$obydrelo_redemptions = OBYDRELO_Redemptions::list_redemptions(array('limit' => 25));
+$obydrelo_statuses   = OBYDRELO_Redemptions::statuses();
 // Read-only display parameter, sanitised above. It selects a view state and
 // changes nothing, so a nonce is deliberately omitted to keep URLs shareable.
 // phpcs:disable WordPress.Security.NonceVerification
-$bobydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
+$obydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 // phpcs:enable WordPress.Security.NonceVerification
 ?>
 <div class="wrap obydrelo-wrap">
@@ -29,7 +29,7 @@ $bobydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) :
 					<p>
 						<label for="obydrelo-member-search"><?php esc_html_e('Member', 'obydullah-restaurant-loyalty'); ?></label>
 						<input type="text" id="obydrelo-member-search" class="regular-text" autocomplete="off"
-							data-preset-member="<?php echo esc_attr((string) $bobydrelo_preset); ?>"
+							data-preset-member="<?php echo esc_attr((string) $obydrelo_preset); ?>"
 							placeholder="<?php esc_attr_e('Start typing a name or code', 'obydullah-restaurant-loyalty'); ?>">
 						<div id="obydrelo-member-results" class="obydrelo-autocomplete" hidden></div>
 						<div id="obydrelo-member-selected" class="obydrelo-selected" hidden></div>
@@ -39,18 +39,18 @@ $bobydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) :
 						<label for="obydrelo-reward-id"><?php esc_html_e('Reward', 'obydullah-restaurant-loyalty'); ?></label>
 						<select id="obydrelo-reward-id" name="reward_id">
 							<option value="0"><?php esc_html_e('Select a reward', 'obydullah-restaurant-loyalty'); ?></option>
-							<?php foreach ($bobydrelo_rewards as $bobydrelo_reward) : ?>
-								<option value="<?php echo esc_attr((string) $bobydrelo_reward['id']); ?>"
-									data-type="<?php echo esc_attr($bobydrelo_reward['type']); ?>"
-									<?php disabled(!$bobydrelo_reward['is_active']); ?>>
+							<?php foreach ($obydrelo_rewards as $obydrelo_reward) : ?>
+								<option value="<?php echo esc_attr((string) $obydrelo_reward['id']); ?>"
+									data-type="<?php echo esc_attr($obydrelo_reward['type']); ?>"
+									<?php disabled(!$obydrelo_reward['is_active']); ?>>
 									<?php
 									echo esc_html(
 										sprintf(
 											'%s — %s',
-											$bobydrelo_reward['title'],
-											OBYDRELO_Rewards::stock_remaining($bobydrelo_reward) === 0
+											$obydrelo_reward['title'],
+											OBYDRELO_Rewards::stock_remaining($obydrelo_reward) === 0
 												? __('out of stock', 'obydullah-restaurant-loyalty')
-												: OBYDRELO_Format::points($bobydrelo_reward['points_cost']) . ' pts'
+												: OBYDRELO_Format::points($obydrelo_reward['points_cost']) . ' pts'
 										)
 									);
 									?>
@@ -86,7 +86,7 @@ $bobydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) :
 		<div class="obydrelo-column">
 			<div class="obydrelo-panel">
 				<h2><?php esc_html_e('Recent redemptions', 'obydullah-restaurant-loyalty'); ?></h2>
-				<?php if (!$bobydrelo_redemptions) : ?>
+				<?php if (!$obydrelo_redemptions) : ?>
 					<p class="obydrelo-empty"><?php esc_html_e('No redemptions yet.', 'obydullah-restaurant-loyalty'); ?></p>
 				<?php else : ?>
 					<table class="widefat striped obydrelo-table">
@@ -101,25 +101,25 @@ $bobydrelo_preset     = isset($_GET['member_id']) ? absint($_GET['member_id']) :
 							</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($bobydrelo_redemptions as $bobydrelo_row) : ?>
+						<?php foreach ($obydrelo_redemptions as $obydrelo_row) : ?>
 							<tr>
-								<td><code><?php echo esc_html($bobydrelo_row->redemption_code); ?></code></td>
+								<td><code><?php echo esc_html($obydrelo_row->redemption_code); ?></code></td>
 								<td>
-									<?php echo esc_html(OBYDRELO_Format::points($bobydrelo_row->points_spent)); ?> pts
-									<?php if ((int) $bobydrelo_row->stamps_spent ) : ?>
-										<br><small class="obydrelo-muted"><?php echo esc_html((string) (int) $bobydrelo_row->stamps_spent); ?> <?php esc_html_e('stamps', 'obydullah-restaurant-loyalty'); ?></small>
+									<?php echo esc_html(OBYDRELO_Format::points($obydrelo_row->points_spent)); ?> pts
+									<?php if ((int) $obydrelo_row->stamps_spent ) : ?>
+										<br><small class="obydrelo-muted"><?php echo esc_html((string) (int) $obydrelo_row->stamps_spent); ?> <?php esc_html_e('stamps', 'obydullah-restaurant-loyalty'); ?></small>
 									<?php endif; ?>
 								</td>
-								<td><span class="obydrelo-status obydrelo-status--<?php echo esc_attr($bobydrelo_row->status); ?>"><?php echo esc_html($bobydrelo_statuses[$bobydrelo_row->status] ?? $bobydrelo_row->status); ?></span></td>
-								<td><?php echo esc_html(OBYDRELO_Format::date($bobydrelo_row->expires_at)); ?></td>
-								<td><?php echo esc_html(OBYDRELO_Format::datetime($bobydrelo_row->issued_at)); ?></td>
+								<td><span class="obydrelo-status obydrelo-status--<?php echo esc_attr($obydrelo_row->status); ?>"><?php echo esc_html($obydrelo_statuses[$obydrelo_row->status] ?? $obydrelo_row->status); ?></span></td>
+								<td><?php echo esc_html(OBYDRELO_Format::date($obydrelo_row->expires_at)); ?></td>
+								<td><?php echo esc_html(OBYDRELO_Format::datetime($obydrelo_row->issued_at)); ?></td>
 								<td>
-									<?php if ('issued' === $bobydrelo_row->status) : ?>
+									<?php if ('issued' === $obydrelo_row->status) : ?>
 										<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" class="obydrelo-inline-form"
 											onsubmit="return confirm('<?php echo esc_js(__('Cancel this redemption and return the balance?', 'obydullah-restaurant-loyalty')); ?>');">
 											<input type="hidden" name="action" value="obydrelo_cancel_redemption">
 											<?php wp_nonce_field(OBYDRELO_NONCE_STAFF); ?>
-											<input type="hidden" name="redemption_id" value="<?php echo esc_attr((string) $bobydrelo_row->id); ?>">
+											<input type="hidden" name="redemption_id" value="<?php echo esc_attr((string) $obydrelo_row->id); ?>">
 											<input type="text" name="reason" placeholder="<?php esc_attr_e('Reason', 'obydullah-restaurant-loyalty'); ?>" class="obydrelo-reason">
 											<button type="submit" class="button button-small"><?php esc_html_e('Cancel', 'obydullah-restaurant-loyalty'); ?></button>
 										</form>

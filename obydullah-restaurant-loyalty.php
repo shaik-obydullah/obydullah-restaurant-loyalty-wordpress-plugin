@@ -24,7 +24,7 @@ define('OBYDRELO_URL', plugin_dir_url(__FILE__));
 define('OBYDRELO_NONCE_ADMIN', 'obydrelo_admin_action');
 define('OBYDRELO_NONCE_STAFF', 'obydrelo_staff_action');
 define('OBYDRELO_NONCE_PORTAL', 'obydrelo_portal_action');
-define('OBYDRELO_CRON_DAILY', 'bobydrelo_daily_maintenance');
+define('OBYDRELO_CRON_DAILY', 'obydrelo_daily_maintenance');
 
 require_once OBYDRELO_PATH . 'includes/class-obydrelo-plugin.php';
 require_once OBYDRELO_PATH . 'includes/class-obydrelo-activator.php';

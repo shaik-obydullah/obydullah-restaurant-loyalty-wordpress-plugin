@@ -26,6 +26,6 @@ final class OBYDRELO_Cron
             )
         );
 
-        do_action('bobydrelo_daily_maintenance_complete', $birthdays, $expired);
+        do_action('obydrelo_daily_maintenance_complete', $birthdays, $expired);
     }
 }

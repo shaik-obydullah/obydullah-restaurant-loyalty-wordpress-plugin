@@ -3,9 +3,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$bobydrelo_definitions = OBYDRELO_Settings::definitions();
-$bobydrelo_values      = OBYDRELO_Settings::all();
-$bobydrelo_groups      = array(
+$obydrelo_definitions = OBYDRELO_Settings::definitions();
+$obydrelo_values      = OBYDRELO_Settings::all();
+$obydrelo_groups      = array(
     OBYDRELO_Settings::GROUP_GENERAL  => __('General', 'obydullah-restaurant-loyalty'),
     OBYDRELO_Settings::GROUP_PROGRAM  => __('Program', 'obydullah-restaurant-loyalty'),
     OBYDRELO_Settings::GROUP_REWARDS  => __('Rewards', 'obydullah-restaurant-loyalty'),
@@ -14,7 +14,7 @@ $bobydrelo_groups      = array(
     OBYDRELO_Settings::GROUP_PRIVACY  => __('Privacy', 'obydullah-restaurant-loyalty'),
 );
 
-$bobydrelo_labels = array(
+$obydrelo_labels = array(
     'program_mode'               => __('Program mode', 'obydullah-restaurant-loyalty'),
     'points_per_currency'        => __('Points per 1 unit of spend', 'obydullah-restaurant-loyalty'),
     'points_value'               => __('Currency value of one point', 'obydullah-restaurant-loyalty'),
@@ -54,61 +54,61 @@ $bobydrelo_labels = array(
 		<input type="hidden" name="action" value="obydrelo_save_settings">
 		<?php wp_nonce_field(OBYDRELO_NONCE_ADMIN); ?>
 
-		<?php foreach ($bobydrelo_groups as $bobydrelo_group_key => $bobydrelo_group_label) : ?>
+		<?php foreach ($obydrelo_groups as $obydrelo_group_key => $obydrelo_group_label) : ?>
 			<?php
-			$bobydrelo_group_fields = array();
-			foreach ($bobydrelo_definitions as $bobydrelo_key => $bobydrelo_def) {
-				if ($bobydrelo_def['group'] === $bobydrelo_group_key) {
-					$bobydrelo_group_fields[$bobydrelo_key] = $bobydrelo_def;
+			$obydrelo_group_fields = array();
+			foreach ($obydrelo_definitions as $obydrelo_key => $obydrelo_def) {
+				if ($obydrelo_def['group'] === $obydrelo_group_key) {
+					$obydrelo_group_fields[$obydrelo_key] = $obydrelo_def;
 				}
 			}
-			if (!$bobydrelo_group_fields) {
+			if (!$obydrelo_group_fields) {
 				continue;
 			}
 			?>
 			<div class="obydrelo-panel">
-				<h2><?php echo esc_html($bobydrelo_group_label); ?></h2>
+				<h2><?php echo esc_html($obydrelo_group_label); ?></h2>
 				<table class="form-table" role="presentation">
 					<tbody>
-					<?php foreach ($bobydrelo_group_fields as $bobydrelo_key => $bobydrelo_def) : ?>
-						<?php $bobydrelo_value = $bobydrelo_values[$bobydrelo_key] ?? $bobydrelo_def['value']; ?>
+					<?php foreach ($obydrelo_group_fields as $obydrelo_key => $obydrelo_def) : ?>
+						<?php $obydrelo_value = $obydrelo_values[$obydrelo_key] ?? $obydrelo_def['value']; ?>
 						<tr>
 							<th scope="row">
-								<label for="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>">
-									<?php echo esc_html($bobydrelo_labels[$bobydrelo_key] ?? $bobydrelo_key); ?>
+								<label for="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>">
+									<?php echo esc_html($obydrelo_labels[$obydrelo_key] ?? $obydrelo_key); ?>
 								</label>
 							</th>
 							<td>
-								<?php if ('bool' === $bobydrelo_def['type']) : ?>
+								<?php if ('bool' === $obydrelo_def['type']) : ?>
 									<label>
-										<input type="checkbox" id="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>"
-											name="obydrelo_settings[<?php echo esc_attr($bobydrelo_key); ?>]" value="1"
-											<?php checked((bool) $bobydrelo_value); ?>>
+										<input type="checkbox" id="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>"
+											name="obydrelo_settings[<?php echo esc_attr($obydrelo_key); ?>]" value="1"
+											<?php checked((bool) $obydrelo_value); ?>>
 										<?php esc_html_e('Enabled', 'obydullah-restaurant-loyalty'); ?>
 									</label>
-								<?php elseif ('select' === $bobydrelo_def['type']) : ?>
-									<select id="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>"
-										name="obydrelo_settings[<?php echo esc_attr($bobydrelo_key); ?>]">
-										<?php foreach ($bobydrelo_def['choices'] as $bobydrelo_choice => $bobydrelo_choice_label) : ?>
-											<option value="<?php echo esc_attr($bobydrelo_choice); ?>" <?php selected((string) $bobydrelo_value, (string) $bobydrelo_choice); ?>>
-												<?php echo esc_html($bobydrelo_choice_label); ?>
+								<?php elseif ('select' === $obydrelo_def['type']) : ?>
+									<select id="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>"
+										name="obydrelo_settings[<?php echo esc_attr($obydrelo_key); ?>]">
+										<?php foreach ($obydrelo_def['choices'] as $obydrelo_choice => $obydrelo_choice_label) : ?>
+											<option value="<?php echo esc_attr($obydrelo_choice); ?>" <?php selected((string) $obydrelo_value, (string) $obydrelo_choice); ?>>
+												<?php echo esc_html($obydrelo_choice_label); ?>
 											</option>
 										<?php endforeach; ?>
 									</select>
-								<?php elseif ('decimal' === $bobydrelo_def['type']) : ?>
-									<input type="number" id="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>" step="0.0001" min="0"
+								<?php elseif ('decimal' === $obydrelo_def['type']) : ?>
+									<input type="number" id="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>" step="0.0001" min="0"
 										class="regular-text"
-										name="obydrelo_settings[<?php echo esc_attr($bobydrelo_key); ?>]"
-										value="<?php echo esc_attr((string) $bobydrelo_value); ?>">
-								<?php elseif ('int' === $bobydrelo_def['type']) : ?>
-									<input type="number" id="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>" step="1" min="0"
+										name="obydrelo_settings[<?php echo esc_attr($obydrelo_key); ?>]"
+										value="<?php echo esc_attr((string) $obydrelo_value); ?>">
+								<?php elseif ('int' === $obydrelo_def['type']) : ?>
+									<input type="number" id="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>" step="1" min="0"
 										class="regular-text"
-										name="obydrelo_settings[<?php echo esc_attr($bobydrelo_key); ?>]"
-										value="<?php echo esc_attr((string) $bobydrelo_value); ?>">
+										name="obydrelo_settings[<?php echo esc_attr($obydrelo_key); ?>]"
+										value="<?php echo esc_attr((string) $obydrelo_value); ?>">
 								<?php else : ?>
-									<input type="text" id="obydrelo-set-<?php echo esc_attr($bobydrelo_key); ?>" class="regular-text"
-										name="obydrelo_settings[<?php echo esc_attr($bobydrelo_key); ?>]"
-										value="<?php echo esc_attr((string) $bobydrelo_value); ?>" maxlength="100">
+									<input type="text" id="obydrelo-set-<?php echo esc_attr($obydrelo_key); ?>" class="regular-text"
+										name="obydrelo_settings[<?php echo esc_attr($obydrelo_key); ?>]"
+										value="<?php echo esc_attr((string) $obydrelo_value); ?>" maxlength="100">
 								<?php endif; ?>
 							</td>
 						</tr>

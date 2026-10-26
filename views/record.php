@@ -5,16 +5,16 @@ if (!defined('ABSPATH')) {
 
 global $wpdb;
 
-$bobydrelo_types   = OBYDRELO_Ledger::types();
-$bobydrelo_mode    = (string) OBYDRELO_Settings::get('program_mode', 'points');
+$obydrelo_types   = OBYDRELO_Ledger::types();
+$obydrelo_mode    = (string) OBYDRELO_Settings::get('program_mode', 'points');
 // Read-only display parameter, sanitised above. It selects a view state and
 // changes nothing, so a nonce is deliberately omitted to keep URLs shareable.
 // phpcs:disable WordPress.Security.NonceVerification
-$bobydrelo_type    = isset($_GET['type']) ? sanitize_text_field(wp_unslash($_GET['type'])) : 'purchase';
-$bobydrelo_type    = array_key_exists($bobydrelo_type, $bobydrelo_types) ? $bobydrelo_type : 'purchase';
-$bobydrelo_history = OBYDRELO_Ledger::history(array('per_page' => 20));
-$bobydrelo_can_adj = current_user_can('obydrelo_apply_adjustments');
-$bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
+$obydrelo_type    = isset($_GET['type']) ? sanitize_text_field(wp_unslash($_GET['type'])) : 'purchase';
+$obydrelo_type    = array_key_exists($obydrelo_type, $obydrelo_types) ? $obydrelo_type : 'purchase';
+$obydrelo_history = OBYDRELO_Ledger::history(array('per_page' => 20));
+$obydrelo_can_adj = current_user_can('obydrelo_apply_adjustments');
+$obydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 // phpcs:enable WordPress.Security.NonceVerification
 ?>
 <div class="wrap obydrelo-wrap">
@@ -34,7 +34,7 @@ $bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 					<p>
 						<label for="obydrelo-member-search"><?php esc_html_e('Member', 'obydullah-restaurant-loyalty'); ?></label>
 						<input type="text" id="obydrelo-member-search" class="regular-text" autocomplete="off"
-							data-preset-member="<?php echo esc_attr((string) $bobydrelo_preset); ?>"
+							data-preset-member="<?php echo esc_attr((string) $obydrelo_preset); ?>"
 							placeholder="<?php esc_attr_e('Start typing a name or code', 'obydullah-restaurant-loyalty'); ?>">
 						<div id="obydrelo-member-results" class="obydrelo-autocomplete" hidden></div>
 						<div id="obydrelo-member-selected" class="obydrelo-selected" hidden></div>
@@ -43,23 +43,23 @@ $bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 					<p>
 						<label for="obydrelo-type"><?php esc_html_e('Entry type', 'obydullah-restaurant-loyalty'); ?></label>
 						<select id="obydrelo-type" name="type">
-							<?php foreach ($bobydrelo_types as $bobydrelo_key => $bobydrelo_label) : ?>
+							<?php foreach ($obydrelo_types as $obydrelo_key => $obydrelo_label) : ?>
 								<?php
-								if ('adjustment' === $bobydrelo_key && !$bobydrelo_can_adj) {
+								if ('adjustment' === $obydrelo_key && !$obydrelo_can_adj) {
 									continue;
 								}
-								if (in_array($bobydrelo_key, array('welcome', 'birthday', 'referral', 'expire', 'void', 'redeem'), true)) {
+								if (in_array($obydrelo_key, array('welcome', 'birthday', 'referral', 'expire', 'void', 'redeem'), true)) {
 									continue;
 								}
 								?>
-								<option value="<?php echo esc_attr($bobydrelo_key); ?>" <?php selected($bobydrelo_type, $bobydrelo_key); ?>>
-									<?php echo esc_html($bobydrelo_label); ?>
+								<option value="<?php echo esc_attr($obydrelo_key); ?>" <?php selected($obydrelo_type, $obydrelo_key); ?>>
+									<?php echo esc_html($obydrelo_label); ?>
 								</option>
 							<?php endforeach; ?>
 						</select>
 					</p>
 
-					<p id="obydrelo-amount-row" <?php echo 'purchase' === $bobydrelo_type ? '' : 'hidden'; ?>>
+					<p id="obydrelo-amount-row" <?php echo 'purchase' === $obydrelo_type ? '' : 'hidden'; ?>>
 						<label for="obydrelo-amount"><?php esc_html_e('Purchase amount', 'obydullah-restaurant-loyalty'); ?></label>
 						<input type="number" id="obydrelo-amount" name="amount" step="0.01" min="0" class="regular-text"
 							value="<?php
@@ -80,7 +80,7 @@ $bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 						</span>
 					</p>
 
-					<div id="obydrelo-manual-rows" <?php echo 'purchase' === $bobydrelo_type ? 'hidden' : ''; ?>>
+					<div id="obydrelo-manual-rows" <?php echo 'purchase' === $obydrelo_type ? 'hidden' : ''; ?>>
 						<p>
 							<label for="obydrelo-points"><?php esc_html_e('Points', 'obydullah-restaurant-loyalty'); ?></label>
 							<input type="number" id="obydrelo-points" name="points" step="0.01" class="regular-text" value="0">
@@ -118,7 +118,7 @@ $bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 		<div class="obydrelo-column">
 			<div class="obydrelo-panel">
 				<h2><?php esc_html_e('Latest entries', 'obydullah-restaurant-loyalty'); ?></h2>
-				<?php if (!$bobydrelo_history['items']) : ?>
+				<?php if (!$obydrelo_history['items']) : ?>
 					<p class="obydrelo-empty"><?php esc_html_e('Nothing recorded yet.', 'obydullah-restaurant-loyalty'); ?></p>
 				<?php else : ?>
 					<table class="widefat striped obydrelo-table">
@@ -134,38 +134,38 @@ $bobydrelo_preset  = isset($_GET['member_id']) ? absint($_GET['member_id']) : 0;
 						</thead>
 						<tbody>
 						<?php
-						$bobydrelo_members_table = OBYDRELO_Members::table();
-						foreach ($bobydrelo_history['items'] as $bobydrelo_row) :
+						$obydrelo_members_table = OBYDRELO_Members::table();
+						foreach ($obydrelo_history['items'] as $obydrelo_row) :
 							// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Renders the balances being displayed. See the class that owns the table for why those stay uncached.
-							$bobydrelo_name = $wpdb->get_var(
+							$obydrelo_name = $wpdb->get_var(
 								$wpdb->prepare(
 									'SELECT CONCAT(first_name, \' \', last_name) FROM %i WHERE id = %d',
-									$bobydrelo_members_table,
-									(int) $bobydrelo_row->member_id
+									$obydrelo_members_table,
+									(int) $obydrelo_row->member_id
 								)
 							);
 							?>
 							<tr>
 								<td>
-									<a href="<?php echo esc_url(admin_url('admin.php?page=obydrelo-members&member_id=' . (int) $bobydrelo_row->member_id)); ?>">
-										<?php echo esc_html($bobydrelo_name ? $bobydrelo_name : __('(deleted)', 'obydullah-restaurant-loyalty')); ?>
+									<a href="<?php echo esc_url(admin_url('admin.php?page=obydrelo-members&member_id=' . (int) $obydrelo_row->member_id)); ?>">
+										<?php echo esc_html($obydrelo_name ? $obydrelo_name : __('(deleted)', 'obydullah-restaurant-loyalty')); ?>
 									</a>
 								</td>
-								<td><?php echo esc_html($bobydrelo_types[$bobydrelo_row->type] ?? $bobydrelo_row->type); ?></td>
-								<td><?php echo esc_html(OBYDRELO_Format::signed_points($bobydrelo_row->points)); ?></td>
+								<td><?php echo esc_html($obydrelo_types[$obydrelo_row->type] ?? $obydrelo_row->type); ?></td>
+								<td><?php echo esc_html(OBYDRELO_Format::signed_points($obydrelo_row->points)); ?></td>
 								<td>
 									<?php
 									echo esc_html(
 										sprintf(
 											'%+d / %+d',
-											(int) $bobydrelo_row->stamps,
-											(int) $bobydrelo_row->visits
+											(int) $obydrelo_row->stamps,
+											(int) $obydrelo_row->visits
 										)
 									);
 									?>
 								</td>
-								<td><?php echo esc_html($bobydrelo_row->staff_login ? $bobydrelo_row->staff_login : '—'); ?></td>
-								<td><?php echo esc_html(OBYDRELO_Format::datetime($bobydrelo_row->created_at)); ?></td>
+								<td><?php echo esc_html($obydrelo_row->staff_login ? $obydrelo_row->staff_login : '—'); ?></td>
+								<td><?php echo esc_html(OBYDRELO_Format::datetime($obydrelo_row->created_at)); ?></td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>

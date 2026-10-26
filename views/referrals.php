@@ -3,8 +3,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$bobydrelo_referrals = OBYDRELO_Referrals::list_referrals(array('limit' => 100));
-$bobydrelo_statuses  = OBYDRELO_Referrals::statuses();
+$obydrelo_referrals = OBYDRELO_Referrals::list_referrals(array('limit' => 100));
+$obydrelo_statuses  = OBYDRELO_Referrals::statuses();
 ?>
 <div class="wrap obydrelo-wrap">
 	<h1 class="obydrelo-page-title"><?php esc_html_e('Referrals', 'obydullah-restaurant-loyalty'); ?></h1>
@@ -18,7 +18,7 @@ $bobydrelo_statuses  = OBYDRELO_Referrals::statuses();
 
 	<div class="obydrelo-panel">
 		<h2><?php esc_html_e('All referrals', 'obydullah-restaurant-loyalty'); ?></h2>
-		<?php if (!$bobydrelo_referrals) : ?>
+		<?php if (!$obydrelo_referrals) : ?>
 			<p class="obydrelo-empty"><?php esc_html_e('No referrals recorded yet.', 'obydullah-restaurant-loyalty'); ?></p>
 		<?php else : ?>
 			<table class="widefat striped obydrelo-table">
@@ -33,35 +33,35 @@ $bobydrelo_statuses  = OBYDRELO_Referrals::statuses();
 					</tr>
 				</thead>
 				<tbody>
-				<?php foreach ($bobydrelo_referrals as $bobydrelo_row) : ?>
+				<?php foreach ($obydrelo_referrals as $obydrelo_row) : ?>
 					<tr>
 						<td>
 							<?php
 							echo esc_html(
-								trim($bobydrelo_row->referrer_first . ' ' . $bobydrelo_row->referrer_last)
-									? trim($bobydrelo_row->referrer_first . ' ' . $bobydrelo_row->referrer_last)
+								trim($obydrelo_row->referrer_first . ' ' . $obydrelo_row->referrer_last)
+									? trim($obydrelo_row->referrer_first . ' ' . $obydrelo_row->referrer_last)
 									: __('(deleted)', 'obydullah-restaurant-loyalty')
 							);
 							?>
-							<br><small class="obydrelo-muted"><code><?php echo esc_html($bobydrelo_row->referrer_code); ?></code></small>
+							<br><small class="obydrelo-muted"><code><?php echo esc_html($obydrelo_row->referrer_code); ?></code></small>
 						</td>
 						<td>
 							<?php
 							echo esc_html(
-								trim($bobydrelo_row->referred_first . ' ' . $bobydrelo_row->referred_last)
-									? trim($bobydrelo_row->referred_first . ' ' . $bobydrelo_row->referred_last)
+								trim($obydrelo_row->referred_first . ' ' . $obydrelo_row->referred_last)
+									? trim($obydrelo_row->referred_first . ' ' . $obydrelo_row->referred_last)
 									: __('(deleted)', 'obydullah-restaurant-loyalty')
 							);
 							?>
-							<br><small class="obydrelo-muted"><code><?php echo esc_html($bobydrelo_row->referred_code); ?></code></small>
+							<br><small class="obydrelo-muted"><code><?php echo esc_html($obydrelo_row->referred_code); ?></code></small>
 						</td>
-						<td><span class="obydrelo-status obydrelo-status--<?php echo esc_attr($bobydrelo_row->status); ?>"><?php echo esc_html($bobydrelo_statuses[$bobydrelo_row->status] ?? $bobydrelo_row->status); ?></span></td>
-						<td><?php echo esc_html($bobydrelo_row->qualification); ?></td>
+						<td><span class="obydrelo-status obydrelo-status--<?php echo esc_attr($obydrelo_row->status); ?>"><?php echo esc_html($obydrelo_statuses[$obydrelo_row->status] ?? $obydrelo_row->status); ?></span></td>
+						<td><?php echo esc_html($obydrelo_row->qualification); ?></td>
 						<td>
-							<?php echo esc_html(OBYDRELO_Format::points($bobydrelo_row->reward_referrer_points)); ?> /
-							<?php echo esc_html(OBYDRELO_Format::points($bobydrelo_row->reward_referred_points)); ?>
+							<?php echo esc_html(OBYDRELO_Format::points($obydrelo_row->reward_referrer_points)); ?> /
+							<?php echo esc_html(OBYDRELO_Format::points($obydrelo_row->reward_referred_points)); ?>
 						</td>
-						<td><?php echo esc_html(OBYDRELO_Format::datetime($bobydrelo_row->created_at)); ?></td>
+						<td><?php echo esc_html(OBYDRELO_Format::datetime($obydrelo_row->created_at)); ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>

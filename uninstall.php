@@ -14,26 +14,26 @@ require_once __DIR__ . '/includes/class-obrl-schema.php';
 require_once __DIR__ . '/includes/class-obrl-settings.php';
 require_once __DIR__ . '/includes/class-obrl-roles.php';
 
-$bobydrelo_table = OBYDRELO_Schema::table('program_settings');
-$bobydrelo_delete_data = 0;
-if ($bobydrelo_table) {
+$obydrelo_table = OBYDRELO_Schema::table('program_settings');
+$obydrelo_delete_data = 0;
+if ($obydrelo_table) {
     global $wpdb;
     // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Runs while the plugin is being deleted, when nothing may be served from a cache.
-    $bobydrelo_value = $wpdb->get_var(
-        $wpdb->prepare('SELECT setting_value FROM %i WHERE setting_key = %s', $bobydrelo_table, 'delete_data_on_uninstall')
+    $obydrelo_value = $wpdb->get_var(
+        $wpdb->prepare('SELECT setting_value FROM %i WHERE setting_key = %s', $obydrelo_table, 'delete_data_on_uninstall')
     );
-    $bobydrelo_delete_data = (int) $bobydrelo_value;
+    $obydrelo_delete_data = (int) $obydrelo_value;
 }
 
-wp_clear_scheduled_hook('bobydrelo_daily_maintenance');
+wp_clear_scheduled_hook('obydrelo_daily_maintenance');
 wp_clear_scheduled_hook('obydrelo_daily_maintenance'); // Legacy pre-1.0.0 hook name.
 OBYDRELO_Roles::uninstall();
 
-$bobydrelo_user_ids = array();
-if ($bobydrelo_delete_data) {
+$obydrelo_user_ids = array();
+if ($obydrelo_delete_data) {
     global $wpdb;
     // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Runs while the plugin is being deleted, when nothing may be served from a cache.
-    $bobydrelo_user_ids = $wpdb->get_col(
+    $obydrelo_user_ids = $wpdb->get_col(
         $wpdb->prepare('SELECT DISTINCT user_id FROM %i WHERE meta_key = %s AND meta_value = %s', $wpdb->usermeta, '_obydrelo_created_by_plugin', '1')
     );
     if (!OBYDRELO_Schema::drop()) {
@@ -41,38 +41,38 @@ if ($bobydrelo_delete_data) {
     }
 }
 
-foreach ((array) $bobydrelo_user_ids as $bobydrelo_user_id) {
-    $bobydrelo_user_id = absint($bobydrelo_user_id);
-    $bobydrelo_user = $bobydrelo_user_id ? get_userdata($bobydrelo_user_id) : null;
-    if (!$bobydrelo_user || array_diff((array) $bobydrelo_user->roles, array('obydrelo_member'))) {
+foreach ((array) $obydrelo_user_ids as $obydrelo_user_id) {
+    $obydrelo_user_id = absint($obydrelo_user_id);
+    $obydrelo_user = $obydrelo_user_id ? get_userdata($obydrelo_user_id) : null;
+    if (!$obydrelo_user || array_diff((array) $obydrelo_user->roles, array('obydrelo_member'))) {
         continue;
     }
-    $bobydrelo_authored = get_posts(
+    $obydrelo_authored = get_posts(
         array(
-            'author'     => $bobydrelo_user_id,
+            'author'     => $obydrelo_user_id,
             'post_type'  => 'any',
             'post_status' => 'any',
             'numberposts' => 1,
             'fields'     => 'ids',
         )
     );
-    if ($bobydrelo_authored) {
+    if ($obydrelo_authored) {
         continue;
     }
     require_once ABSPATH . 'wp-admin/includes/user.php';
-    $bobydrelo_deleted = wp_delete_user($bobydrelo_user_id);
-    if (is_wp_error($bobydrelo_deleted) || !$bobydrelo_deleted) {
+    $obydrelo_deleted = wp_delete_user($obydrelo_user_id);
+    if (is_wp_error($obydrelo_deleted) || !$obydrelo_deleted) {
         return;
     }
 }
 
-if (!$bobydrelo_delete_data) {
+if (!$obydrelo_delete_data) {
     return;
 }
 
 global $wpdb;
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Runs while the plugin is being deleted, when nothing may be served from a cache.
-$bobydrelo_cleared = $wpdb->query(
+$obydrelo_cleared = $wpdb->query(
     $wpdb->prepare(
         'DELETE FROM %i WHERE meta_key IN (%s, %s)',
         $wpdb->usermeta,
@@ -80,6 +80,6 @@ $bobydrelo_cleared = $wpdb->query(
         '_obydrelo_member_id'
     )
 );
-if (false === $bobydrelo_cleared) {
+if (false === $obydrelo_cleared) {
     return;
 }
