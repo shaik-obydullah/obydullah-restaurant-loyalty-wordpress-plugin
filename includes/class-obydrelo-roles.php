@@ -3,33 +3,33 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Roles
+final class OBYDRELO_Roles
 {
     public static function manager_capabilities()
     {
         return array(
-            'orl_view_dashboard',
-            'orl_manage_members',
-            'orl_manage_rewards',
-            'orl_record_transactions',
-            'orl_redeem_rewards',
-            'orl_apply_adjustments',
-            'orl_manage_referrals',
-            'orl_view_reports',
-            'orl_view_activity',
-            'orl_export_csv',
-            'orl_manage_settings',
+            'obydrelo_view_dashboard',
+            'obydrelo_manage_members',
+            'obydrelo_manage_rewards',
+            'obydrelo_record_transactions',
+            'obydrelo_redeem_rewards',
+            'obydrelo_apply_adjustments',
+            'obydrelo_manage_referrals',
+            'obydrelo_view_reports',
+            'obydrelo_view_activity',
+            'obydrelo_export_csv',
+            'obydrelo_manage_settings',
         );
     }
 
     public static function staff_capabilities()
     {
         return array(
-            'orl_view_dashboard',
-            'orl_manage_members',
-            'orl_record_transactions',
-            'orl_redeem_rewards',
-            'orl_manage_referrals',
+            'obydrelo_view_dashboard',
+            'obydrelo_manage_members',
+            'obydrelo_record_transactions',
+            'obydrelo_redeem_rewards',
+            'obydrelo_manage_referrals',
         );
     }
 
@@ -37,15 +37,15 @@ final class OBRL_Roles
     {
         return array(
             'read',
-            'orl_access_portal',
-            'orl_redeem_own_rewards',
-            'orl_manage_own_profile',
+            'obydrelo_access_portal',
+            'obydrelo_redeem_own_rewards',
+            'obydrelo_manage_own_profile',
         );
     }
 
     public static function role_names()
     {
-        return array('orl_manager', 'orl_staff', 'orl_member');
+        return array('obydrelo_manager', 'obydrelo_staff', 'obydrelo_member');
     }
 
     public static function install()
@@ -54,19 +54,19 @@ final class OBRL_Roles
         foreach (self::manager_capabilities() as $capability) {
             $manager[$capability] = true;
         }
-        self::upsert_role('orl_manager', __('Loyalty Manager', 'obydullah-restaurant-loyalty'), $manager);
+        self::upsert_role('obydrelo_manager', __('Loyalty Manager', 'obydullah-restaurant-loyalty'), $manager);
 
         $staff = array('read' => true);
         foreach (self::staff_capabilities() as $capability) {
             $staff[$capability] = true;
         }
-        self::upsert_role('orl_staff', __('Loyalty Staff', 'obydullah-restaurant-loyalty'), $staff);
+        self::upsert_role('obydrelo_staff', __('Loyalty Staff', 'obydullah-restaurant-loyalty'), $staff);
 
         $member = array();
         foreach (self::member_capabilities() as $capability) {
             $member[$capability] = true;
         }
-        self::upsert_role('orl_member', __('Loyalty Member', 'obydullah-restaurant-loyalty'), $member);
+        self::upsert_role('obydrelo_member', __('Loyalty Member', 'obydullah-restaurant-loyalty'), $member);
 
         $administrator = get_role('administrator');
         if ($administrator) {
@@ -94,7 +94,7 @@ final class OBRL_Roles
             return;
         }
         foreach (array_keys($administrator->capabilities) as $capability) {
-            if (0 === strpos($capability, 'orl_')) {
+            if (0 === strpos($capability, 'obydrelo_')) {
                 $administrator->remove_cap($capability);
             }
         }

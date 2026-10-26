@@ -39,14 +39,14 @@
 	/* ------------------------------------------------- Member autocomplete */
 
 	function initMemberLookup() {
-		var $input = $( '#orl-member-search' );
+		var $input = $( '#obydrelo-member-search' );
 		if ( ! $input.length ) {
 			return;
 		}
 
-		var $results = $( '#orl-member-results' );
-		var $selected = $( '#orl-member-selected' );
-		var $hidden = $( '#orl-member-id' );
+		var $results = $( '#obydrelo-member-results' );
+		var $selected = $( '#obydrelo-member-selected' );
+		var $hidden = $( '#obydrelo-member-id' );
 		var timer = null;
 		var lastItems = [];
 
@@ -59,7 +59,7 @@
 			$hidden.val( item.id );
 			$selected
 				.html(
-					'<button type="button" class="orl-selected__clear" aria-label="' + text( 'clear', 'Clear' ) + '">&times;</button>' +
+					'<button type="button" class="obydrelo-selected__clear" aria-label="' + text( 'clear', 'Clear' ) + '">&times;</button>' +
 					'<strong>' + item.name + '</strong> &middot; ' + item.code +
 					'<br><small>' + item.balance + '</small>'
 				)
@@ -84,7 +84,7 @@
 
 			timer = window.setTimeout( function () {
 				$.post( config.ajaxUrl, {
-					action: 'orl_search_members',
+					action: 'obydrelo_search_members',
 					nonce: config.searchNonce,
 					term: term
 				} ).done( function ( response ) {
@@ -97,11 +97,11 @@
 
 					if ( ! items.length ) {
 						$results.append(
-							'<span class="orl-autocomplete__item">' + text( 'noResults', 'No results.' ) + '</span>'
+							'<span class="obydrelo-autocomplete__item">' + text( 'noResults', 'No results.' ) + '</span>'
 						);
 					} else {
 						$.each( items, function ( index, item ) {
-							$( '<button type="button" class="orl-autocomplete__item"></button>' )
+							$( '<button type="button" class="obydrelo-autocomplete__item"></button>' )
 								.html( '<strong>' + item.name + '</strong><small>' + item.code + ' &middot; ' + describe( item ) + '</small>' )
 								.attr( 'data-index', index )
 								.appendTo( $results );
@@ -113,7 +113,7 @@
 			}, 250 );
 		} );
 
-		$results.on( 'click', '.orl-autocomplete__item', function () {
+		$results.on( 'click', '.obydrelo-autocomplete__item', function () {
 			var index = parseInt( $( this ).attr( 'data-index' ), 10 );
 			if ( isNaN( index ) || ! lastItems[ index ] ) {
 				return;
@@ -123,7 +123,7 @@
 			selectMember( item );
 		} );
 
-		$selected.on( 'click', '.orl-selected__clear', function () {
+		$selected.on( 'click', '.obydrelo-selected__clear', function () {
 			clearSelection();
 		} );
 
@@ -140,7 +140,7 @@
 		}
 
 		$.post( config.ajaxUrl, {
-			action: 'orl_get_member',
+			action: 'obydrelo_get_member',
 			nonce: config.searchNonce,
 			member_id: preset
 		} ).done( function ( response ) {
@@ -160,15 +160,15 @@
 	/* ------------------------------------------------------- Record/redeem */
 
 	function initTypeToggle() {
-		var $type = $( '#orl-type' );
+		var $type = $( '#obydrelo-type' );
 		if ( ! $type.length ) {
 			return;
 		}
 
 		function sync() {
 			var isPurchase = 'purchase' === $type.val();
-			$( '#orl-amount-row' ).prop( 'hidden', ! isPurchase );
-			$( '#orl-manual-rows' ).prop( 'hidden', isPurchase );
+			$( '#obydrelo-amount-row' ).prop( 'hidden', ! isPurchase );
+			$( '#obydrelo-manual-rows' ).prop( 'hidden', isPurchase );
 		}
 
 		$type.on( 'change', sync );
@@ -178,7 +178,7 @@
 	/* ------------------------------------------------------ Balance recalc */
 
 	function initRecalculate() {
-		$( '#orl-recalc' ).on( 'click', function () {
+		$( '#obydrelo-recalc' ).on( 'click', function () {
 			var $btn = $( this );
 
 			if ( ! window.confirm( text( 'confirm', 'Are you sure?' ) ) ) {
@@ -188,7 +188,7 @@
 			$btn.prop( 'disabled', true );
 
 			$.post( config.ajaxUrl, {
-				action: 'orl_recalculate',
+				action: 'obydrelo_recalculate',
 				nonce: config.nonce,
 				member_id: $btn.attr( 'data-member-id' )
 			} ).done( function ( response ) {

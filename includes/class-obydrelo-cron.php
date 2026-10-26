@@ -3,19 +3,19 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Cron
+final class OBYDRELO_Cron
 {
     public static function init()
     {
-        add_action(OBRL_CRON_DAILY, array(__CLASS__, 'run_daily'));
+        add_action(OBYDRELO_CRON_DAILY, array(__CLASS__, 'run_daily'));
     }
 
     public static function run_daily()
     {
-        $birthdays = OBRL_Birthday::grant_due();
-        $expired   = OBRL_Redemptions::expire_overdue();
+        $birthdays = OBYDRELO_Birthday::grant_due();
+        $expired   = OBYDRELO_Redemptions::expire_overdue();
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'cron_daily',
             array(
                 'object_type' => 'system',
@@ -26,6 +26,6 @@ final class OBRL_Cron
             )
         );
 
-        do_action('obrl_daily_maintenance_complete', $birthdays, $expired);
+        do_action('bobydrelo_daily_maintenance_complete', $birthdays, $expired);
     }
 }

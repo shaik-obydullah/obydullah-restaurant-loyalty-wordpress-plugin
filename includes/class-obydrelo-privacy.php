@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
  * WordPress privacy integration. Member records hold personal data, so the
  * plugin registers both the exporter and the eraser.
  */
-final class OBRL_Privacy
+final class OBYDRELO_Privacy
 {
     public static function init()
     {
@@ -35,7 +35,7 @@ final class OBRL_Privacy
 
     public static function member_for_email($email)
     {
-        return OBRL_Members::get_by('email', $email);
+        return OBYDRELO_Members::get_by('email', $email);
     }
 
     public static function export($email, $page = 1)
@@ -49,7 +49,7 @@ final class OBRL_Privacy
             array(
                 'group_id'    => 'obydullah-restaurant-loyalty',
                 'group_label' => __('Loyalty membership', 'obydullah-restaurant-loyalty'),
-                'item_id'     => 'orl-member-' . $member['id'],
+                'item_id'     => 'obydrelo-member-' . $member['id'],
                 'data'        => array(
                     array('name' => __('Member ID', 'obydullah-restaurant-loyalty'), 'value' => $member['id']),
                     array('name' => __('Member code', 'obydullah-restaurant-loyalty'), 'value' => $member['member_code']),
@@ -65,7 +65,7 @@ final class OBRL_Privacy
             array(
                 'group_id'    => 'obydullah-restaurant-loyalty',
                 'group_label' => __('Loyalty balance', 'obydullah-restaurant-loyalty'),
-                'item_id'     => 'orl-balance-' . $member['id'],
+                'item_id'     => 'obydrelo-balance-' . $member['id'],
                 'data'        => array(
                     array('name' => __('Points balance', 'obydullah-restaurant-loyalty'), 'value' => $member['points_balance']),
                     array('name' => __('Stamps', 'obydullah-restaurant-loyalty'), 'value' => $member['stamps_count']),
@@ -76,10 +76,10 @@ final class OBRL_Privacy
             ),
         );
 
-        $tx_table    = OBRL_Ledger::table();
+        $tx_table    = OBYDRELO_Ledger::table();
         $per_page    = 100;
         $offset      = ($page - 1) * $per_page;
-        $type_labels = OBRL_Ledger::types();
+        $type_labels = OBYDRELO_Ledger::types();
 
         global $wpdb;
         if ($tx_table) {
@@ -97,7 +97,7 @@ final class OBRL_Privacy
                 $items[] = array(
                     'group_id'    => 'obydullah-restaurant-loyalty',
                     'group_label' => __('Loyalty transactions', 'obydullah-restaurant-loyalty'),
-                    'item_id'     => 'orl-tx-' . $row->id,
+                    'item_id'     => 'obydrelo-tx-' . $row->id,
                     'data'        => array(
                         array('name' => __('Date', 'obydullah-restaurant-loyalty'), 'value' => $row->created_at),
                         array('name' => __('Type', 'obydullah-restaurant-loyalty'), 'value' => $type_labels[$row->type] ?? $row->type),
@@ -111,12 +111,12 @@ final class OBRL_Privacy
             }
         }
 
-        $redemptions = OBRL_Redemptions::list_redemptions(array('member_id' => $member['id'], 'limit' => 1000));
+        $redemptions = OBYDRELO_Redemptions::list_redemptions(array('member_id' => $member['id'], 'limit' => 1000));
         foreach ($redemptions as $row) {
             $items[] = array(
                 'group_id'    => 'obydullah-restaurant-loyalty',
                 'group_label' => __('Loyalty redemptions', 'obydullah-restaurant-loyalty'),
-                'item_id'     => 'orl-redeem-' . $row->id,
+                'item_id'     => 'obydrelo-redeem-' . $row->id,
                 'data'        => array(
                     array('name' => __('Date', 'obydullah-restaurant-loyalty'), 'value' => $row->issued_at),
                     array('name' => __('Code', 'obydullah-restaurant-loyalty'), 'value' => $row->redemption_code),
@@ -145,7 +145,7 @@ final class OBRL_Privacy
 
         // Free item and free value rewards may be mid-redemption; a member with
         // an open redemption is retained so financial history stays intact.
-        $open = OBRL_Redemptions::list_redemptions(
+        $open = OBYDRELO_Redemptions::list_redemptions(
             array('member_id' => $member['id'], 'status' => 'issued', 'limit' => 1)
         );
         if ($open) {
@@ -161,7 +161,7 @@ final class OBRL_Privacy
 
         global $wpdb;
 
-        $members = OBRL_Members::table();
+        $members = OBYDRELO_Members::table();
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- The export and the erase both have to see the current rows. An erase that ran against a cached list would leave records behind that the person asked to have removed.
         $wpdb->update(
             $members,
@@ -181,7 +181,7 @@ final class OBRL_Privacy
         );
         $removed = true;
 
-        $tx = OBRL_Ledger::table();
+        $tx = OBYDRELO_Ledger::table();
         if ($tx) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- The export and the erase both have to see the current rows. An erase that ran against a cached list would leave records behind that the person asked to have removed.
             $wpdb->update(
@@ -193,7 +193,7 @@ final class OBRL_Privacy
             );
         }
 
-        $logs = OBRL_Schema::table('activity_logs');
+        $logs = OBYDRELO_Schema::table('activity_logs');
         if ($logs) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- The export and the erase both have to see the current rows. An erase that ran against a cached list would leave records behind that the person asked to have removed.
             $wpdb->update(

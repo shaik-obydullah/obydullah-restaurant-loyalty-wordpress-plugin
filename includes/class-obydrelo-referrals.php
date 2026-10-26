@@ -3,13 +3,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Referrals
+final class OBYDRELO_Referrals
 {
     const STATUSES = 'pending,qualified,rewarded,rejected';
 
     public static function table()
     {
-        return OBRL_Schema::table('referrals');
+        return OBYDRELO_Schema::table('referrals');
     }
 
     public static function statuses()
@@ -35,12 +35,12 @@ final class OBRL_Referrals
             return false;
         }
 
-        $member = OBRL_Members::get($member_id);
-        if (!$member || !OBRL_Settings::get('referral_enabled')) {
+        $member = OBYDRELO_Members::get($member_id);
+        if (!$member || !OBYDRELO_Settings::get('referral_enabled')) {
             return false;
         }
 
-        $referrer = OBRL_Members::get_by('referral_code', $referral_code);
+        $referrer = OBYDRELO_Members::get_by('referral_code', $referral_code);
         if (!$referrer) {
             return false;
         }
@@ -65,9 +65,9 @@ final class OBRL_Referrals
                 'referred_member_id'     => (int) $member_id,
                 'referral_code'          => $referral_code,
                 'status'                 => 'pending',
-                'qualification'          => (string) OBRL_Settings::get('referral_qualification', 'first_purchase'),
-                'reward_referrer_points' => (float) OBRL_Settings::get('referral_points_referrer', 0),
-                'reward_referred_points' => (float) OBRL_Settings::get('referral_points_referred', 0),
+                'qualification'          => (string) OBYDRELO_Settings::get('referral_qualification', 'first_purchase'),
+                'reward_referrer_points' => (float) OBYDRELO_Settings::get('referral_points_referrer', 0),
+                'reward_referred_points' => (float) OBYDRELO_Settings::get('referral_points_referred', 0),
                 'created_at'             => $now,
                 'updated_at'             => $now,
             ),
@@ -83,14 +83,14 @@ final class OBRL_Referrals
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Qualification counts and the link uniqueness checks. A cached count would qualify a referral that never reached the threshold, and a cached link check would accept a duplicate.
         $wpdb->update(
-            OBRL_Members::table(),
+            OBYDRELO_Members::table(),
             array('referred_by_id' => (int) $referrer['id'], 'updated_at' => $now),
             array('id' => (int) $member_id),
             array('%d', '%s'),
             array('%d')
         );
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'referral_linked',
             array(
                 'member_id'   => (int) $member_id,
@@ -100,7 +100,7 @@ final class OBRL_Referrals
             )
         );
 
-        if ('signup' === OBRL_Settings::get('referral_qualification', 'first_purchase')) {
+        if ('signup' === OBYDRELO_Settings::get('referral_qualification', 'first_purchase')) {
             self::maybe_qualify($member_id);
         }
 
@@ -115,7 +115,7 @@ final class OBRL_Referrals
     {
         global $wpdb;
         $table = self::table();
-        if (!$table || !OBRL_Settings::get('referral_enabled')) {
+        if (!$table || !OBYDRELO_Settings::get('referral_enabled')) {
             return false;
         }
 
@@ -136,7 +136,7 @@ final class OBRL_Referrals
             if (!$transaction_id) {
                 return false;
             }
-            $tx_table = OBRL_Ledger::table();
+            $tx_table = OBYDRELO_Ledger::table();
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Qualification counts and the link uniqueness checks. A cached count would qualify a referral that never reached the threshold, and a cached link check would accept a duplicate.
             $qualifying = $wpdb->get_var(
                 $wpdb->prepare(
@@ -173,7 +173,7 @@ final class OBRL_Referrals
         $referred_points = (float) $row['reward_referred_points'];
 
         if ($referrer_points > 0) {
-            OBRL_Ledger::record(
+            OBYDRELO_Ledger::record(
                 array(
                     'member_id' => (int) $row['referrer_member_id'],
                     'type'      => 'referral',
@@ -187,7 +187,7 @@ final class OBRL_Referrals
         }
 
         if ($referred_points > 0) {
-            OBRL_Ledger::record(
+            OBYDRELO_Ledger::record(
                 array(
                     'member_id' => (int) $row['referred_member_id'],
                     'type'      => 'referral',
@@ -200,7 +200,7 @@ final class OBRL_Referrals
             );
         }
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'referral_rewarded',
             array(
                 'member_id'   => (int) $member_id,
@@ -247,7 +247,7 @@ final class OBRL_Referrals
     {
         global $wpdb;
         $table = self::table();
-        $members = OBRL_Members::table();
+        $members = OBYDRELO_Members::table();
         if (!$table || !$members) {
             return array();
         }

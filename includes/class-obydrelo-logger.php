@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Logger
+final class OBYDRELO_Logger
 {
     /**
      * Records an audit entry. Logging never interrupts the caller, so a
@@ -11,11 +11,11 @@ final class OBRL_Logger
      */
     public static function log($action, $args = array())
     {
-        if (!OBRL_Schema::is_installed()) {
+        if (!OBYDRELO_Schema::is_installed()) {
             return false;
         }
 
-        $table = OBRL_Schema::table('activity_logs');
+        $table = OBYDRELO_Schema::table('activity_logs');
         if (!$table) {
             return false;
         }

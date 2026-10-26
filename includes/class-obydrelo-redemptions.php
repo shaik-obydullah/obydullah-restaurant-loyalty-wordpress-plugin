@@ -3,13 +3,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Redemptions
+final class OBYDRELO_Redemptions
 {
     const STATUSES = 'issued,used,cancelled,expired';
 
     public static function table()
     {
-        return OBRL_Schema::table('redemptions');
+        return OBYDRELO_Schema::table('redemptions');
     }
 
     public static function get($redemption_id)
@@ -39,7 +39,7 @@ final class OBRL_Redemptions
         global $wpdb;
         $table = self::table();
         if (!$table) {
-            return new WP_Error('orl_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
         }
 
         $args = wp_parse_args(
@@ -55,33 +55,33 @@ final class OBRL_Redemptions
             )
         );
 
-        $member = OBRL_Members::get($args['member_id']);
-        $reward = OBRL_Rewards::get($args['reward_id']);
+        $member = OBYDRELO_Members::get($args['member_id']);
+        $reward = OBYDRELO_Rewards::get($args['reward_id']);
         if (!$member || !$reward) {
-            return new WP_Error('orl_missing', __('Member or reward not found.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_missing', __('Member or reward not found.', 'obydullah-restaurant-loyalty'));
         }
 
         $bill_amount = max(0.0, (float) $args['bill_amount']);
-        $check = OBRL_Rewards::can_redeem($member, $reward, $bill_amount);
+        $check = OBYDRELO_Rewards::can_redeem($member, $reward, $bill_amount);
         if (is_wp_error($check)) {
             return $check;
         }
 
         $args['external_id'] = substr(sanitize_text_field($args['external_id']), 0, 100);
-        $id_hash = OBRL_Ledger::id_hash($member['id'], 'redeem', $args['external_id']);
+        $id_hash = OBYDRELO_Ledger::id_hash($member['id'], 'redeem', $args['external_id']);
         if ($id_hash) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- The used_count comparison is the oversell guard and the expiry sweep compares the current time against uncached state. A cached count would let a limited reward be redeemed past its limit.
             $dupe = $wpdb->get_var(
                 $wpdb->prepare('SELECT id FROM %i WHERE id_hash = %s', $table, $id_hash)
             );
             if (null !== $dupe) {
-                return new WP_Error('orl_duplicate', __('This redemption was already recorded.', 'obydullah-restaurant-loyalty'));
+                return new WP_Error('obydrelo_duplicate', __('This redemption was already recorded.', 'obydullah-restaurant-loyalty'));
             }
         }
 
         $validity_days = (int) $reward['validity_days'];
         if ($validity_days < 1) {
-            $validity_days = (int) OBRL_Settings::get('reward_validity_days', 0);
+            $validity_days = (int) OBYDRELO_Settings::get('reward_validity_days', 0);
         }
         $expires_at = $validity_days > 0
             ? gmdate('Y-m-d H:i:s', time() + ($validity_days * DAY_IN_SECONDS))
@@ -95,7 +95,7 @@ final class OBRL_Redemptions
         if (null !== $reward['usage_limit']) {
             $reserved = self::reserve_stock($reward['id']);
             if (!$reserved) {
-                return new WP_Error('orl_out_of_stock', __('This reward just went out of stock.', 'obydullah-restaurant-loyalty'));
+                return new WP_Error('obydrelo_out_of_stock', __('This reward just went out of stock.', 'obydullah-restaurant-loyalty'));
             }
         }
 
@@ -111,7 +111,7 @@ final class OBRL_Redemptions
                 'points_spent'    => (float) $reward['points_cost'],
                 'stamps_spent'    => (int) $reward['stamps_cost'],
                 'visits_spent'    => (int) $reward['visits_cost'],
-                'reward_value'    => OBRL_Rewards::redeemable_value($reward, $bill_amount),
+                'reward_value'    => OBYDRELO_Rewards::redeemable_value($reward, $bill_amount),
                 'percent_off'     => (float) $reward['percent_off'],
                 'item_name'       => $reward['item_name'],
                 'quantity'        => 1,
@@ -133,14 +133,14 @@ final class OBRL_Redemptions
                 self::release_stock($reward['id']);
             }
             if (false !== stripos((string) $wpdb->last_error, 'duplicate entry')) {
-                return new WP_Error('orl_duplicate', __('This redemption was already recorded.', 'obydullah-restaurant-loyalty'));
+                return new WP_Error('obydrelo_duplicate', __('This redemption was already recorded.', 'obydullah-restaurant-loyalty'));
             }
-            return new WP_Error('orl_redemption_failed', __('The redemption could not be saved.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_redemption_failed', __('The redemption could not be saved.', 'obydullah-restaurant-loyalty'));
         }
 
         $redemption_id = (int) $wpdb->insert_id;
 
-        $ledger = OBRL_Ledger::record(
+        $ledger = OBYDRELO_Ledger::record(
             array(
                 'member_id'      => $member['id'],
                 'type'           => 'redeem',
@@ -172,7 +172,7 @@ final class OBRL_Redemptions
             return $ledger;
         }
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'reward_redeemed',
             array(
                 'member_id'   => $member['id'],
@@ -199,10 +199,10 @@ final class OBRL_Redemptions
         $table = self::table();
         $redemption = self::get($redemption_id);
         if (!$table || !$redemption) {
-            return new WP_Error('orl_missing', __('That redemption no longer exists.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_missing', __('That redemption no longer exists.', 'obydullah-restaurant-loyalty'));
         }
         if ('issued' !== $redemption['status']) {
-            return new WP_Error('orl_bad_status', __('Only an issued redemption can be used.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_bad_status', __('Only an issued redemption can be used.', 'obydullah-restaurant-loyalty'));
         }
 
         $update = array(
@@ -227,13 +227,13 @@ final class OBRL_Redemptions
         );
 
         if (false === $result) {
-            return new WP_Error('orl_update_failed', __('The redemption could not be updated.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_update_failed', __('The redemption could not be updated.', 'obydullah-restaurant-loyalty'));
         }
         if (0 === $wpdb->rows_affected) {
-            return new WP_Error('orl_bad_status', __('That redemption was already used or cancelled.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_bad_status', __('That redemption was already used or cancelled.', 'obydullah-restaurant-loyalty'));
         }
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'redemption_used',
             array('member_id' => $redemption['member_id'], 'object_type' => 'redemption', 'object_id' => (int) $redemption_id)
         );
@@ -250,10 +250,10 @@ final class OBRL_Redemptions
         $table = self::table();
         $redemption = self::get($redemption_id);
         if (!$table || !$redemption) {
-            return new WP_Error('orl_missing', __('That redemption no longer exists.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_missing', __('That redemption no longer exists.', 'obydullah-restaurant-loyalty'));
         }
         if (in_array($redemption['status'], array('cancelled', 'expired'), true)) {
-            return new WP_Error('orl_bad_status', __('That redemption is already closed.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_bad_status', __('That redemption is already closed.', 'obydullah-restaurant-loyalty'));
         }
 
         $user = wp_get_current_user();
@@ -278,15 +278,15 @@ final class OBRL_Redemptions
         );
 
         if (false === $result || 0 === (int) $wpdb->rows_affected) {
-            return new WP_Error('orl_update_failed', __('The redemption could not be cancelled.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_update_failed', __('The redemption could not be cancelled.', 'obydullah-restaurant-loyalty'));
         }
 
-        $reward = OBRL_Rewards::get($redemption['reward_id']);
+        $reward = OBYDRELO_Rewards::get($redemption['reward_id']);
         if ($reward && null !== $reward['usage_limit']) {
             self::release_stock($reward['id']);
         }
 
-        $refund = OBRL_Ledger::record(
+        $refund = OBYDRELO_Ledger::record(
             array(
                 'member_id'      => $redemption['member_id'],
                 'type'           => 'void',
@@ -308,7 +308,7 @@ final class OBRL_Redemptions
             )
         );
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'redemption_cancelled',
             array(
                 'member_id'   => $redemption['member_id'],
@@ -362,12 +362,12 @@ final class OBRL_Redemptions
                 continue;
             }
 
-            $reward = OBRL_Rewards::get($row['reward_id']);
+            $reward = OBYDRELO_Rewards::get($row['reward_id']);
             if ($reward && null !== $reward['usage_limit']) {
                 self::release_stock($reward['id']);
             }
 
-            OBRL_Ledger::record(
+            OBYDRELO_Ledger::record(
                 array(
                     'member_id'      => (int) $row['member_id'],
                     'type'           => 'expire',
@@ -383,7 +383,7 @@ final class OBRL_Redemptions
                 )
             );
 
-            OBRL_Logger::log(
+            OBYDRELO_Logger::log(
                 'redemption_expired',
                 array(
                     'member_id'   => (int) $row['member_id'],
@@ -445,7 +445,7 @@ final class OBRL_Redemptions
     private static function reserve_stock($reward_id)
     {
         global $wpdb;
-        $table = OBRL_Rewards::table();
+        $table = OBYDRELO_Rewards::table();
         if (!$table) {
             return false;
         }
@@ -465,7 +465,7 @@ final class OBRL_Redemptions
     private static function release_stock($reward_id)
     {
         global $wpdb;
-        $table = OBRL_Rewards::table();
+        $table = OBYDRELO_Rewards::table();
         if (!$table) {
             return false;
         }

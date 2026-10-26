@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Birthday
+final class OBYDRELO_Birthday
 {
     /**
      * Grants the birthday reward once per calendar year to every member whose
@@ -11,21 +11,21 @@ final class OBRL_Birthday
      */
     public static function grant_due()
     {
-        if (!OBRL_Settings::get('birthday_reward_enabled')) {
+        if (!OBYDRELO_Settings::get('birthday_reward_enabled')) {
             return 0;
         }
 
         global $wpdb;
-        $table = OBRL_Members::table();
+        $table = OBYDRELO_Members::table();
         if (!$table) {
             return 0;
         }
 
         $year = (int) gmdate('Y');
-        $lead = max(0, (int) OBRL_Settings::get('birthday_reward_lead_days', 0));
-        $points = (float) OBRL_Settings::get('birthday_reward_points', 0);
-        $stamps = (int) OBRL_Settings::get('birthday_reward_stamps', 0);
-        $visits = (int) OBRL_Settings::get('birthday_reward_visits', 0);
+        $lead = max(0, (int) OBYDRELO_Settings::get('birthday_reward_lead_days', 0));
+        $points = (float) OBYDRELO_Settings::get('birthday_reward_points', 0);
+        $stamps = (int) OBYDRELO_Settings::get('birthday_reward_stamps', 0);
+        $visits = (int) OBYDRELO_Settings::get('birthday_reward_visits', 0);
 
         if (0.0 === $points && 0 === $stamps && 0 === $visits) {
             return 0;
@@ -51,7 +51,7 @@ final class OBRL_Birthday
                 continue;
             }
 
-            $result = OBRL_Ledger::record(
+            $result = OBYDRELO_Ledger::record(
                 array(
                     'member_id' => $member_id,
                     'type'      => 'birthday',
@@ -77,7 +77,7 @@ final class OBRL_Birthday
     public static function due_member_ids($year, $lead_days = 0)
     {
         global $wpdb;
-        $table = OBRL_Members::table();
+        $table = OBYDRELO_Members::table();
         if (!$table) {
             return array();
         }
@@ -125,7 +125,7 @@ final class OBRL_Birthday
     public static function upcoming($days = 30, $limit = 10)
     {
         global $wpdb;
-        $table = OBRL_Members::table();
+        $table = OBYDRELO_Members::table();
         if (!$table) {
             return array();
         }

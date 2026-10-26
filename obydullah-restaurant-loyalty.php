@@ -16,40 +16,40 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('OBRL_VERSION', '1.0.0');
+define('OBYDRELO_VERSION', '1.0.0');
 
-define('OBRL_FILE', __FILE__);
-define('OBRL_PATH', plugin_dir_path(__FILE__));
-define('OBRL_URL', plugin_dir_url(__FILE__));
-define('OBRL_NONCE_ADMIN', 'orl_admin_action');
-define('OBRL_NONCE_STAFF', 'orl_staff_action');
-define('OBRL_NONCE_PORTAL', 'orl_portal_action');
-define('OBRL_CRON_DAILY', 'obrl_daily_maintenance');
+define('OBYDRELO_FILE', __FILE__);
+define('OBYDRELO_PATH', plugin_dir_path(__FILE__));
+define('OBYDRELO_URL', plugin_dir_url(__FILE__));
+define('OBYDRELO_NONCE_ADMIN', 'obydrelo_admin_action');
+define('OBYDRELO_NONCE_STAFF', 'obydrelo_staff_action');
+define('OBYDRELO_NONCE_PORTAL', 'obydrelo_portal_action');
+define('OBYDRELO_CRON_DAILY', 'bobydrelo_daily_maintenance');
 
-require_once OBRL_PATH . 'includes/class-obrl-plugin.php';
-require_once OBRL_PATH . 'includes/class-obrl-activator.php';
-require_once OBRL_PATH . 'includes/class-obrl-roles.php';
-require_once OBRL_PATH . 'includes/class-obrl-settings.php';
-require_once OBRL_PATH . 'includes/class-obrl-schema.php';
-require_once OBRL_PATH . 'includes/class-obrl-logger.php';
-require_once OBRL_PATH . 'includes/class-obrl-format.php';
-require_once OBRL_PATH . 'includes/class-obrl-members.php';
-require_once OBRL_PATH . 'includes/class-obrl-ledger.php';
-require_once OBRL_PATH . 'includes/class-obrl-rewards.php';
-require_once OBRL_PATH . 'includes/class-obrl-redemptions.php';
-require_once OBRL_PATH . 'includes/class-obrl-referrals.php';
-require_once OBRL_PATH . 'includes/class-obrl-welcome.php';
-require_once OBRL_PATH . 'includes/class-obrl-birthday.php';
-require_once OBRL_PATH . 'includes/class-obrl-card.php';
-require_once OBRL_PATH . 'includes/class-obrl-reports.php';
-require_once OBRL_PATH . 'includes/class-obrl-csv.php';
-require_once OBRL_PATH . 'includes/class-obrl-cron.php';
-require_once OBRL_PATH . 'includes/class-obrl-privacy.php';
-require_once OBRL_PATH . 'includes/class-obrl-admin.php';
-require_once OBRL_PATH . 'includes/class-obrl-portal.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-plugin.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-activator.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-roles.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-settings.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-schema.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-logger.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-format.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-members.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-ledger.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-rewards.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-redemptions.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-referrals.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-welcome.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-birthday.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-card.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-reports.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-csv.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-cron.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-privacy.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-admin.php';
+require_once OBYDRELO_PATH . 'includes/class-obydrelo-portal.php';
 
-register_activation_hook(OBRL_FILE, array('OBRL_Activator', 'activate'));
-register_deactivation_hook(OBRL_FILE, array('OBRL_Activator', 'deactivate'));
+register_activation_hook(OBYDRELO_FILE, array('OBYDRELO_Activator', 'activate'));
+register_deactivation_hook(OBYDRELO_FILE, array('OBYDRELO_Activator', 'deactivate'));
 
-add_action('plugins_loaded', array('OBRL_Plugin', 'boot'));
-add_action('init', array('OBRL_Activator', 'maybe_upgrade'));
+add_action('plugins_loaded', array('OBYDRELO_Plugin', 'boot'));
+add_action('init', array('OBYDRELO_Activator', 'maybe_upgrade'));

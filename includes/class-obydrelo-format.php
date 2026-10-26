@@ -3,11 +3,11 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Format
+final class OBYDRELO_Format
 {
     public static function money($amount)
     {
-        $currency = (string) OBRL_Settings::get('currency_code', '');
+        $currency = (string) OBYDRELO_Settings::get('currency_code', '');
         $decimals = (int) get_option('woocommerce_currency_num_decimal', 2);
         $formatted = number_format_i18n((float) $amount, $decimals);
         $position = (string) get_option('woocommerce_currency_pos', 'left');
@@ -76,7 +76,7 @@ final class OBRL_Format
 
     public static function unit_label($plural = false)
     {
-        $mode = (string) OBRL_Settings::get('program_mode', 'points');
+        $mode = (string) OBYDRELO_Settings::get('program_mode', 'points');
         $map = array(
             'points' => 'points_label',
             'stamps' => 'stamps_label',
@@ -85,6 +85,6 @@ final class OBRL_Format
         if (!isset($map[$mode])) {
             $mode = 'points';
         }
-        return (string) OBRL_Settings::get($map[$mode], ucfirst($mode));
+        return (string) OBYDRELO_Settings::get($map[$mode], ucfirst($mode));
     }
 }

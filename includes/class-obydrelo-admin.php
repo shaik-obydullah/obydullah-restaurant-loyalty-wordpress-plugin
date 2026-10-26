@@ -3,30 +3,30 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Admin
+final class OBYDRELO_Admin
 {
-    const MENU = 'orl-loyalty';
+    const MENU = 'obydrelo-loyalty';
 
     public function __construct()
     {
         add_action('admin_menu', array($this, 'register_menus'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue'));
 
-        add_action('admin_post_orl_save_settings', array($this, 'handle_save_settings'));
-        add_action('admin_post_orl_save_member', array($this, 'handle_save_member'));
-        add_action('admin_post_orl_delete_member', array($this, 'handle_delete_member'));
-        add_action('admin_post_orl_save_reward', array($this, 'handle_save_reward'));
-        add_action('admin_post_orl_delete_reward', array($this, 'handle_delete_reward'));
-        add_action('admin_post_orl_record_transaction', array($this, 'handle_record_transaction'));
-        add_action('admin_post_orl_redeem', array($this, 'handle_redeem'));
-        add_action('admin_post_orl_cancel_redemption', array($this, 'handle_cancel_redemption'));
-        add_action('admin_post_orl_export', array($this, 'handle_export'));
+        add_action('admin_post_obydrelo_save_settings', array($this, 'handle_save_settings'));
+        add_action('admin_post_obydrelo_save_member', array($this, 'handle_save_member'));
+        add_action('admin_post_obydrelo_delete_member', array($this, 'handle_delete_member'));
+        add_action('admin_post_obydrelo_save_reward', array($this, 'handle_save_reward'));
+        add_action('admin_post_obydrelo_delete_reward', array($this, 'handle_delete_reward'));
+        add_action('admin_post_obydrelo_record_transaction', array($this, 'handle_record_transaction'));
+        add_action('admin_post_obydrelo_redeem', array($this, 'handle_redeem'));
+        add_action('admin_post_obydrelo_cancel_redemption', array($this, 'handle_cancel_redemption'));
+        add_action('admin_post_obydrelo_export', array($this, 'handle_export'));
 
-        add_action('wp_ajax_orl_search_members', array($this, 'ajax_search_members'));
-        add_action('wp_ajax_orl_get_member', array($this, 'ajax_get_member'));
-        add_action('wp_ajax_orl_member_history', array($this, 'ajax_member_history'));
-        add_action('wp_ajax_orl_recalculate', array($this, 'ajax_recalculate'));
-        add_action('wp_ajax_orl_reward_lookup', array($this, 'ajax_reward_lookup'));
+        add_action('wp_ajax_obydrelo_search_members', array($this, 'ajax_search_members'));
+        add_action('wp_ajax_obydrelo_get_member', array($this, 'ajax_get_member'));
+        add_action('wp_ajax_obydrelo_member_history', array($this, 'ajax_member_history'));
+        add_action('wp_ajax_obydrelo_recalculate', array($this, 'ajax_recalculate'));
+        add_action('wp_ajax_obydrelo_reward_lookup', array($this, 'ajax_reward_lookup'));
     }
 
     public function register_menus()
@@ -34,7 +34,7 @@ final class OBRL_Admin
         add_menu_page(
             __('Restaurant Loyalty', 'obydullah-restaurant-loyalty'),
             __('Loyalty', 'obydullah-restaurant-loyalty'),
-            'orl_view_dashboard',
+            'obydrelo_view_dashboard',
             self::MENU,
             array($this, 'render_dashboard'),
             'dashicons-star-filled',
@@ -42,14 +42,14 @@ final class OBRL_Admin
         );
 
         $pages = array(
-            array('orl-members', __('Members', 'obydullah-restaurant-loyalty'), 'orl_manage_members', 'render_members'),
-            array('orl-record', __('Record Transaction', 'obydullah-restaurant-loyalty'), 'orl_record_transactions', 'render_record'),
-            array('orl-redeem', __('Redeem Reward', 'obydullah-restaurant-loyalty'), 'orl_redeem_rewards', 'render_redeem'),
-            array('orl-rewards', __('Rewards', 'obydullah-restaurant-loyalty'), 'orl_manage_rewards', 'render_rewards'),
-            array('orl-reports', __('Reports', 'obydullah-restaurant-loyalty'), 'orl_view_reports', 'render_reports'),
-            array('orl-referrals', __('Referrals', 'obydullah-restaurant-loyalty'), 'orl_manage_referrals', 'render_referrals'),
-            array('orl-activity', __('Activity Log', 'obydullah-restaurant-loyalty'), 'orl_view_activity', 'render_activity'),
-            array('orl-settings', __('Settings', 'obydullah-restaurant-loyalty'), 'orl_manage_settings', 'render_settings'),
+            array('obydrelo-members', __('Members', 'obydullah-restaurant-loyalty'), 'obydrelo_manage_members', 'render_members'),
+            array('obydrelo-record', __('Record Transaction', 'obydullah-restaurant-loyalty'), 'obydrelo_record_transactions', 'render_record'),
+            array('obydrelo-redeem', __('Redeem Reward', 'obydullah-restaurant-loyalty'), 'obydrelo_redeem_rewards', 'render_redeem'),
+            array('obydrelo-rewards', __('Rewards', 'obydullah-restaurant-loyalty'), 'obydrelo_manage_rewards', 'render_rewards'),
+            array('obydrelo-reports', __('Reports', 'obydullah-restaurant-loyalty'), 'obydrelo_view_reports', 'render_reports'),
+            array('obydrelo-referrals', __('Referrals', 'obydullah-restaurant-loyalty'), 'obydrelo_manage_referrals', 'render_referrals'),
+            array('obydrelo-activity', __('Activity Log', 'obydullah-restaurant-loyalty'), 'obydrelo_view_activity', 'render_activity'),
+            array('obydrelo-settings', __('Settings', 'obydullah-restaurant-loyalty'), 'obydrelo_manage_settings', 'render_settings'),
         );
 
         foreach ($pages as $page) {
@@ -65,22 +65,22 @@ final class OBRL_Admin
     }
 
     /**
-     * The top level menu registers the hook suffix "toplevel_page_orl-loyalty",
-     * but every submenu gets "toplevel_page_orl-<slug>", so matching the parent
+     * The top level menu registers the hook suffix "toplevel_page_obydrelo-loyalty",
+     * but every submenu gets "toplevel_page_obydrelo-<slug>", so matching the parent
      * slug alone would skip all submenu screens.
      */
     public static function is_plugin_screen($hook = '')
     {
         $pages = array(
-            'orl-loyalty',
-            'orl-members',
-            'orl-record',
-            'orl-redeem',
-            'orl-rewards',
-            'orl-reports',
-            'orl-referrals',
-            'orl-activity',
-            'orl-settings',
+            'obydrelo-loyalty',
+            'obydrelo-members',
+            'obydrelo-record',
+            'obydrelo-redeem',
+            'obydrelo-rewards',
+            'obydrelo-reports',
+            'obydrelo-referrals',
+            'obydrelo-activity',
+            'obydrelo-settings',
         );
 
         $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -103,17 +103,17 @@ final class OBRL_Admin
             return;
         }
 
-        wp_enqueue_style('orl-admin', OBRL_URL . 'assets/css/admin.css', array(), OBRL_VERSION);
-        wp_enqueue_script('orl-qrcode', OBRL_URL . 'assets/js/vendor/qrcode-generator.js', array(), '1.4.4', true);
-        wp_enqueue_script('orl-admin', OBRL_URL . 'assets/js/admin.js', array('jquery', 'orl-qrcode'), OBRL_VERSION, true);
+        wp_enqueue_style('obydrelo-admin', OBYDRELO_URL . 'assets/css/admin.css', array(), OBYDRELO_VERSION);
+        wp_enqueue_script('obydrelo-qrcode', OBYDRELO_URL . 'assets/js/vendor/qrcode-generator.js', array(), '1.4.4', true);
+        wp_enqueue_script('obydrelo-admin', OBYDRELO_URL . 'assets/js/admin.js', array('jquery', 'obydrelo-qrcode'), OBYDRELO_VERSION, true);
 
         wp_localize_script(
-            'orl-admin',
+            'obydrelo-admin',
             'orlAdmin',
             array(
                 'ajaxUrl'    => admin_url('admin-ajax.php'),
-                'nonce'      => wp_create_nonce(OBRL_NONCE_ADMIN),
-                'searchNonce' => wp_create_nonce(OBRL_NONCE_STAFF),
+                'nonce'      => wp_create_nonce(OBYDRELO_NONCE_ADMIN),
+                'searchNonce' => wp_create_nonce(OBYDRELO_NONCE_STAFF),
                 'strings'    => array(
                     'noResults'  => __('No members found.', 'obydullah-restaurant-loyalty'),
                     'select'     => __('Select a member', 'obydullah-restaurant-loyalty'),
@@ -123,7 +123,7 @@ final class OBRL_Admin
         );
     }
 
-    private function verify($capability, $nonce_action = OBRL_NONCE_ADMIN)
+    private function verify($capability, $nonce_action = OBYDRELO_NONCE_ADMIN)
     {
         if (!current_user_can($capability)) {
             wp_die(esc_html__('You do not have permission to do that.', 'obydullah-restaurant-loyalty'), 403);
@@ -192,8 +192,8 @@ final class OBRL_Admin
             $args,
             array(
                 'page'       => self::MENU,
-                'orl_notice' => '',
-                'orl_error'  => '',
+                'obydrelo_notice' => '',
+                'obydrelo_error'  => '',
                 'member_id'  => 0,
             )
         );
@@ -208,11 +208,11 @@ final class OBRL_Admin
             }
         );
 
-        if ('' !== $args['orl_notice']) {
-            $url_args['orl_msg'] = self::flash('success', $args['orl_notice']);
+        if ('' !== $args['obydrelo_notice']) {
+            $url_args['obydrelo_msg'] = self::flash('success', $args['obydrelo_notice']);
         }
-        if ('' !== $args['orl_error']) {
-            $url_args['orl_msg'] = self::flash('error', $args['orl_error']);
+        if ('' !== $args['obydrelo_error']) {
+            $url_args['obydrelo_msg'] = self::flash('error', $args['obydrelo_error']);
         }
 
         wp_safe_redirect(add_query_arg($url_args, admin_url('admin.php')));
@@ -226,7 +226,7 @@ final class OBRL_Admin
     {
         $token = sanitize_key(wp_generate_password(12, false, false));
         set_transient(
-            'orl_flash_' . $token,
+            'obydrelo_flash_' . $token,
             array(
                 'type' => 'error' === $type ? 'error' : 'success',
                 'text' => (string) $text,
@@ -244,21 +244,21 @@ final class OBRL_Admin
         // Read-only display parameter: the token is a transient lookup key, not
         // a value, and nothing is echoed unless a message was stored for it.
         // phpcs:disable WordPress.Security.NonceVerification.Recommended
-        if (!isset($_GET['orl_msg'])) {
+        if (!isset($_GET['obydrelo_msg'])) {
             return;
         }
 
-        $token = sanitize_key(wp_unslash($_GET['orl_msg']));
+        $token = sanitize_key(wp_unslash($_GET['obydrelo_msg']));
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
         if ('' === $token) {
             return;
         }
 
-        $flash = get_transient('orl_flash_' . $token);
+        $flash = get_transient('obydrelo_flash_' . $token);
         if (!is_array($flash) || empty($flash['text'])) {
             return;
         }
-        delete_transient('orl_flash_' . $token);
+        delete_transient('obydrelo_flash_' . $token);
 
         printf(
             '<div class="notice notice-%1$s is-dismissible"><p>%2$s</p></div>',
@@ -273,34 +273,34 @@ final class OBRL_Admin
 
     public function handle_save_settings()
     {
-        $this->verify('orl_manage_settings');
+        $this->verify('obydrelo_manage_settings');
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 
-        $definitions = OBRL_Settings::definitions();
+        $definitions = OBYDRELO_Settings::definitions();
         $saved = 0;
         foreach ($definitions as $key => $definition) {
             if ('bool' === $definition['type']) {
-                OBRL_Settings::set($key, isset($_POST['orl_settings'][$key]) ? 1 : 0);
+                OBYDRELO_Settings::set($key, isset($_POST['obydrelo_settings'][$key]) ? 1 : 0);
                 $saved++;
                 continue;
             }
-            if (!isset($_POST['orl_settings'][$key]) || !is_scalar($_POST['orl_settings'][$key])) {
+            if (!isset($_POST['obydrelo_settings'][$key]) || !is_scalar($_POST['obydrelo_settings'][$key])) {
                 // A checkbox left alone, or a field submitted as an array.
                 continue;
             }
-            // Sanitized for shape here; OBRL_Settings::set() owns the per-type
+            // Sanitized for shape here; OBYDRELO_Settings::set() owns the per-type
             // coercion and allowlisting, so the rules live in one place.
-            OBRL_Settings::set($key, sanitize_text_field(wp_unslash($_POST['orl_settings'][$key])));
+            OBYDRELO_Settings::set($key, sanitize_text_field(wp_unslash($_POST['obydrelo_settings'][$key])));
             $saved++;
         }
 
         $this->redirect(
             array(
-                'page'       => 'orl-settings',
-                'orl_notice' => sprintf(
+                'page'       => 'obydrelo-settings',
+                'obydrelo_notice' => sprintf(
                     /* translators: %d: number of settings saved. */
                     _n('%d setting saved.', '%d settings saved.', $saved, 'obydullah-restaurant-loyalty'),
                     $saved
@@ -312,14 +312,14 @@ final class OBRL_Admin
 
     public function handle_save_member()
     {
-        $this->verify('orl_manage_members');
+        $this->verify('obydrelo_manage_members');
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 
         $member_id = isset($_POST['member_id']) ? absint($_POST['member_id']) : 0;
-        // Sanitized for shape only; OBRL_Members::validate() decides whether the
+        // Sanitized for shape only; OBYDRELO_Members::validate() decides whether the
         // address is deliverable, the date is real, and the status is known.
         $data = array(
             'first_name' => self::post_text('first_name'),
@@ -334,28 +334,28 @@ final class OBRL_Admin
         $referral_code = self::post_text('referral_code');
 
         $result = $member_id
-            ? OBRL_Members::update($member_id, $data)
-            : OBRL_Members::create($data);
+            ? OBYDRELO_Members::update($member_id, $data)
+            : OBYDRELO_Members::create($data);
 
         if (is_wp_error($result)) {
             $this->redirect(
                 array(
-                    'page'      => 'orl-members',
-                    'orl_error' => $this->first_error($result),
+                    'page'      => 'obydrelo-members',
+                    'obydrelo_error' => $this->first_error($result),
                     'member_id' => $member_id,
                 )
             );
         }
 
         if ('' !== $referral_code) {
-            OBRL_Referrals::link((int) $result, $referral_code);
+            OBYDRELO_Referrals::link((int) $result, $referral_code);
         }
 
         $this->redirect(
             array(
-                'page'       => 'orl-members',
+                'page'       => 'obydrelo-members',
                 'member_id'  => (int) $result,
-                'orl_notice' => $member_id
+                'obydrelo_notice' => $member_id
                     ? __('Member updated.', 'obydullah-restaurant-loyalty')
                     : __('Member enrolled.', 'obydullah-restaurant-loyalty'),
             )
@@ -365,29 +365,29 @@ final class OBRL_Admin
 
     public function handle_delete_member()
     {
-        $this->verify('orl_manage_members');
+        $this->verify('obydrelo_manage_members');
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
         $member_id = isset($_POST['member_id']) ? absint($_POST['member_id']) : 0;
-        if ($member_id && OBRL_Members::delete($member_id)) {
-            $this->redirect(array('page' => 'orl-members', 'orl_notice' => __('Member removed.', 'obydullah-restaurant-loyalty')));
+        if ($member_id && OBYDRELO_Members::delete($member_id)) {
+            $this->redirect(array('page' => 'obydrelo-members', 'obydrelo_notice' => __('Member removed.', 'obydullah-restaurant-loyalty')));
         }
-        $this->redirect(array('page' => 'orl-members', 'orl_error' => __('The member could not be removed.', 'obydullah-restaurant-loyalty')));
+        $this->redirect(array('page' => 'obydrelo-members', 'obydrelo_error' => __('The member could not be removed.', 'obydullah-restaurant-loyalty')));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     public function handle_save_reward()
     {
-        $this->verify('orl_manage_rewards');
+        $this->verify('obydrelo_manage_rewards');
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 
         $reward_id = isset($_POST['reward_id']) ? absint($_POST['reward_id']) : 0;
-        // Numeric fields stay strings so OBRL_Rewards::validate() can apply its
+        // Numeric fields stay strings so OBYDRELO_Rewards::validate() can apply its
         // own ranges; an empty usage_limit stays empty so it means "unlimited".
         $data = array(
             'title'            => self::post_text('title'),
@@ -408,16 +408,16 @@ final class OBRL_Admin
             'is_active'        => isset($_POST['is_active']) ? 1 : 0,
         );
 
-        $result = $reward_id ? OBRL_Rewards::update($reward_id, $data) : OBRL_Rewards::create($data);
+        $result = $reward_id ? OBYDRELO_Rewards::update($reward_id, $data) : OBYDRELO_Rewards::create($data);
 
         if (is_wp_error($result)) {
-            $this->redirect(array('page' => 'orl-rewards', 'orl_error' => $this->first_error($result), 'reward_id' => $reward_id));
+            $this->redirect(array('page' => 'obydrelo-rewards', 'obydrelo_error' => $this->first_error($result), 'reward_id' => $reward_id));
         }
 
         $this->redirect(
             array(
-                'page'       => 'orl-rewards',
-                'orl_notice' => $reward_id ? __('Reward updated.', 'obydullah-restaurant-loyalty') : __('Reward created.', 'obydullah-restaurant-loyalty'),
+                'page'       => 'obydrelo-rewards',
+                'obydrelo_notice' => $reward_id ? __('Reward updated.', 'obydullah-restaurant-loyalty') : __('Reward created.', 'obydullah-restaurant-loyalty'),
             )
         );
         // phpcs:enable WordPress.Security.NonceVerification.Missing
@@ -425,22 +425,22 @@ final class OBRL_Admin
 
     public function handle_delete_reward()
     {
-        $this->verify('orl_manage_rewards');
+        $this->verify('obydrelo_manage_rewards');
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
         $reward_id = isset($_POST['reward_id']) ? absint($_POST['reward_id']) : 0;
-        if ($reward_id && OBRL_Rewards::delete($reward_id)) {
-            $this->redirect(array('page' => 'orl-rewards', 'orl_notice' => __('Reward removed.', 'obydullah-restaurant-loyalty')));
+        if ($reward_id && OBYDRELO_Rewards::delete($reward_id)) {
+            $this->redirect(array('page' => 'obydrelo-rewards', 'obydrelo_notice' => __('Reward removed.', 'obydullah-restaurant-loyalty')));
         }
-        $this->redirect(array('page' => 'orl-rewards', 'orl_error' => __('The reward could not be removed.', 'obydullah-restaurant-loyalty')));
+        $this->redirect(array('page' => 'obydrelo-rewards', 'obydrelo_error' => __('The reward could not be removed.', 'obydullah-restaurant-loyalty')));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     public function handle_record_transaction()
     {
-        $this->verify('orl_record_transactions', OBRL_NONCE_STAFF);
+        $this->verify('obydrelo_record_transactions', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -460,30 +460,30 @@ final class OBRL_Admin
         if ('purchase' === $type) {
             $amount = (float) self::post_text('amount', '0');
             if ($amount <= 0) {
-                $this->redirect(array('page' => 'orl-record', 'orl_error' => __('Enter a purchase amount greater than zero.', 'obydullah-restaurant-loyalty')));
+                $this->redirect(array('page' => 'obydrelo-record', 'obydrelo_error' => __('Enter a purchase amount greater than zero.', 'obydullah-restaurant-loyalty')));
             }
-            $args = array_merge($args, OBRL_Ledger::values_for_purchase($amount));
+            $args = array_merge($args, OBYDRELO_Ledger::values_for_purchase($amount));
         } else {
             // Negative points are meaningful: that is what an adjustment is.
             $args['points'] = (float) self::post_text('points', '0');
             $args['stamps'] = (int) self::post_text('stamps', '0');
             $args['visits'] = (int) self::post_text('visits', '0');
 
-            if ('adjustment' === $type && !current_user_can('orl_apply_adjustments')) {
-                $this->redirect(array('page' => 'orl-record', 'orl_error' => __('You cannot apply manual adjustments.', 'obydullah-restaurant-loyalty')));
+            if ('adjustment' === $type && !current_user_can('obydrelo_apply_adjustments')) {
+                $this->redirect(array('page' => 'obydrelo-record', 'obydrelo_error' => __('You cannot apply manual adjustments.', 'obydullah-restaurant-loyalty')));
             }
         }
 
-        $result = OBRL_Ledger::record($args);
+        $result = OBYDRELO_Ledger::record($args);
         if (is_wp_error($result)) {
-            $this->redirect(array('page' => 'orl-record', 'orl_error' => $this->first_error($result), 'member_id' => $member_id));
+            $this->redirect(array('page' => 'obydrelo-record', 'obydrelo_error' => $this->first_error($result), 'member_id' => $member_id));
         }
 
         $this->redirect(
             array(
-                'page'       => 'orl-record',
+                'page'       => 'obydrelo-record',
                 'member_id'  => $member_id,
-                'orl_notice' => __('Transaction recorded.', 'obydullah-restaurant-loyalty'),
+                'obydrelo_notice' => __('Transaction recorded.', 'obydullah-restaurant-loyalty'),
             )
         );
         // phpcs:enable WordPress.Security.NonceVerification.Missing
@@ -491,13 +491,13 @@ final class OBRL_Admin
 
     public function handle_redeem()
     {
-        $this->verify('orl_redeem_rewards', OBRL_NONCE_STAFF);
+        $this->verify('obydrelo_redeem_rewards', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 
-        $result = OBRL_Redemptions::issue(
+        $result = OBYDRELO_Redemptions::issue(
             array(
                 'member_id'      => isset($_POST['member_id']) ? absint($_POST['member_id']) : 0,
                 'reward_id'      => isset($_POST['reward_id']) ? absint($_POST['reward_id']) : 0,
@@ -509,16 +509,16 @@ final class OBRL_Admin
         );
 
         if (is_wp_error($result)) {
-            $this->redirect(array('page' => 'orl-redeem', 'orl_error' => $this->first_error($result)));
+            $this->redirect(array('page' => 'obydrelo-redeem', 'obydrelo_error' => $this->first_error($result)));
         }
 
-        $this->redirect(array('page' => 'orl-redeem', 'orl_notice' => __('Reward redeemed.', 'obydullah-restaurant-loyalty')));
+        $this->redirect(array('page' => 'obydrelo-redeem', 'obydrelo_notice' => __('Reward redeemed.', 'obydullah-restaurant-loyalty')));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     public function handle_cancel_redemption()
     {
-        $this->verify('orl_redeem_rewards', OBRL_NONCE_STAFF);
+        $this->verify('obydrelo_redeem_rewards', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify() call above;
         // the sniff cannot follow the indirection into the $_POST reads below.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -526,11 +526,11 @@ final class OBRL_Admin
         $redemption_id = isset($_POST['redemption_id']) ? absint($_POST['redemption_id']) : 0;
         $reason = isset($_POST['reason']) ? sanitize_text_field(wp_unslash($_POST['reason'])) : '';
 
-        $result = OBRL_Redemptions::cancel($redemption_id, $reason);
+        $result = OBYDRELO_Redemptions::cancel($redemption_id, $reason);
         if (is_wp_error($result)) {
-            $this->redirect(array('page' => 'orl-redeem', 'orl_error' => $this->first_error($result)));
+            $this->redirect(array('page' => 'obydrelo-redeem', 'obydrelo_error' => $this->first_error($result)));
         }
-        $this->redirect(array('page' => 'orl-redeem', 'orl_notice' => __('Redemption cancelled and balance returned.', 'obydullah-restaurant-loyalty')));
+        $this->redirect(array('page' => 'obydrelo-redeem', 'obydrelo_notice' => __('Redemption cancelled and balance returned.', 'obydullah-restaurant-loyalty')));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
@@ -538,7 +538,7 @@ final class OBRL_Admin
      * AJAX
      * ------------------------------------------------------------------ */
 
-    private function verify_ajax($capability, $nonce_action = OBRL_NONCE_ADMIN)
+    private function verify_ajax($capability, $nonce_action = OBYDRELO_NONCE_ADMIN)
     {
         // check_ajax_referer() does not halt when the third argument is false,
         // so the return value has to be checked or a stale nonce would be
@@ -556,7 +556,7 @@ final class OBRL_Admin
 
     public function ajax_search_members()
     {
-        $this->verify_ajax('orl_record_transactions', OBRL_NONCE_STAFF);
+        $this->verify_ajax('obydrelo_record_transactions', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify_ajax() call
         // above; the sniff cannot follow the indirection.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -567,12 +567,12 @@ final class OBRL_Admin
             wp_send_json_success(array('items' => array()));
         }
 
-        $result = OBRL_Members::search(array('search' => $term, 'per_page' => 10));
+        $result = OBYDRELO_Members::search(array('search' => $term, 'per_page' => 10));
         $items = array();
         foreach ($result['items'] as $member) {
             $items[] = array(
                 'id'         => $member['id'],
-                'name'       => OBRL_Members::full_name($member),
+                'name'       => OBYDRELO_Members::full_name($member),
                 'code'       => $member['member_code'],
                 'email'      => $member['email'],
                 'phone'      => $member['phone'],
@@ -580,7 +580,7 @@ final class OBRL_Admin
                 'points'     => $member['points_balance'],
                 'stamps'     => $member['stamps_count'],
                 'visits'     => $member['visits_count'],
-                'balance'    => OBRL_Format::points($member['points_balance']) . ' pts / '
+                'balance'    => OBYDRELO_Format::points($member['points_balance']) . ' pts / '
                     . $member['stamps_count'] . ' stamps / ' . $member['visits_count'] . ' visits',
             );
         }
@@ -590,19 +590,19 @@ final class OBRL_Admin
 
     public function ajax_get_member()
     {
-        $this->verify_ajax('orl_record_transactions', OBRL_NONCE_STAFF);
+        $this->verify_ajax('obydrelo_record_transactions', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify_ajax() call
         // above; the sniff cannot follow the indirection.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
-        $member = OBRL_Members::get(isset($_POST['member_id']) ? absint($_POST['member_id']) : 0);
+        $member = OBYDRELO_Members::get(isset($_POST['member_id']) ? absint($_POST['member_id']) : 0);
         if (!$member) {
             wp_send_json_error(array('message' => __('Member not found.', 'obydullah-restaurant-loyalty')), 404);
         }
         wp_send_json_success(
             array(
                 'id'     => $member['id'],
-                'name'   => OBRL_Members::full_name($member),
+                'name'   => OBYDRELO_Members::full_name($member),
                 'code'   => $member['member_code'],
                 'status' => $member['status'],
                 'points' => $member['points_balance'],
@@ -615,46 +615,46 @@ final class OBRL_Admin
 
     public function ajax_member_history()
     {
-        $this->verify_ajax('orl_record_transactions', OBRL_NONCE_STAFF);
+        $this->verify_ajax('obydrelo_record_transactions', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify_ajax() call
         // above; the sniff cannot follow the indirection.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
         $member_id = isset($_POST['member_id']) ? absint($_POST['member_id']) : 0;
-        $history = OBRL_Ledger::history(array('member_id' => $member_id, 'per_page' => 15));
+        $history = OBYDRELO_Ledger::history(array('member_id' => $member_id, 'per_page' => 15));
         wp_send_json_success(array('items' => $history['items'], 'total' => $history['total']));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     public function ajax_recalculate()
     {
-        $this->verify_ajax('orl_manage_members');
+        $this->verify_ajax('obydrelo_manage_members');
         // Capability and nonce are both enforced by the verify_ajax() call
         // above; the sniff cannot follow the indirection.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
         $member_id = isset($_POST['member_id']) ? absint($_POST['member_id']) : 0;
-        $member = OBRL_Members::get($member_id);
-        if (!$member || !OBRL_Members::recalculate($member_id)) {
+        $member = OBYDRELO_Members::get($member_id);
+        if (!$member || !OBYDRELO_Members::recalculate($member_id)) {
             wp_send_json_error(array('message' => __('Could not rebuild the balance.', 'obydullah-restaurant-loyalty')), 404);
         }
-        OBRL_Logger::log('member_recalculated', array('member_id' => $member_id, 'object_type' => 'member', 'object_id' => $member_id));
-        wp_send_json_success(OBRL_Members::get($member_id));
+        OBYDRELO_Logger::log('member_recalculated', array('member_id' => $member_id, 'object_type' => 'member', 'object_id' => $member_id));
+        wp_send_json_success(OBYDRELO_Members::get($member_id));
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
 
     public function ajax_reward_lookup()
     {
-        $this->verify_ajax('orl_redeem_rewards', OBRL_NONCE_STAFF);
+        $this->verify_ajax('obydrelo_redeem_rewards', OBYDRELO_NONCE_STAFF);
         // Capability and nonce are both enforced by the verify_ajax() call
         // above; the sniff cannot follow the indirection.
         // phpcs:disable WordPress.Security.NonceVerification.Missing
 
-        $reward = OBRL_Rewards::get(isset($_POST['reward_id']) ? absint($_POST['reward_id']) : 0);
+        $reward = OBYDRELO_Rewards::get(isset($_POST['reward_id']) ? absint($_POST['reward_id']) : 0);
         if (!$reward) {
             wp_send_json_error(array('message' => __('Reward not found.', 'obydullah-restaurant-loyalty')), 404);
         }
-        $reward['stock_remaining'] = OBRL_Rewards::stock_remaining($reward);
+        $reward['stock_remaining'] = OBYDRELO_Rewards::stock_remaining($reward);
         wp_send_json_success($reward);
         // phpcs:enable WordPress.Security.NonceVerification.Missing
     }
@@ -665,7 +665,7 @@ final class OBRL_Admin
 
     public function render_dashboard()
     {
-        $view = OBRL_PATH . 'views/dashboard.php';
+        $view = OBYDRELO_PATH . 'views/dashboard.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -673,7 +673,7 @@ final class OBRL_Admin
 
     public function render_members()
     {
-        $view = OBRL_PATH . 'views/members.php';
+        $view = OBYDRELO_PATH . 'views/members.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -681,7 +681,7 @@ final class OBRL_Admin
 
     public function render_record()
     {
-        $view = OBRL_PATH . 'views/record.php';
+        $view = OBYDRELO_PATH . 'views/record.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -689,7 +689,7 @@ final class OBRL_Admin
 
     public function render_redeem()
     {
-        $view = OBRL_PATH . 'views/redeem.php';
+        $view = OBYDRELO_PATH . 'views/redeem.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -697,7 +697,7 @@ final class OBRL_Admin
 
     public function render_rewards()
     {
-        $view = OBRL_PATH . 'views/rewards.php';
+        $view = OBYDRELO_PATH . 'views/rewards.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -705,7 +705,7 @@ final class OBRL_Admin
 
     public function render_reports()
     {
-        $view = OBRL_PATH . 'views/reports.php';
+        $view = OBYDRELO_PATH . 'views/reports.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -713,7 +713,7 @@ final class OBRL_Admin
 
     public function render_referrals()
     {
-        $view = OBRL_PATH . 'views/referrals.php';
+        $view = OBYDRELO_PATH . 'views/referrals.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -721,7 +721,7 @@ final class OBRL_Admin
 
     public function render_activity()
     {
-        $view = OBRL_PATH . 'views/activity.php';
+        $view = OBYDRELO_PATH . 'views/activity.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -729,7 +729,7 @@ final class OBRL_Admin
 
     public function render_settings()
     {
-        $view = OBRL_PATH . 'views/settings.php';
+        $view = OBYDRELO_PATH . 'views/settings.php';
         if (is_readable($view)) {
             include $view;
         }
@@ -737,8 +737,8 @@ final class OBRL_Admin
 
     public function handle_export()
     {
-        $this->verify('orl_export_csv');
-        OBRL_CSV::handle_export();
+        $this->verify('obydrelo_export_csv');
+        OBYDRELO_CSV::handle_export();
     }
 
     private function first_error($error)

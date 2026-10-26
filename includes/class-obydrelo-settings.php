@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Settings
+final class OBYDRELO_Settings
 {
     const GROUP_GENERAL = 'general';
     const GROUP_PROGRAM = 'program';
@@ -21,7 +21,7 @@ final class OBRL_Settings
      * so a change is one delete instead of a scatter of them, and there is no
      * window in which half the settings are the new values and half the old.
      */
-    const CACHE_GROUP = 'obrl_settings';
+    const CACHE_GROUP = 'bobydrelo_settings';
 
     public static function modes()
     {
@@ -219,7 +219,7 @@ final class OBRL_Settings
         }
 
         $settings = self::defaults();
-        if (!OBRL_Schema::is_installed()) {
+        if (!OBYDRELO_Schema::is_installed()) {
             self::$cache = $settings;
             return $settings;
         }
@@ -241,7 +241,7 @@ final class OBRL_Settings
         }
 
         global $wpdb;
-        $table = OBRL_Schema::table('program_settings');
+        $table = OBYDRELO_Schema::table('program_settings');
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Reads go through all(), which caches the whole set in the object cache and drops it in set(); the write and the existence check that chooses between insert and update are current to the row being written.
         $rows = $wpdb->get_results(
             $wpdb->prepare('SELECT setting_key, setting_value FROM %i', $table),
@@ -303,18 +303,18 @@ final class OBRL_Settings
      */
     private static function cache_key()
     {
-        return 'all_' . md5((string) OBRL_Schema::table('program_settings'));
+        return 'all_' . md5((string) OBYDRELO_Schema::table('program_settings'));
     }
 
     public static function set($key, $value)
     {
         $definitions = self::definitions();
-        if (!isset($definitions[$key]) || !OBRL_Schema::is_installed()) {
+        if (!isset($definitions[$key]) || !OBYDRELO_Schema::is_installed()) {
             return false;
         }
 
         global $wpdb;
-        $table = OBRL_Schema::table('program_settings');
+        $table = OBYDRELO_Schema::table('program_settings');
         $value = self::sanitize($key, $value, $definitions[$key]);
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- Reads go through all(), which caches the whole set in the object cache and drops it in set(); the write and the existence check that chooses between insert and update are current to the row being written.
         $existing = $wpdb->get_var(

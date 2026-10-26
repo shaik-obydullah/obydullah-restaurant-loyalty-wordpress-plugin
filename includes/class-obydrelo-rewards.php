@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Rewards
+final class OBYDRELO_Rewards
 {
     const TYPES = 'fixed_value,percentage,free_item';
 
@@ -18,7 +18,7 @@ final class OBRL_Rewards
 
     public static function table()
     {
-        return OBRL_Schema::table('rewards');
+        return OBYDRELO_Schema::table('rewards');
     }
 
     public static function get($reward_id)
@@ -132,7 +132,7 @@ final class OBRL_Rewards
         }
 
         if ($errors) {
-            return new WP_Error('orl_reward_invalid', __('Please correct the highlighted fields.', 'obydullah-restaurant-loyalty'), $errors);
+            return new WP_Error('obydrelo_reward_invalid', __('Please correct the highlighted fields.', 'obydullah-restaurant-loyalty'), $errors);
         }
 
         return $data;
@@ -143,7 +143,7 @@ final class OBRL_Rewards
         global $wpdb;
         $table = self::table();
         if (!$table) {
-            return new WP_Error('orl_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
         }
 
         $clean = self::validate($data);
@@ -180,11 +180,11 @@ final class OBRL_Rewards
         );
 
         if (false === $result) {
-            return new WP_Error('orl_reward_create_failed', __('The reward could not be saved.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_reward_create_failed', __('The reward could not be saved.', 'obydullah-restaurant-loyalty'));
         }
 
         $reward_id = (int) $wpdb->insert_id;
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'reward_created',
             array('object_type' => 'reward', 'object_id' => $reward_id, 'message' => $clean['title'])
         );
@@ -197,7 +197,7 @@ final class OBRL_Rewards
         $table = self::table();
         $reward = self::get($reward_id);
         if (!$table || !$reward) {
-            return new WP_Error('orl_reward_missing', __('That reward no longer exists.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_reward_missing', __('That reward no longer exists.', 'obydullah-restaurant-loyalty'));
         }
 
         $clean = self::validate($data, $reward_id);
@@ -233,10 +233,10 @@ final class OBRL_Rewards
         );
 
         if (false === $result) {
-            return new WP_Error('orl_reward_update_failed', __('The reward could not be updated.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_reward_update_failed', __('The reward could not be updated.', 'obydullah-restaurant-loyalty'));
         }
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'reward_updated',
             array('object_type' => 'reward', 'object_id' => (int) $reward_id, 'message' => $clean['title'])
         );
@@ -261,7 +261,7 @@ final class OBRL_Rewards
         if (false === $result) {
             return false;
         }
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'reward_deleted',
             array('object_type' => 'reward', 'object_id' => (int) $reward_id, 'severity' => 'warning')
         );
@@ -317,25 +317,25 @@ final class OBRL_Rewards
     public static function can_redeem($member, $reward, $bill_amount = 0.0)
     {
         if (!$member || !$reward) {
-            return new WP_Error('orl_missing', __('Member or reward not found.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_missing', __('Member or reward not found.', 'obydullah-restaurant-loyalty'));
         }
         if ('active' !== $member['status']) {
-            return new WP_Error('orl_inactive_member', __('This member is not active.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_inactive_member', __('This member is not active.', 'obydullah-restaurant-loyalty'));
         }
         if (!$reward['is_active']) {
-            return new WP_Error('orl_inactive_reward', __('This reward is not currently available.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_inactive_reward', __('This reward is not currently available.', 'obydullah-restaurant-loyalty'));
         }
 
         $remaining = self::stock_remaining($reward);
         if (null !== $remaining && $remaining < 1) {
-            return new WP_Error('orl_out_of_stock', __('This reward is out of stock.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_out_of_stock', __('This reward is out of stock.', 'obydullah-restaurant-loyalty'));
         }
 
         if ($reward['per_member_limit'] > 0) {
             $used = self::member_redemption_count($member['id'], $reward['id']);
             if ($used >= (int) $reward['per_member_limit']) {
                 return new WP_Error(
-                    'orl_per_member_limit',
+                    'obydrelo_per_member_limit',
                     sprintf(
                         /* translators: %d: number of redemptions already used. */
                         __('This member has already used this reward %d time(s).', 'obydullah-restaurant-loyalty'),
@@ -348,7 +348,7 @@ final class OBRL_Rewards
         $bill_amount = (float) $bill_amount;
         if ($reward['min_purchase'] > 0 && $bill_amount < (float) $reward['min_purchase']) {
             return new WP_Error(
-                'orl_min_purchase',
+                'obydrelo_min_purchase',
                 sprintf(
                     /* translators: %s: formatted minimum purchase amount. */
                     __('This reward requires a minimum purchase of %s.', 'obydullah-restaurant-loyalty'),
@@ -382,7 +382,7 @@ final class OBRL_Rewards
 
         if ($shortfall) {
             return new WP_Error(
-                'orl_insufficient_balance',
+                'obydrelo_insufficient_balance',
                 sprintf(
                     /* translators: %s: list of shortfalls. */
                     __('Not enough balance. Still needed: %s.', 'obydullah-restaurant-loyalty'),
@@ -391,10 +391,10 @@ final class OBRL_Rewards
             );
         }
 
-        $minimum = (int) OBRL_Settings::get('redemption_min_points', 0);
+        $minimum = (int) OBYDRELO_Settings::get('redemption_min_points', 0);
         if ($minimum > 0 && (float) $reward['points_cost'] < $minimum && (float) $member['points_balance'] < $minimum) {
             return new WP_Error(
-                'orl_min_points',
+                'obydrelo_min_points',
                 sprintf(
                     /* translators: %d: minimum points. */
                     __('A redemption needs at least %d points.', 'obydullah-restaurant-loyalty'),
@@ -409,7 +409,7 @@ final class OBRL_Rewards
     public static function member_redemption_count($member_id, $reward_id)
     {
         global $wpdb;
-        $table = OBRL_Schema::table('redemptions');
+        $table = OBYDRELO_Schema::table('redemptions');
         if (!$table) {
             return 0;
         }
@@ -446,7 +446,7 @@ final class OBRL_Rewards
 
     public static function format_amount($amount)
     {
-        return OBRL_Format::money($amount);
+        return OBYDRELO_Format::money($amount);
     }
 
     private static function unique_slug($title)

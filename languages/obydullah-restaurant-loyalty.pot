@@ -34,185 +34,185 @@ msgstr ""
 msgid "https://obydullah.com"
 msgstr ""
 
-#: includes/class-obrl-activator.php:11
+#: includes/class-obydrelo-activator.php:11
 msgid "Obydullah Restaurant Loyalty could not create its database tables. Check the database logs and try again."
 msgstr ""
 
-#: includes/class-obrl-admin.php:35
-#: includes/class-obrl-privacy.php:21
-#: includes/class-obrl-privacy.php:30
+#: includes/class-obydrelo-admin.php:35
+#: includes/class-obydrelo-privacy.php:21
+#: includes/class-obydrelo-privacy.php:30
 msgid "Restaurant Loyalty"
 msgstr ""
 
-#: includes/class-obrl-admin.php:36
+#: includes/class-obydrelo-admin.php:36
 msgid "Loyalty"
 msgstr ""
 
-#: includes/class-obrl-admin.php:45
+#: includes/class-obydrelo-admin.php:45
 #: views/members.php:27
 msgid "Members"
 msgstr ""
 
-#: includes/class-obrl-admin.php:46
+#: includes/class-obydrelo-admin.php:46
 #: views/record.php:21
 msgid "Record Transaction"
 msgstr ""
 
-#: includes/class-obrl-admin.php:47
+#: includes/class-obydrelo-admin.php:47
 #: views/redeem.php:16
 msgid "Redeem Reward"
 msgstr ""
 
-#: includes/class-obrl-admin.php:48
+#: includes/class-obydrelo-admin.php:48
 #: views/rewards.php:16
 #: views/settings.php:11
 msgid "Rewards"
 msgstr ""
 
-#: includes/class-obrl-admin.php:49
+#: includes/class-obydrelo-admin.php:49
 #: views/reports.php:19
 msgid "Reports"
 msgstr ""
 
-#: includes/class-obrl-admin.php:50
+#: includes/class-obydrelo-admin.php:50
 #: views/referrals.php:10
 #: views/settings.php:13
 msgid "Referrals"
 msgstr ""
 
-#: includes/class-obrl-admin.php:51
+#: includes/class-obydrelo-admin.php:51
 #: views/activity.php:31
 msgid "Activity Log"
 msgstr ""
 
-#: includes/class-obrl-admin.php:52
+#: includes/class-obydrelo-admin.php:52
 msgid "Settings"
 msgstr ""
 
-#: includes/class-obrl-admin.php:118
+#: includes/class-obydrelo-admin.php:118
 #: views/members.php:139
 msgid "No members found."
 msgstr ""
 
-#: includes/class-obrl-admin.php:119
+#: includes/class-obydrelo-admin.php:119
 msgid "Select a member"
 msgstr ""
 
-#: includes/class-obrl-admin.php:120
+#: includes/class-obydrelo-admin.php:120
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/class-obrl-admin.php:129
-#: includes/class-obrl-admin.php:553
+#: includes/class-obydrelo-admin.php:129
+#: includes/class-obydrelo-admin.php:553
 msgid "You do not have permission to do that."
 msgstr ""
 
 #. translators: %d: number of settings saved.
-#: includes/class-obrl-admin.php:305
+#: includes/class-obydrelo-admin.php:305
 #, php-format
 msgid "%d setting saved."
 msgid_plural "%d settings saved."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-obrl-admin.php:359
+#: includes/class-obydrelo-admin.php:359
 msgid "Member updated."
 msgstr ""
 
-#: includes/class-obrl-admin.php:360
+#: includes/class-obydrelo-admin.php:360
 msgid "Member enrolled."
 msgstr ""
 
-#: includes/class-obrl-admin.php:375
+#: includes/class-obydrelo-admin.php:375
 msgid "Member removed."
 msgstr ""
 
-#: includes/class-obrl-admin.php:377
+#: includes/class-obydrelo-admin.php:377
 msgid "The member could not be removed."
 msgstr ""
 
-#: includes/class-obrl-admin.php:420
+#: includes/class-obydrelo-admin.php:420
 msgid "Reward updated."
 msgstr ""
 
-#: includes/class-obrl-admin.php:420
+#: includes/class-obydrelo-admin.php:420
 msgid "Reward created."
 msgstr ""
 
-#: includes/class-obrl-admin.php:435
+#: includes/class-obydrelo-admin.php:435
 msgid "Reward removed."
 msgstr ""
 
-#: includes/class-obrl-admin.php:437
+#: includes/class-obydrelo-admin.php:437
 msgid "The reward could not be removed."
 msgstr ""
 
-#: includes/class-obrl-admin.php:463
+#: includes/class-obydrelo-admin.php:463
 msgid "Enter a purchase amount greater than zero."
 msgstr ""
 
-#: includes/class-obrl-admin.php:473
+#: includes/class-obydrelo-admin.php:473
 msgid "You cannot apply manual adjustments."
 msgstr ""
 
-#: includes/class-obrl-admin.php:486
+#: includes/class-obydrelo-admin.php:486
 msgid "Transaction recorded."
 msgstr ""
 
-#: includes/class-obrl-admin.php:515
+#: includes/class-obydrelo-admin.php:515
 msgid "Reward redeemed."
 msgstr ""
 
-#: includes/class-obrl-admin.php:533
-#: includes/class-obrl-redemptions.php:307
+#: includes/class-obydrelo-admin.php:533
+#: includes/class-obydrelo-redemptions.php:307
 msgid "Redemption cancelled and balance returned."
 msgstr ""
 
-#: includes/class-obrl-admin.php:548
+#: includes/class-obydrelo-admin.php:548
 msgid "Your session expired. Please reload the page and try again."
 msgstr ""
 
-#: includes/class-obrl-admin.php:600
+#: includes/class-obydrelo-admin.php:600
 msgid "Member not found."
 msgstr ""
 
-#: includes/class-obrl-admin.php:639
+#: includes/class-obydrelo-admin.php:639
 msgid "Could not rebuild the balance."
 msgstr ""
 
-#: includes/class-obrl-admin.php:655
+#: includes/class-obydrelo-admin.php:655
 msgid "Reward not found."
 msgstr ""
 
-#: includes/class-obrl-birthday.php:62
-#: includes/class-obrl-ledger.php:26
+#: includes/class-obydrelo-birthday.php:62
+#: includes/class-obydrelo-ledger.php:26
 msgid "Birthday reward"
 msgstr ""
 
-#: includes/class-obrl-csv.php:29
-#: includes/class-obrl-portal.php:569
-#: includes/class-obrl-privacy.php:102
-#: includes/class-obrl-privacy.php:121
+#: includes/class-obydrelo-csv.php:29
+#: includes/class-obydrelo-portal.php:569
+#: includes/class-obydrelo-privacy.php:102
+#: includes/class-obydrelo-privacy.php:121
 msgid "Date"
 msgstr ""
 
-#: includes/class-obrl-csv.php:30
-#: includes/class-obrl-privacy.php:55
+#: includes/class-obydrelo-csv.php:30
+#: includes/class-obydrelo-privacy.php:55
 msgid "Member code"
 msgstr ""
 
-#: includes/class-obrl-csv.php:31
+#: includes/class-obydrelo-csv.php:31
 msgid "Member name"
 msgstr ""
 
-#: includes/class-obrl-csv.php:32
-#: includes/class-obrl-privacy.php:58
+#: includes/class-obydrelo-csv.php:32
+#: includes/class-obydrelo-privacy.php:58
 #: views/members.php:74
 msgid "Email"
 msgstr ""
 
-#: includes/class-obrl-csv.php:33
-#: includes/class-obrl-privacy.php:103
+#: includes/class-obydrelo-csv.php:33
+#: includes/class-obydrelo-privacy.php:103
 #: views/dashboard.php:52
 #: views/record.php:128
 #: views/rewards.php:41
@@ -220,10 +220,10 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: includes/class-obrl-csv.php:34
-#: includes/class-obrl-portal.php:421
-#: includes/class-obrl-privacy.php:104
-#: includes/class-obrl-settings.php:29
+#: includes/class-obydrelo-csv.php:34
+#: includes/class-obydrelo-portal.php:421
+#: includes/class-obydrelo-privacy.php:104
+#: includes/class-obydrelo-settings.php:29
 #: views/member-card.php:35
 #: views/record.php:85
 #: views/record.php:129
@@ -231,24 +231,24 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: includes/class-obrl-csv.php:35
-#: includes/class-obrl-portal.php:422
-#: includes/class-obrl-portal.php:462
-#: includes/class-obrl-privacy.php:71
-#: includes/class-obrl-privacy.php:105
-#: includes/class-obrl-settings.php:30
+#: includes/class-obydrelo-csv.php:35
+#: includes/class-obydrelo-portal.php:422
+#: includes/class-obydrelo-portal.php:462
+#: includes/class-obydrelo-privacy.php:71
+#: includes/class-obydrelo-privacy.php:105
+#: includes/class-obydrelo-settings.php:30
 #: views/member-card.php:39
 #: views/record.php:90
 #: views/rewards.php:59
 msgid "Stamps"
 msgstr ""
 
-#: includes/class-obrl-csv.php:36
-#: includes/class-obrl-portal.php:423
-#: includes/class-obrl-portal.php:463
-#: includes/class-obrl-privacy.php:72
-#: includes/class-obrl-privacy.php:106
-#: includes/class-obrl-settings.php:31
+#: includes/class-obydrelo-csv.php:36
+#: includes/class-obydrelo-portal.php:423
+#: includes/class-obydrelo-portal.php:463
+#: includes/class-obydrelo-privacy.php:72
+#: includes/class-obydrelo-privacy.php:106
+#: includes/class-obydrelo-settings.php:31
 #: views/member-card.php:43
 #: views/record.php:94
 #: views/reports.php:88
@@ -256,371 +256,371 @@ msgstr ""
 msgid "Visits"
 msgstr ""
 
-#: includes/class-obrl-csv.php:37
-#: includes/class-obrl-privacy.php:107
+#: includes/class-obydrelo-csv.php:37
+#: includes/class-obydrelo-privacy.php:107
 msgid "Amount"
 msgstr ""
 
-#: includes/class-obrl-csv.php:38
+#: includes/class-obydrelo-csv.php:38
 msgid "Balance after"
 msgstr ""
 
-#: includes/class-obrl-csv.php:39
+#: includes/class-obydrelo-csv.php:39
 #: views/record.php:131
 msgid "Staff"
 msgstr ""
 
-#: includes/class-obrl-csv.php:40
-#: includes/class-obrl-privacy.php:108
+#: includes/class-obydrelo-csv.php:40
+#: includes/class-obydrelo-privacy.php:108
 #: views/record.php:107
 msgid "Note"
 msgstr ""
 
-#: includes/class-obrl-csv.php:82
+#: includes/class-obydrelo-csv.php:82
 msgid "Summary"
 msgstr ""
 
-#: includes/class-obrl-csv.php:83
+#: includes/class-obydrelo-csv.php:83
 #: views/reports.php:51
 msgid "Recorded spend"
 msgstr ""
 
-#: includes/class-obrl-csv.php:84
+#: includes/class-obydrelo-csv.php:84
 #: views/reports.php:55
 msgid "Transactions"
 msgstr ""
 
-#: includes/class-obrl-csv.php:85
+#: includes/class-obydrelo-csv.php:85
 #: views/reports.php:59
 msgid "New members"
 msgstr ""
 
-#: includes/class-obrl-csv.php:86
+#: includes/class-obydrelo-csv.php:86
 #: views/reports.php:63
 msgid "Points earned"
 msgstr ""
 
-#: includes/class-obrl-csv.php:87
+#: includes/class-obydrelo-csv.php:87
 #: views/reports.php:67
 msgid "Points redeemed"
 msgstr ""
 
-#: includes/class-obrl-csv.php:88
+#: includes/class-obydrelo-csv.php:88
 #: views/reports.php:71
 #: views/reports.php:116
 msgid "Redemptions"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:21
+#: includes/class-obydrelo-ledger.php:21
 msgid "Purchase"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:22
+#: includes/class-obydrelo-ledger.php:22
 msgid "Visit"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:23
+#: includes/class-obydrelo-ledger.php:23
 msgid "Points / stamps awarded"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:24
+#: includes/class-obydrelo-ledger.php:24
 msgid "Reward redeemed"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:25
+#: includes/class-obydrelo-ledger.php:25
 msgid "Manual adjustment"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:27
-#: includes/class-obrl-welcome.php:58
+#: includes/class-obydrelo-ledger.php:27
+#: includes/class-obydrelo-welcome.php:58
 msgid "Welcome reward"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:28
-#: includes/class-obrl-referrals.php:182
+#: includes/class-obydrelo-ledger.php:28
+#: includes/class-obydrelo-referrals.php:182
 msgid "Referral reward"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:29
-#: includes/class-obrl-redemptions.php:438
+#: includes/class-obydrelo-ledger.php:29
+#: includes/class-obydrelo-redemptions.php:438
 msgid "Expired"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:30
+#: includes/class-obydrelo-ledger.php:30
 msgid "Void"
 msgstr ""
 
-#: includes/class-obrl-ledger.php:65
-#: includes/class-obrl-members.php:171
-#: includes/class-obrl-redemptions.php:42
-#: includes/class-obrl-rewards.php:146
+#: includes/class-obydrelo-ledger.php:65
+#: includes/class-obydrelo-members.php:171
+#: includes/class-obydrelo-redemptions.php:42
+#: includes/class-obydrelo-rewards.php:146
 msgid "The loyalty database is not installed."
 msgstr ""
 
-#: includes/class-obrl-ledger.php:91
-#: includes/class-obrl-members.php:232
+#: includes/class-obydrelo-ledger.php:91
+#: includes/class-obydrelo-members.php:232
 msgid "That member no longer exists."
 msgstr ""
 
-#: includes/class-obrl-ledger.php:94
+#: includes/class-obydrelo-ledger.php:94
 msgid "Unknown transaction type."
 msgstr ""
 
-#: includes/class-obrl-ledger.php:113
+#: includes/class-obydrelo-ledger.php:113
 msgid "Enter a points, stamp, visit, or amount value."
 msgstr ""
 
 #. translators: %s: formatted points shortfall.
-#: includes/class-obrl-ledger.php:125
+#: includes/class-obydrelo-ledger.php:125
 #, php-format
 msgid "Not enough points. Still needed: %s."
 msgstr ""
 
-#: includes/class-obrl-ledger.php:143
-#: includes/class-obrl-ledger.php:179
+#: includes/class-obydrelo-ledger.php:143
+#: includes/class-obydrelo-ledger.php:179
 msgid "This transaction was already recorded."
 msgstr ""
 
-#: includes/class-obrl-ledger.php:181
+#: includes/class-obydrelo-ledger.php:181
 msgid "The transaction could not be saved."
 msgstr ""
 
-#: includes/class-obrl-members.php:14
+#: includes/class-obydrelo-members.php:14
 #: views/rewards.php:128
 #: views/rewards.php:159
 msgid "Active"
 msgstr ""
 
-#: includes/class-obrl-members.php:15
+#: includes/class-obydrelo-members.php:15
 msgid "Inactive"
 msgstr ""
 
-#: includes/class-obrl-members.php:16
+#: includes/class-obydrelo-members.php:16
 msgid "Suspended"
 msgstr ""
 
-#: includes/class-obrl-members.php:83
+#: includes/class-obydrelo-members.php:83
 msgid "(no name)"
 msgstr ""
 
-#: includes/class-obrl-members.php:128
+#: includes/class-obydrelo-members.php:128
 msgid "A first or last name is required."
 msgstr ""
 
-#: includes/class-obrl-members.php:137
+#: includes/class-obydrelo-members.php:137
 msgid "That email address is not valid."
 msgstr ""
 
-#: includes/class-obrl-members.php:140
+#: includes/class-obydrelo-members.php:140
 msgid "An email address is required."
 msgstr ""
 
-#: includes/class-obrl-members.php:145
+#: includes/class-obydrelo-members.php:145
 msgid "A phone number is required."
 msgstr ""
 
-#: includes/class-obrl-members.php:150
+#: includes/class-obydrelo-members.php:150
 msgid "Enter a birthday in YYYY-MM-DD format."
 msgstr ""
 
-#: includes/class-obrl-members.php:154
+#: includes/class-obydrelo-members.php:154
 msgid "Unknown member status."
 msgstr ""
 
-#: includes/class-obrl-members.php:160
-#: includes/class-obrl-rewards.php:135
+#: includes/class-obydrelo-members.php:160
+#: includes/class-obydrelo-rewards.php:135
 msgid "Please correct the highlighted fields."
 msgstr ""
 
-#: includes/class-obrl-members.php:206
+#: includes/class-obydrelo-members.php:206
 msgid "The member could not be saved."
 msgstr ""
 
-#: includes/class-obrl-members.php:259
+#: includes/class-obydrelo-members.php:259
 msgid "The member could not be updated."
 msgstr ""
 
-#: includes/class-obrl-portal.php:82
+#: includes/class-obydrelo-portal.php:82
 msgid "That member card could not be found."
 msgstr ""
 
 #. translators: %s: member name.
-#: includes/class-obrl-portal.php:106
+#: includes/class-obydrelo-portal.php:106
 #, php-format
 msgid "Card scanned: %s"
 msgstr ""
 
-#: includes/class-obrl-portal.php:245
-#: includes/class-obrl-portal.php:337
+#: includes/class-obydrelo-portal.php:245
+#: includes/class-obydrelo-portal.php:337
 msgid "We could not find a loyalty account for this login."
 msgstr ""
 
-#: includes/class-obrl-portal.php:252
+#: includes/class-obydrelo-portal.php:252
 msgid "Self-service redemption is currently turned off. Please ask a staff member to redeem your reward."
 msgstr ""
 
-#: includes/class-obrl-portal.php:259
-#: includes/class-obrl-rewards.php:200
+#: includes/class-obydrelo-portal.php:259
+#: includes/class-obydrelo-rewards.php:200
 msgid "That reward no longer exists."
 msgstr ""
 
-#: includes/class-obrl-portal.php:272
+#: includes/class-obydrelo-portal.php:272
 msgid "Claimed by the member in the portal."
 msgstr ""
 
 #. translators: %s: redemption code.
-#: includes/class-obrl-portal.php:285
+#: includes/class-obydrelo-portal.php:285
 #, php-format
 msgid "Reward claimed. Show code %s at the counter to collect it."
 msgstr ""
 
-#: includes/class-obrl-portal.php:344
+#: includes/class-obydrelo-portal.php:344
 msgid "Profile editing is currently turned off. Please ask a staff member to update your details."
 msgstr ""
 
-#: includes/class-obrl-portal.php:358
+#: includes/class-obydrelo-portal.php:358
 msgid "Your details have been updated."
 msgstr ""
 
-#: includes/class-obrl-portal.php:386
+#: includes/class-obydrelo-portal.php:386
 msgid "Your loyalty account"
 msgstr ""
 
-#: includes/class-obrl-portal.php:387
+#: includes/class-obydrelo-portal.php:387
 msgid "Sign in to see your balance, history, and rewards."
 msgstr ""
 
-#: includes/class-obrl-portal.php:389
+#: includes/class-obydrelo-portal.php:389
 msgid "Sign in"
 msgstr ""
 
-#: includes/class-obrl-portal.php:401
+#: includes/class-obydrelo-portal.php:401
 msgid "No loyalty account found"
 msgstr ""
 
-#: includes/class-obrl-portal.php:403
+#: includes/class-obydrelo-portal.php:403
 msgid "This login is not linked to a member record yet. Ask a staff member to enrol you or to link this email address."
 msgstr ""
 
-#: includes/class-obrl-portal.php:425
+#: includes/class-obydrelo-portal.php:425
 msgid "Show this code at the counter to collect your reward."
 msgstr ""
 
-#: includes/class-obrl-portal.php:456
+#: includes/class-obydrelo-portal.php:456
 msgid "Member since"
 msgstr ""
 
-#: includes/class-obrl-portal.php:461
-#: includes/class-obrl-privacy.php:70
+#: includes/class-obydrelo-portal.php:461
+#: includes/class-obydrelo-privacy.php:70
 msgid "Points balance"
 msgstr ""
 
-#: includes/class-obrl-portal.php:464
+#: includes/class-obydrelo-portal.php:464
 msgid "Friends invited"
 msgstr ""
 
 #. translators: 1: referral code, 2: invited friend count.
-#: includes/class-obrl-portal.php:473
+#: includes/class-obydrelo-portal.php:473
 #, php-format
 msgid "Share your referral code %1$s — %2$d friend(s) joined so far."
 msgstr ""
 
-#: includes/class-obrl-portal.php:482
+#: includes/class-obydrelo-portal.php:482
 msgid "Available rewards"
 msgstr ""
 
-#: includes/class-obrl-portal.php:484
+#: includes/class-obydrelo-portal.php:484
 msgid "No rewards are available right now."
 msgstr ""
 
-#: includes/class-obrl-portal.php:511
+#: includes/class-obydrelo-portal.php:511
 msgid "Available"
 msgstr ""
 
-#: includes/class-obrl-portal.php:517
+#: includes/class-obydrelo-portal.php:517
 msgid "Claim"
 msgstr ""
 
-#: includes/class-obrl-portal.php:521
+#: includes/class-obydrelo-portal.php:521
 msgid "Ask at the counter"
 msgstr ""
 
-#: includes/class-obrl-portal.php:528
+#: includes/class-obydrelo-portal.php:528
 msgid "Claiming reserves the reward and debits your balance straight away. Show the code at the counter to collect it."
 msgstr ""
 
-#: includes/class-obrl-portal.php:530
+#: includes/class-obydrelo-portal.php:530
 msgid "Ask a staff member at the counter to redeem a reward."
 msgstr ""
 
-#: includes/class-obrl-portal.php:535
+#: includes/class-obydrelo-portal.php:535
 msgid "Your details"
 msgstr ""
 
-#: includes/class-obrl-portal.php:540
-#: includes/class-obrl-privacy.php:56
+#: includes/class-obydrelo-portal.php:540
+#: includes/class-obydrelo-privacy.php:56
 #: views/members.php:64
 msgid "First name"
 msgstr ""
 
-#: includes/class-obrl-portal.php:544
-#: includes/class-obrl-privacy.php:57
+#: includes/class-obydrelo-portal.php:544
+#: includes/class-obydrelo-privacy.php:57
 #: views/members.php:69
 msgid "Last name"
 msgstr ""
 
-#: includes/class-obrl-portal.php:548
-#: includes/class-obrl-privacy.php:59
+#: includes/class-obydrelo-portal.php:548
+#: includes/class-obydrelo-privacy.php:59
 #: views/members.php:79
 msgid "Phone"
 msgstr ""
 
-#: includes/class-obrl-portal.php:552
-#: includes/class-obrl-privacy.php:60
+#: includes/class-obydrelo-portal.php:552
+#: includes/class-obydrelo-privacy.php:60
 #: views/members.php:84
 msgid "Birthday"
 msgstr ""
 
-#: includes/class-obrl-portal.php:556
+#: includes/class-obydrelo-portal.php:556
 msgid "Email and account status are managed by the restaurant."
 msgstr ""
 
-#: includes/class-obrl-portal.php:558
+#: includes/class-obydrelo-portal.php:558
 msgid "Save details"
 msgstr ""
 
-#: includes/class-obrl-portal.php:562
+#: includes/class-obydrelo-portal.php:562
 #: views/dashboard.php:44
 msgid "Recent activity"
 msgstr ""
 
-#: includes/class-obrl-portal.php:564
+#: includes/class-obydrelo-portal.php:564
 msgid "No activity yet."
 msgstr ""
 
-#: includes/class-obrl-portal.php:570
+#: includes/class-obydrelo-portal.php:570
 msgid "Activity"
 msgstr ""
 
-#: includes/class-obrl-portal.php:571
+#: includes/class-obydrelo-portal.php:571
 #: views/dashboard.php:53
 msgid "Change"
 msgstr ""
 
-#: includes/class-obrl-portal.php:621
+#: includes/class-obydrelo-portal.php:621
 msgid "My Loyalty Account"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:51
+#: includes/class-obydrelo-privacy.php:51
 msgid "Loyalty membership"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:54
+#: includes/class-obydrelo-privacy.php:54
 msgid "Member ID"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:61
-#: includes/class-obrl-privacy.php:123
+#: includes/class-obydrelo-privacy.php:61
+#: includes/class-obydrelo-privacy.php:123
 #: views/members.php:90
 #: views/members.php:147
 #: views/redeem.php:97
@@ -628,260 +628,260 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:62
+#: includes/class-obydrelo-privacy.php:62
 msgid "Joined"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:67
+#: includes/class-obydrelo-privacy.php:67
 msgid "Loyalty balance"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:73
+#: includes/class-obydrelo-privacy.php:73
 msgid "Lifetime points"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:74
+#: includes/class-obydrelo-privacy.php:74
 msgid "Total spend"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:99
+#: includes/class-obydrelo-privacy.php:99
 msgid "Loyalty transactions"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:118
+#: includes/class-obydrelo-privacy.php:118
 msgid "Loyalty redemptions"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:122
+#: includes/class-obydrelo-privacy.php:122
 #: views/members.php:145
 #: views/redeem.php:95
 #: views/reports.php:86
 msgid "Code"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:124
+#: includes/class-obydrelo-privacy.php:124
 msgid "Points spent"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:153
+#: includes/class-obydrelo-privacy.php:153
 msgid "Loyalty member has an uncollected reward and was not erased."
 msgstr ""
 
-#: includes/class-obrl-privacy.php:189
+#: includes/class-obydrelo-privacy.php:189
 msgid "Member data erased"
 msgstr ""
 
-#: includes/class-obrl-privacy.php:212
+#: includes/class-obydrelo-privacy.php:212
 msgid "Loyalty member personal data was anonymised. Transaction and audit records were retained for accounting purposes."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:61
-#: includes/class-obrl-rewards.php:320
+#: includes/class-obydrelo-redemptions.php:61
+#: includes/class-obydrelo-rewards.php:320
 msgid "Member or reward not found."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:78
-#: includes/class-obrl-redemptions.php:136
+#: includes/class-obydrelo-redemptions.php:78
+#: includes/class-obydrelo-redemptions.php:136
 msgid "This redemption was already recorded."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:98
+#: includes/class-obydrelo-redemptions.php:98
 msgid "This reward just went out of stock."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:138
+#: includes/class-obydrelo-redemptions.php:138
 msgid "The redemption could not be saved."
 msgstr ""
 
 #. translators: %s: reward title.
-#: includes/class-obrl-redemptions.php:158
+#: includes/class-obydrelo-redemptions.php:158
 #, php-format
 msgid "Redeemed: %s"
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:202
-#: includes/class-obrl-redemptions.php:253
+#: includes/class-obydrelo-redemptions.php:202
+#: includes/class-obydrelo-redemptions.php:253
 msgid "That redemption no longer exists."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:205
+#: includes/class-obydrelo-redemptions.php:205
 msgid "Only an issued redemption can be used."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:230
+#: includes/class-obydrelo-redemptions.php:230
 msgid "The redemption could not be updated."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:233
+#: includes/class-obydrelo-redemptions.php:233
 msgid "That redemption was already used or cancelled."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:256
+#: includes/class-obydrelo-redemptions.php:256
 msgid "That redemption is already closed."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:281
+#: includes/class-obydrelo-redemptions.php:281
 msgid "The redemption could not be cancelled."
 msgstr ""
 
 #. translators: %s: cancellation reason.
-#: includes/class-obrl-redemptions.php:304
+#: includes/class-obydrelo-redemptions.php:304
 #, php-format
 msgid "Redemption cancelled: %s"
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:382
+#: includes/class-obydrelo-redemptions.php:382
 msgid "Reward expired unused, balance returned."
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:435
+#: includes/class-obydrelo-redemptions.php:435
 msgid "Issued"
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:436
+#: includes/class-obydrelo-redemptions.php:436
 msgid "Used"
 msgstr ""
 
-#: includes/class-obrl-redemptions.php:437
+#: includes/class-obydrelo-redemptions.php:437
 msgid "Cancelled"
 msgstr ""
 
-#: includes/class-obrl-referrals.php:18
+#: includes/class-obydrelo-referrals.php:18
 msgid "Pending"
 msgstr ""
 
-#: includes/class-obrl-referrals.php:19
+#: includes/class-obydrelo-referrals.php:19
 msgid "Qualified"
 msgstr ""
 
-#: includes/class-obrl-referrals.php:20
+#: includes/class-obydrelo-referrals.php:20
 msgid "Rewarded"
 msgstr ""
 
-#: includes/class-obrl-referrals.php:21
+#: includes/class-obydrelo-referrals.php:21
 msgid "Rejected"
 msgstr ""
 
-#: includes/class-obrl-referrals.php:196
+#: includes/class-obydrelo-referrals.php:196
 msgid "Referral bonus"
 msgstr ""
 
-#: includes/class-obrl-rewards.php:13
+#: includes/class-obydrelo-rewards.php:13
 #: views/rewards.php:73
 msgid "Fixed value"
 msgstr ""
 
-#: includes/class-obrl-rewards.php:14
+#: includes/class-obydrelo-rewards.php:14
 msgid "Percentage discount"
 msgstr ""
 
-#: includes/class-obrl-rewards.php:15
+#: includes/class-obydrelo-rewards.php:15
 msgid "Free item"
 msgstr ""
 
-#: includes/class-obrl-rewards.php:94
+#: includes/class-obydrelo-rewards.php:94
 msgid "A reward title is required."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:97
+#: includes/class-obydrelo-rewards.php:97
 msgid "Choose a reward type."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:119
+#: includes/class-obydrelo-rewards.php:119
 msgid "Enter a discount percentage greater than zero."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:122
+#: includes/class-obydrelo-rewards.php:122
 msgid "Enter the reward value."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:125
+#: includes/class-obydrelo-rewards.php:125
 msgid "Name the free item."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:131
+#: includes/class-obydrelo-rewards.php:131
 msgid "Set a cost in points, stamps, or visits."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:183
+#: includes/class-obydrelo-rewards.php:183
 msgid "The reward could not be saved."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:236
+#: includes/class-obydrelo-rewards.php:236
 msgid "The reward could not be updated."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:323
+#: includes/class-obydrelo-rewards.php:323
 msgid "This member is not active."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:326
+#: includes/class-obydrelo-rewards.php:326
 msgid "This reward is not currently available."
 msgstr ""
 
-#: includes/class-obrl-rewards.php:331
+#: includes/class-obydrelo-rewards.php:331
 msgid "This reward is out of stock."
 msgstr ""
 
 #. translators: %d: number of redemptions already used.
-#: includes/class-obrl-rewards.php:341
+#: includes/class-obydrelo-rewards.php:341
 #, php-format
 msgid "This member has already used this reward %d time(s)."
 msgstr ""
 
 #. translators: %s: formatted minimum purchase amount.
-#: includes/class-obrl-rewards.php:354
+#: includes/class-obydrelo-rewards.php:354
 #, php-format
 msgid "This reward requires a minimum purchase of %s."
 msgstr ""
 
 #. translators: %s: formatted points.
-#: includes/class-obrl-rewards.php:364
+#: includes/class-obydrelo-rewards.php:364
 #, php-format
 msgid "%s points"
 msgstr ""
 
 #. translators: %d: stamp count.
-#: includes/class-obrl-rewards.php:371
+#: includes/class-obydrelo-rewards.php:371
 #, php-format
 msgid "%d stamps"
 msgstr ""
 
 #. translators: %d: visit count.
-#: includes/class-obrl-rewards.php:378
+#: includes/class-obydrelo-rewards.php:378
 #, php-format
 msgid "%d visits"
 msgstr ""
 
 #. translators: %s: list of shortfalls.
-#: includes/class-obrl-rewards.php:388
+#: includes/class-obydrelo-rewards.php:388
 #, php-format
 msgid "Not enough balance. Still needed: %s."
 msgstr ""
 
 #. translators: %d: minimum points.
-#: includes/class-obrl-rewards.php:400
+#: includes/class-obydrelo-rewards.php:400
 #, php-format
 msgid "A redemption needs at least %d points."
 msgstr ""
 
-#: includes/class-obrl-roles.php:57
+#: includes/class-obydrelo-roles.php:57
 msgid "Loyalty Manager"
 msgstr ""
 
-#: includes/class-obrl-roles.php:63
+#: includes/class-obydrelo-roles.php:63
 msgid "Loyalty Staff"
 msgstr ""
 
-#: includes/class-obrl-roles.php:69
+#: includes/class-obydrelo-roles.php:69
 msgid "Loyalty Member"
 msgstr ""
 
-#: includes/class-obrl-settings.php:154
+#: includes/class-obydrelo-settings.php:154
 msgid "On signup"
 msgstr ""
 
-#: includes/class-obrl-settings.php:155
+#: includes/class-obydrelo-settings.php:155
 msgid "On first purchase"
 msgstr ""
 

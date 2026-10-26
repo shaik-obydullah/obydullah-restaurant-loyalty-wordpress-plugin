@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Plugin
+final class OBYDRELO_Plugin
 {
     private static $booted = false;
 
@@ -18,13 +18,13 @@ final class OBRL_Plugin
         // languages/ directory from the plugin slug declared in the header and
         // loads the .mo file itself when the site locale calls for one.
 
-        OBRL_Cron::init();
-        OBRL_Privacy::init();
+        OBYDRELO_Cron::init();
+        OBYDRELO_Privacy::init();
 
         if (is_admin()) {
-            new OBRL_Admin();
+            new OBYDRELO_Admin();
         }
 
-        new OBRL_Portal();
+        new OBYDRELO_Portal();
     }
 }

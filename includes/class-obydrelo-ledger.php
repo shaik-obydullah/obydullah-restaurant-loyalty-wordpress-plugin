@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  * on the members row are refreshed from SUM() over the ledger by recalculate_member(),
  * which can rebuild any member at any time.
  */
-final class OBRL_Ledger
+final class OBYDRELO_Ledger
 {
     const TYPES = 'purchase,visit,earn,redeem,adjustment,birthday,welcome,referral,expire,void';
 
@@ -33,12 +33,12 @@ final class OBRL_Ledger
 
     public static function table()
     {
-        return OBRL_Schema::table('member_transactions');
+        return OBYDRELO_Schema::table('member_transactions');
     }
 
     public static function mode()
     {
-        return (string) OBRL_Settings::get('program_mode', 'points');
+        return (string) OBYDRELO_Settings::get('program_mode', 'points');
     }
 
     /**
@@ -62,7 +62,7 @@ final class OBRL_Ledger
         global $wpdb;
         $table = self::table();
         if (!$table) {
-            return new WP_Error('orl_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
         }
 
         $args = wp_parse_args(
@@ -75,7 +75,7 @@ final class OBRL_Ledger
                 'stamps'         => 0,
                 'visits'         => 0,
                 'amount'         => 0,
-                'currency'       => (string) OBRL_Settings::get('currency_code', ''),
+                'currency'       => (string) OBYDRELO_Settings::get('currency_code', ''),
                 'reward_id'      => null,
                 'redemption_id'  => null,
                 'reference_type' => '',
@@ -86,12 +86,12 @@ final class OBRL_Ledger
             )
         );
 
-        $member = OBRL_Members::get($args['member_id']);
+        $member = OBYDRELO_Members::get($args['member_id']);
         if (!$member) {
-            return new WP_Error('orl_member_missing', __('That member no longer exists.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_member_missing', __('That member no longer exists.', 'obydullah-restaurant-loyalty'));
         }
         if (!array_key_exists($args['type'], self::types())) {
-            return new WP_Error('orl_bad_type', __('Unknown transaction type.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_bad_type', __('Unknown transaction type.', 'obydullah-restaurant-loyalty'));
         }
 
         $args['points'] = round((float) $args['points'], 2);
@@ -110,20 +110,20 @@ final class OBRL_Ledger
         }
 
         if (0.0 === $args['points'] && 0 === $args['stamps'] && 0 === $args['visits'] && 0.0 === $args['amount']) {
-            return new WP_Error('orl_empty_transaction', __('Enter a points, stamp, visit, or amount value.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_empty_transaction', __('Enter a points, stamp, visit, or amount value.', 'obydullah-restaurant-loyalty'));
         }
 
         // Refuse to overdraw a member unless the program allows a negative
         // balance, so a debit can never silently create debt.
-        if ($args['points'] < 0 && !OBRL_Settings::get('allow_negative_points')) {
+        if ($args['points'] < 0 && !OBYDRELO_Settings::get('allow_negative_points')) {
             $projected = round((float) $member['points_balance'] + $args['points'], 2);
             if ($projected < 0) {
                 return new WP_Error(
-                    'orl_insufficient_balance',
+                    'obydrelo_insufficient_balance',
                     sprintf(
                         /* translators: %s: formatted points shortfall. */
                         __('Not enough points. Still needed: %s.', 'obydullah-restaurant-loyalty'),
-                        OBRL_Format::points(abs($projected))
+                        OBYDRELO_Format::points(abs($projected))
                     )
                 );
             }
@@ -140,7 +140,7 @@ final class OBRL_Ledger
                 $wpdb->prepare('SELECT id FROM %i WHERE id_hash = %s', $table, $id_hash)
             );
             if (null !== $existing) {
-                return new WP_Error('orl_duplicate', __('This transaction was already recorded.', 'obydullah-restaurant-loyalty'));
+                return new WP_Error('obydrelo_duplicate', __('This transaction was already recorded.', 'obydullah-restaurant-loyalty'));
             }
         }
 
@@ -176,15 +176,15 @@ final class OBRL_Ledger
 
         if (false === $result) {
             if (self::is_duplicate($wpdb->last_error)) {
-                return new WP_Error('orl_duplicate', __('This transaction was already recorded.', 'obydullah-restaurant-loyalty'));
+                return new WP_Error('obydrelo_duplicate', __('This transaction was already recorded.', 'obydullah-restaurant-loyalty'));
             }
-            return new WP_Error('orl_transaction_failed', __('The transaction could not be saved.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_transaction_failed', __('The transaction could not be saved.', 'obydullah-restaurant-loyalty'));
         }
 
         $transaction_id = (int) $wpdb->insert_id;
         self::refresh_member($member['id'], $transaction_id, $args['type']);
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'transaction_' . $args['type'],
             array(
                 'member_id'   => $member['id'],
@@ -201,7 +201,7 @@ final class OBRL_Ledger
             )
         );
 
-        OBRL_Referrals::maybe_qualify($member['id'], $transaction_id);
+        OBYDRELO_Referrals::maybe_qualify($member['id'], $transaction_id);
 
         return $transaction_id;
     }
@@ -231,7 +231,7 @@ final class OBRL_Ledger
     public static function recalculate_member($member_id)
     {
         global $wpdb;
-        $members = OBRL_Members::table();
+        $members = OBYDRELO_Members::table();
         $table = self::table();
         $member_id = (int) $member_id;
         if (!$members || !$table || $member_id < 1) {
@@ -283,15 +283,15 @@ final class OBRL_Ledger
     {
         global $wpdb;
         $table = self::table();
-        $members = OBRL_Members::table();
+        $members = OBYDRELO_Members::table();
 
-        $before = OBRL_Members::get($member_id);
+        $before = OBYDRELO_Members::get($member_id);
         if (!$before) {
             return;
         }
 
         self::recalculate_member($member_id);
-        $after = OBRL_Members::get($member_id);
+        $after = OBYDRELO_Members::get($member_id);
         if (!$after) {
             return;
         }
@@ -411,7 +411,7 @@ final class OBRL_Ledger
     {
         $amount = max(0.0, (float) $amount);
         $mode = self::mode();
-        $rate = (float) OBRL_Settings::get('points_per_currency', 1);
+        $rate = (float) OBYDRELO_Settings::get('points_per_currency', 1);
 
         $values = array('points' => 0.0, 'stamps' => 0, 'visits' => 1, 'amount' => $amount);
         if ('points' === $mode) {

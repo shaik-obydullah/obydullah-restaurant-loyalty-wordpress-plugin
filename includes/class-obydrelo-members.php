@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Members
+final class OBYDRELO_Members
 {
     const STATUSES = 'active,inactive,suspended';
     const PER_PAGE = 20;
@@ -19,7 +19,7 @@ final class OBRL_Members
 
     public static function table()
     {
-        return OBRL_Schema::table('members');
+        return OBYDRELO_Schema::table('members');
     }
 
     public static function get($member_id)
@@ -136,12 +136,12 @@ final class OBRL_Members
         if ('' !== $raw_email && (!is_email($data['email']) || '' === $data['email'])) {
             $errors['email'] = __('That email address is not valid.', 'obydullah-restaurant-loyalty');
         }
-        if (OBRL_Settings::get('require_email') && '' === $data['email']) {
+        if (OBYDRELO_Settings::get('require_email') && '' === $data['email']) {
             $errors['email'] = __('An email address is required.', 'obydullah-restaurant-loyalty');
         }
 
         $data['phone'] = self::sanitize_phone($data['phone']);
-        if (OBRL_Settings::get('require_phone') && '' === $data['phone']) {
+        if (OBYDRELO_Settings::get('require_phone') && '' === $data['phone']) {
             $errors['phone'] = __('A phone number is required.', 'obydullah-restaurant-loyalty');
         }
 
@@ -157,7 +157,7 @@ final class OBRL_Members
         $data['status'] = array_key_exists($data['status'], self::statuses()) ? $data['status'] : 'active';
 
         if ($errors) {
-            return new WP_Error('orl_member_invalid', __('Please correct the highlighted fields.', 'obydullah-restaurant-loyalty'), $errors);
+            return new WP_Error('obydrelo_member_invalid', __('Please correct the highlighted fields.', 'obydullah-restaurant-loyalty'), $errors);
         }
 
         return $data;
@@ -168,7 +168,7 @@ final class OBRL_Members
         global $wpdb;
         $table = self::table();
         if (!$table) {
-            return new WP_Error('orl_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_no_schema', __('The loyalty database is not installed.', 'obydullah-restaurant-loyalty'));
         }
 
         $clean = self::validate($data);
@@ -203,11 +203,11 @@ final class OBRL_Members
         );
 
         if (false === $result) {
-            return new WP_Error('orl_member_create_failed', __('The member could not be saved.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_member_create_failed', __('The member could not be saved.', 'obydullah-restaurant-loyalty'));
         }
 
         $member_id = (int) $wpdb->insert_id;
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'member_created',
             array(
                 'member_id'   => $member_id,
@@ -218,7 +218,7 @@ final class OBRL_Members
             )
         );
 
-        OBRL_Welcome::maybe_grant(self::get($member_id));
+        OBYDRELO_Welcome::maybe_grant(self::get($member_id));
 
         return $member_id;
     }
@@ -229,7 +229,7 @@ final class OBRL_Members
         $table = self::table();
         $member = self::get($member_id);
         if (!$table || !$member) {
-            return new WP_Error('orl_member_missing', __('That member no longer exists.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_member_missing', __('That member no longer exists.', 'obydullah-restaurant-loyalty'));
         }
 
         $clean = self::validate($data, $member_id);
@@ -256,10 +256,10 @@ final class OBRL_Members
         );
 
         if (false === $result) {
-            return new WP_Error('orl_member_update_failed', __('The member could not be updated.', 'obydullah-restaurant-loyalty'));
+            return new WP_Error('obydrelo_member_update_failed', __('The member could not be updated.', 'obydullah-restaurant-loyalty'));
         }
 
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'member_updated',
             array(
                 'member_id'   => (int) $member_id,
@@ -293,7 +293,7 @@ final class OBRL_Members
         if (false === $result) {
             return false;
         }
-        OBRL_Logger::log(
+        OBYDRELO_Logger::log(
             'member_deleted',
             array(
                 'member_id'   => (int) $member_id,
@@ -414,7 +414,7 @@ final class OBRL_Members
      */
     public static function recalculate($member_id)
     {
-        return OBRL_Ledger::recalculate_member($member_id);
+        return OBYDRELO_Ledger::recalculate_member($member_id);
     }
 
     public static function stats()
@@ -458,7 +458,7 @@ final class OBRL_Members
             $column = 'member_code';
         }
 
-        $prefix = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', (string) OBRL_Settings::get('member_code_prefix', 'MBR')));
+        $prefix = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', (string) OBYDRELO_Settings::get('member_code_prefix', 'MBR')));
         $prefix = '' !== $prefix ? $prefix : 'MBR';
 
         if ('referral_code' === $column) {

@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Reports
+final class OBYDRELO_Reports
 {
     public static function since($days)
     {
@@ -16,10 +16,10 @@ final class OBRL_Reports
         global $wpdb;
         $days      = in_array((string) $days, array('7', '30', '90', '365'), true) ? (string) $days : '30';
         $since     = self::since($days);
-        $tx        = OBRL_Schema::table('member_transactions');
-        $members   = OBRL_Members::table();
-        $rewards   = OBRL_Schema::table('rewards');
-        $redeem    = OBRL_Schema::table('redemptions');
+        $tx        = OBYDRELO_Schema::table('member_transactions');
+        $members   = OBYDRELO_Members::table();
+        $rewards   = OBYDRELO_Schema::table('rewards');
+        $redeem    = OBYDRELO_Schema::table('redemptions');
 
         $empty = array(
             'range'           => $days,

@@ -3,15 +3,15 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Activator
+final class OBYDRELO_Activator
 {
     public static function activate()
     {
-        if (!OBRL_Schema::install()) {
+        if (!OBYDRELO_Schema::install()) {
             wp_die(esc_html__('Obydullah Restaurant Loyalty could not create its database tables. Check the database logs and try again.', 'obydullah-restaurant-loyalty'));
         }
 
-        OBRL_Roles::install();
+        OBYDRELO_Roles::install();
         self::seed_settings();
         self::ensure_cron();
         flush_rewrite_rules();
@@ -19,17 +19,17 @@ final class OBRL_Activator
 
     public static function deactivate()
     {
-        wp_clear_scheduled_hook(OBRL_CRON_DAILY);
+        wp_clear_scheduled_hook(OBYDRELO_CRON_DAILY);
         flush_rewrite_rules();
     }
 
     public static function maybe_upgrade()
     {
-        if (!OBRL_Schema::is_installed()) {
-            if (!OBRL_Schema::install()) {
+        if (!OBYDRELO_Schema::is_installed()) {
+            if (!OBYDRELO_Schema::install()) {
                 return;
             }
-            OBRL_Roles::install();
+            OBYDRELO_Roles::install();
             self::seed_settings();
         }
 
@@ -38,8 +38,8 @@ final class OBRL_Activator
 
     public static function ensure_cron()
     {
-        if (!wp_next_scheduled(OBRL_CRON_DAILY)) {
-            wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', OBRL_CRON_DAILY);
+        if (!wp_next_scheduled(OBYDRELO_CRON_DAILY)) {
+            wp_schedule_event(time() + HOUR_IN_SECONDS, 'daily', OBYDRELO_CRON_DAILY);
         }
     }
 
@@ -50,7 +50,7 @@ final class OBRL_Activator
     public static function seed_settings()
     {
         global $wpdb;
-        $table = OBRL_Schema::table('program_settings');
+        $table = OBYDRELO_Schema::table('program_settings');
         if (!$table) {
             return;
         }
@@ -60,7 +60,7 @@ final class OBRL_Activator
         $existing = is_array($existing) ? $existing : array();
 
         $now = current_time('mysql', true);
-        foreach (OBRL_Settings::definitions() as $key => $definition) {
+        foreach (OBYDRELO_Settings::definitions() as $key => $definition) {
             if (in_array($key, $existing, true)) {
                 continue;
             }
@@ -81,6 +81,6 @@ final class OBRL_Activator
             );
         }
 
-        OBRL_Settings::flush_cache();
+        OBYDRELO_Settings::flush_cache();
     }
 }

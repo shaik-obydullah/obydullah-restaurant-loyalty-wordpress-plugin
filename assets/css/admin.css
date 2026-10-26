@@ -7,22 +7,22 @@
  * parent width and then add that margin on top, overflowing the page by the
  * margin and producing a horizontal scrollbar. A block box with width auto
  * already fills the container minus its own margins, which is full width. */
-.orl-wrap {
+.obydrelo-wrap {
 	clear: both;
 }
 
-.orl-page-title {
+.obydrelo-page-title {
 	margin-bottom: 12px;
 }
 
-.orl-mode-bar {
+.obydrelo-mode-bar {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
 	margin-bottom: 18px;
 }
 
-.orl-mode-pill {
+.obydrelo-mode-pill {
 	display: inline-block;
 	padding: 4px 10px;
 	border-radius: 999px;
@@ -33,7 +33,7 @@
 	color: #1d4b73;
 }
 
-.orl-mode-pill--muted {
+.obydrelo-mode-pill--muted {
 	background: #f6f7f7;
 	border-color: #dcdcde;
 	color: #50575e;
@@ -42,7 +42,7 @@
 
 /* Layout ------------------------------------------------------------------ */
 
-.orl-columns {
+.obydrelo-columns {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
@@ -50,16 +50,16 @@
 	margin-top: 20px;
 }
 
-.orl-column {
+.obydrelo-column {
 	flex: 1 1 420px;
 	min-width: 0;
 }
 
-.orl-column--narrow {
+.obydrelo-column--narrow {
 	flex: 0 1 420px;
 }
 
-.orl-panel {
+.obydrelo-panel {
 	background: #fff;
 	border: 1px solid #dcdcde;
 	border-radius: 6px;
@@ -68,21 +68,21 @@
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 
-.orl-panel h2 {
+.obydrelo-panel h2 {
 	margin-top: 0;
 	font-size: 15px;
 }
 
 /* Stats ------------------------------------------------------------------- */
 
-.orl-stat-grid {
+.obydrelo-stat-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 	gap: 14px;
 	margin: 18px 0;
 }
 
-.orl-stat {
+.obydrelo-stat {
 	background: #fff;
 	border: 1px solid #dcdcde;
 	border-left: 4px solid #2271b1;
@@ -93,14 +93,14 @@
 	gap: 4px;
 }
 
-.orl-stat__value {
+.obydrelo-stat__value {
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 1.2;
 	color: #1d2327;
 }
 
-.orl-stat__label {
+.obydrelo-stat__label {
 	font-size: 12px;
 	color: #646970;
 	text-transform: uppercase;
@@ -109,22 +109,22 @@
 
 /* Forms ------------------------------------------------------------------- */
 
-.orl-form label {
+.obydrelo-form label {
 	display: block;
 	font-weight: 600;
 	margin-bottom: 4px;
 }
 
-.orl-form input[type="text"],
-.orl-form input[type="email"],
-.orl-form input[type="date"],
-.orl-form input[type="number"],
-.orl-form select,
-.orl-form textarea {
+.obydrelo-form input[type="text"],
+.obydrelo-form input[type="email"],
+.obydrelo-form input[type="date"],
+.obydrelo-form input[type="number"],
+.obydrelo-form select,
+.obydrelo-form textarea {
 	max-width: 100%;
 }
 
-.orl-help {
+.obydrelo-help {
 	display: block;
 	margin-top: 4px;
 	font-size: 12px;
@@ -132,14 +132,14 @@
 	font-weight: 400;
 }
 
-.orl-fieldset {
+.obydrelo-fieldset {
 	border: 1px solid #dcdcde;
 	border-radius: 4px;
 	padding: 10px 14px 4px;
 	margin: 14px 0;
 }
 
-.orl-fieldset legend {
+.obydrelo-fieldset legend {
 	font-weight: 600;
 	font-size: 12px;
 	text-transform: uppercase;
@@ -148,11 +148,11 @@
 	padding: 0 4px;
 }
 
-.orl-submit {
+.obydrelo-submit {
 	margin-top: 4px;
 }
 
-.orl-search-form {
+.obydrelo-search-form {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -160,19 +160,19 @@
 	margin-bottom: 14px;
 }
 
-.orl-inline-form {
+.obydrelo-inline-form {
 	display: flex;
 	gap: 4px;
 	align-items: center;
 }
 
-.orl-reason {
+.obydrelo-reason {
 	width: 110px;
 }
 
 /* Member search autocomplete ---------------------------------------------- */
 
-.orl-autocomplete {
+.obydrelo-autocomplete {
 	position: absolute;
 	z-index: 100;
 	background: #fff;
@@ -184,7 +184,7 @@
 	min-width: 280px;
 }
 
-.orl-autocomplete__item {
+.obydrelo-autocomplete__item {
 	display: block;
 	width: 100%;
 	text-align: left;
@@ -196,21 +196,21 @@
 	border-bottom: 1px solid #f0f0f1;
 }
 
-.orl-autocomplete__item:hover,
-.orl-autocomplete__item:focus {
+.obydrelo-autocomplete__item:hover,
+.obydrelo-autocomplete__item:focus {
 	background: #f0f6fc;
 	outline: none;
 }
 
-.orl-autocomplete__item strong {
+.obydrelo-autocomplete__item strong {
 	display: block;
 }
 
-.orl-autocomplete__item small {
+.obydrelo-autocomplete__item small {
 	color: #646970;
 }
 
-.orl-selected {
+.obydrelo-selected {
 	margin-top: 8px;
 	padding: 8px 12px;
 	background: #edf7ed;
@@ -219,7 +219,7 @@
 	font-size: 13px;
 }
 
-.orl-selected__clear {
+.obydrelo-selected__clear {
 	float: right;
 	border: 0;
 	background: none;
@@ -230,7 +230,7 @@
 
 /* Member card ------------------------------------------------------------- */
 
-.orl-card {
+.obydrelo-card {
 	display: flex;
 	gap: 18px;
 	align-items: center;
@@ -240,41 +240,41 @@
 	padding: 16px;
 }
 
-.orl-card--compact {
+.obydrelo-card--compact {
 	padding: 12px;
 	gap: 12px;
 }
 
-.orl-card__qr,
-.orl-portal__qr {
+.obydrelo-card__qr,
+.obydrelo-portal__qr {
 	width: 148px;
 	height: 148px;
 	flex: 0 0 auto;
 }
 
-.orl-card--compact .orl-card__qr {
+.obydrelo-card--compact .obydrelo-card__qr {
 	width: 104px;
 	height: 104px;
 }
 
-.orl-card__qr svg,
-.orl-portal__qr svg {
+.obydrelo-card__qr svg,
+.obydrelo-portal__qr svg {
 	width: 100%;
 	height: 100%;
 	display: block;
 }
 
-.orl-card__body {
+.obydrelo-card__body {
 	min-width: 0;
 }
 
-.orl-card__name {
+.obydrelo-card__name {
 	margin: 0 0 2px;
 	font-size: 16px;
 	font-weight: 700;
 }
 
-.orl-card__code {
+.obydrelo-card__code {
 	margin: 0 0 10px;
 	font-family: Menlo, Consolas, monospace;
 	font-size: 13px;
@@ -282,7 +282,7 @@
 	word-break: break-all;
 }
 
-.orl-card__stats {
+.obydrelo-card__stats {
 	display: flex;
 	gap: 18px;
 	margin: 0 0 8px;
@@ -290,23 +290,23 @@
 	list-style: none;
 }
 
-.orl-card__stats li {
+.obydrelo-card__stats li {
 	display: flex;
 	flex-direction: column;
 }
 
-.orl-card__stat-value {
+.obydrelo-card__stat-value {
 	font-size: 18px;
 	font-weight: 700;
 }
 
-.orl-card__stat-label {
+.obydrelo-card__stat-label {
 	font-size: 11px;
 	color: #646970;
 	text-transform: uppercase;
 }
 
-.orl-card__url {
+.obydrelo-card__url {
 	margin: 0;
 	font-size: 11px;
 	color: #8c8f94;
@@ -315,7 +315,7 @@
 
 /* Status pills ------------------------------------------------------------ */
 
-.orl-status {
+.obydrelo-status {
 	display: inline-block;
 	padding: 2px 8px;
 	border-radius: 999px;
@@ -325,34 +325,34 @@
 	letter-spacing: 0.03em;
 }
 
-.orl-status--active,
-.orl-status--used,
-.orl-status--rewarded {
+.obydrelo-status--active,
+.obydrelo-status--used,
+.obydrelo-status--rewarded {
 	background: #edf7ed;
 	color: #1a6b2c;
 }
 
-.orl-status--inactive,
-.orl-status--expired,
-.orl-status--pending {
+.obydrelo-status--inactive,
+.obydrelo-status--expired,
+.obydrelo-status--pending {
 	background: #f6f7f7;
 	color: #50575e;
 }
 
-.orl-status--suspended,
-.orl-status--cancelled,
-.orl-status--rejected {
+.obydrelo-status--suspended,
+.obydrelo-status--cancelled,
+.obydrelo-status--rejected {
 	background: #fcf0f1;
 	color: #8a2424;
 }
 
-.orl-status--issued,
-.orl-status--qualified {
+.obydrelo-status--issued,
+.obydrelo-status--qualified {
 	background: #f0f6fc;
 	color: #1d4b73;
 }
 
-.orl-badge {
+.obydrelo-badge {
 	display: inline-block;
 	padding: 2px 8px;
 	border-radius: 999px;
@@ -360,31 +360,31 @@
 	font-weight: 600;
 }
 
-.orl-badge--today {
+.obydrelo-badge--today {
 	background: #f0f6fc;
 	color: #1d4b73;
 }
 
 /* Misc -------------------------------------------------------------------- */
 
-.orl-muted {
+.obydrelo-muted {
 	color: #646970;
 }
 
-.orl-empty {
+.obydrelo-empty {
 	color: #646970;
 	font-style: italic;
 	padding: 12px 0;
 	margin: 0;
 }
 
-.orl-list {
+.obydrelo-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.orl-list li {
+.obydrelo-list li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -393,18 +393,18 @@
 	border-bottom: 1px solid #f0f0f1;
 }
 
-.orl-list__main small {
+.obydrelo-list__main small {
 	display: block;
 	color: #646970;
 }
 
-.orl-button-row {
+.obydrelo-button-row {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
 }
 
-.orl-toolbar {
+.obydrelo-toolbar {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 14px;
@@ -417,19 +417,19 @@
 	margin: 16px 0;
 }
 
-.orl-toolbar form {
+.obydrelo-toolbar form {
 	display: flex;
 	gap: 8px;
 	align-items: center;
 }
 
-.orl-member-preview {
+.obydrelo-member-preview {
 	margin-bottom: 14px;
 }
 
 /* Bar chart --------------------------------------------------------------- */
 
-.orl-bars {
+.obydrelo-bars {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -437,20 +437,20 @@
 	overflow-y: auto;
 }
 
-.orl-bars li {
+.obydrelo-bars li {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	padding: 3px 0;
 }
 
-.orl-bars__label {
+.obydrelo-bars__label {
 	flex: 0 0 84px;
 	font-size: 11px;
 	color: #646970;
 }
 
-.orl-bars__track {
+.obydrelo-bars__track {
 	flex: 1 1 auto;
 	height: 12px;
 	background: #f0f0f1;
@@ -458,14 +458,14 @@
 	overflow: hidden;
 }
 
-.orl-bars__fill {
+.obydrelo-bars__fill {
 	display: block;
 	height: 100%;
 	background: #2271b1;
 	border-radius: 6px;
 }
 
-.orl-bars__value {
+.obydrelo-bars__value {
 	flex: 0 0 42px;
 	text-align: right;
 	font-size: 12px;
@@ -473,12 +473,12 @@
 }
 
 @media screen and (max-width: 782px) {
-	.orl-column,
-	.orl-column--narrow {
+	.obydrelo-column,
+	.obydrelo-column--narrow {
 		flex: 1 1 100%;
 	}
 
-	.orl-card {
+	.obydrelo-card {
 		flex-direction: column;
 		align-items: flex-start;
 	}

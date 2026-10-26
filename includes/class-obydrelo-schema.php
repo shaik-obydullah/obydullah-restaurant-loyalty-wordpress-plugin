@@ -13,15 +13,15 @@ if (!defined('ABSPATH')) {
  * would turn every uninstall into a crash. Defining it in both places would
  * instead be two places to keep in step.
  *
- * OBRL_Schema::table(), table_names(), statements() and drop() all derive every
+ * OBYDRELO_Schema::table(), table_names(), statements() and drop() all derive every
  * table name from it, so a query can never be built against a name the
  * installer did not create. Nothing else in the plugin may hardcode the string.
  */
-if (!defined('OBRL')) {
-    define('OBRL', 'obrl_');
+if (!defined('OBYDRELO_TABLE_PREFIX')) {
+    define('OBYDRELO_TABLE_PREFIX', 'bobydrelo_');
 }
 
-final class OBRL_Schema
+final class OBYDRELO_Schema
 {
     const TABLES = 'members,member_transactions,rewards,redemptions,referrals,program_settings,activity_logs';
 
@@ -52,7 +52,7 @@ final class OBRL_Schema
      * two staff can be acting on the same screen at once. A cached balance row
      * would hand one of them a figure that is already wrong. Every read here
      * is deliberately uncached and authoritative, and any balance can be
-     * rebuilt from the ledger, which is what OBRL_Ledger::recalculate_member()
+     * rebuilt from the ledger, which is what OBYDRELO_Ledger::recalculate_member()
      * exists for.
      *
      * Every identifier that reaches a query is escaped with prepare()'s %i
@@ -63,7 +63,7 @@ final class OBRL_Schema
     public static function prefix()
     {
         global $wpdb;
-        return $wpdb->prefix . OBRL;
+        return $wpdb->prefix . OBYDRELO_TABLE_PREFIX;
     }
 
     /**

@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-final class OBRL_Welcome
+final class OBYDRELO_Welcome
 {
     /**
      * Grants the configured welcome reward once per member. Runs after
@@ -14,7 +14,7 @@ final class OBRL_Welcome
         if (!$member || empty($member['id'])) {
             return false;
         }
-        if (!OBRL_Settings::get('welcome_reward_enabled')) {
+        if (!OBYDRELO_Settings::get('welcome_reward_enabled')) {
             return false;
         }
         if (!empty($member['welcome_reward_claimed'])) {
@@ -22,7 +22,7 @@ final class OBRL_Welcome
         }
 
         global $wpdb;
-        $table = OBRL_Members::table();
+        $table = OBYDRELO_Members::table();
         if (!$table) {
             return false;
         }
@@ -39,15 +39,15 @@ final class OBRL_Welcome
             return false;
         }
 
-        $points = (float) OBRL_Settings::get('welcome_reward_points', 0);
-        $stamps = (int) OBRL_Settings::get('welcome_reward_stamps', 0);
-        $visits = (int) OBRL_Settings::get('welcome_reward_visits', 0);
+        $points = (float) OBYDRELO_Settings::get('welcome_reward_points', 0);
+        $stamps = (int) OBYDRELO_Settings::get('welcome_reward_stamps', 0);
+        $visits = (int) OBYDRELO_Settings::get('welcome_reward_visits', 0);
 
         if (0.0 === $points && 0 === $stamps && 0 === $visits) {
             return false;
         }
 
-        $result = OBRL_Ledger::record(
+        $result = OBYDRELO_Ledger::record(
             array(
                 'member_id' => $member['id'],
                 'type'      => 'welcome',
