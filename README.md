@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="docs/Banner.jpeg" alt="Obydullah Restaurant Loyalty" width="100%">
-</p>
-
 <h1 align="center">Obydullah Restaurant Loyalty</h1>
 
 <p align="center">
@@ -31,11 +27,11 @@
 
 The plugin supports three interchangeable program modes:
 
-| Mode | How it works |
-| --- | --- |
+| Mode          | How it works                                                                                            |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
 | 🪙 **Points** | Members earn spendable value, with a configurable earning rate and a configurable cash value per point. |
-| 🎟️ **Stamps** | A member collects a stamp per qualifying visit or spend threshold, and spends stamps on rewards. |
-| 📅 **Visits** | Members accumulate visit counts and spend them on rewards. |
+| 🎟️ **Stamps** | A member collects a stamp per qualifying visit or spend threshold, and spends stamps on rewards.        |
+| 📅 **Visits** | Members accumulate visit counts and spend them on rewards.                                              |
 
 A restaurant runs one mode at a time and can change it later. Every reward can cost points, stamps, or visits, independently of the program mode.
 
@@ -125,10 +121,10 @@ By default your member, transaction, reward, and redemption data is kept, so rei
 
 ## 📥 Download
 
-| Source | Link |
-| --- | --- |
-| 🌐 **WordPress.org (official)** | <https://wordpress.org/plugins/obydullah-restaurant-loyalty/> |
-| 🐙 **GitHub** | <https://github.com/shaik-obydullah/obydullah-restaurant-loyalty-wordpress-plugin> |
+| Source                          | Link                                                                               |
+| ------------------------------- | ---------------------------------------------------------------------------------- |
+| 🌐 **WordPress.org (official)** | <https://wordpress.org/plugins/obydullah-restaurant-loyalty/>                      |
+| 🐙 **GitHub**                   | <https://github.com/shaik-obydullah/obydullah-restaurant-loyalty-wordpress-plugin> |
 
 ---
 
